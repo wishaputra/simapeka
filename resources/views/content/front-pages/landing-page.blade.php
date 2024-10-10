@@ -233,7 +233,7 @@ $configData = Helper::appClasses();
   <!-- Our great team: End -->
 
   <!-- Pricing plans: Start -->
-  <section id="landingPricing" class="section-py bg-body landing-pricing">
+  <!-- <section id="landingPricing" class="section-py bg-body landing-pricing">
     <div class="container bg-icon-left position-relative">
       <img src="{{asset('assets/img/front-pages/icons/bg-left-icon-'.$configData['style'].'.png')}}" alt="section icon" class="position-absolute top-0 start-0" data-speed="1" data-app-light-img="front-pages/icons/bg-left-icon-light.png" data-app-dark-img="front-pages/icons/bg-left-icon-dark.png" />
       <h6 class="text-center d-flex justify-content-center align-items-center mb-6">
@@ -247,7 +247,7 @@ $configData = Helper::appClasses();
       </p>
       <div id="slider-pricing" class="mb-10 mb-md-12"></div>
       <div class="row gy-6 pt-md-4">
-        <!-- Basic Plan: Start -->
+        
         <div class="col-xl-4 col-lg-6">
           <div class="card shadow-none border">
             <div class="card-header border-0 p-6 p-sm-8">
@@ -313,11 +313,11 @@ $configData = Helper::appClasses();
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
         <!-- Basic Plan: End -->
 
         <!-- Favourite Plan: Start -->
-        <div class="col-xl-4 col-lg-6">
+        <!-- <div class="col-xl-4 col-lg-6">
           <div class="card border-primary border-2 shadow-none">
             <div class="card-header border-0 p-6 p-sm-8">
               <h4 class="mb-2 pb-1 text-center">Favourite Plan</h4>
@@ -383,9 +383,9 @@ $configData = Helper::appClasses();
             </div>
           </div>
         </div>
-        <!-- Favourite Plan: End -->
+        
 
-        <!-- Standard Plan: Start -->
+        
         <div class="col-xl-4 col-lg-6">
           <div class="card shadow-none border">
             <div class="card-header border-0 p-6 p-sm-8">
@@ -452,10 +452,10 @@ $configData = Helper::appClasses();
             </div>
           </div>
         </div>
-        <!-- Standard Plan: End -->
+        
       </div>
     </div>
-  </section>
+  </section> -->
   <!-- Pricing plans: End -->
 
   <!-- Fun facts: Start -->
