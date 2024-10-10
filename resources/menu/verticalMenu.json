@@ -12,22 +12,26 @@
         {
           "url": "app/ecommerce/dashboard",
           "name": "eCommerce",
-          "slug": "app-ecommerce-dashboard"
+          "slug": "app-ecommerce-dashboard",
+          "disabled": true
         },
         {
           "url": "dashboard/crm",
           "name": "CRM",
-          "slug": "dashboard-crm"
+          "slug": "dashboard-crm",
+          "disabled": true
         },
         {
           "url": "/",
           "name": "Analytics",
-          "slug": "dashboard-analytics"
+          "slug": "dashboard-analytics",
+          "disabled": true
         },
         {
           "url": "app/logistics/dashboard",
           "name": "Logistics",
-          "slug": "app-logistics-dashboard"
+          "slug": "app-logistics-dashboard",
+          "disabled": true
         },
         {
           "url": "app/academy/dashboard",
@@ -40,6 +44,7 @@
       "name": "Layouts",
       "icon": "menu-icon tf-icons ri-layout-2-line",
       "slug": "layouts",
+      "disabled": true,
       "submenu": [
         {
           "url": "layouts/collapsed-menu",
@@ -94,6 +99,7 @@
       "name": "Front Pages",
       "icon": "menu-icon tf-icons ri-file-copy-line",
       "slug": "front-pages",
+      "disabled": true,
       "submenu": [
         {
           "url": "front-pages/landing",
@@ -131,6 +137,7 @@
       "name": "Laravel Example",
       "icon": "menu-icon tf-icons ri-database-2-line",
       "slug": "laravel-example",
+      "disabled": true,
       "submenu": [
         {
           "url": "laravel/user-management",
@@ -146,30 +153,35 @@
       "url": "app/email",
       "name": "Email",
       "icon": "menu-icon tf-icons ri-mail-open-line",
-      "slug": "app-email"
+      "slug": "app-email",
+      "disabled": true
     },
     {
       "url": "app/chat",
       "name": "Chat",
       "icon": "menu-icon tf-icons ri-wechat-line",
-      "slug": "app-chat"
+      "slug": "app-chat",
+      "disabled": true
     },
     {
       "url": "app/calendar",
       "name": "Calendar",
       "icon": "menu-icon tf-icons ri-calendar-line",
-      "slug": "app-calendar"
+      "slug": "app-calendar",
+      "disabled": true
     },
     {
       "url": "app/kanban",
       "name": "Kanban",
       "icon": "menu-icon tf-icons ri-drag-drop-line",
-      "slug": "app-kanban"
+      "slug": "app-kanban",
+      "disabled": true
     },
     {
       "name": "eCommerce",
       "icon": "menu-icon tf-icons ri-shopping-bag-3-line",
       "slug": "app-ecommerce",
+      "disabled": true,
       "submenu": [
         {
           "url": "app/ecommerce/dashboard",
@@ -200,6 +212,7 @@
         {
           "name": "Order",
           "slug": "app-ecommerce-order",
+          "disabled": true,
           "submenu": [
             {
               "url": "app/ecommerce/order/list",
@@ -216,6 +229,7 @@
         {
           "name": "Customer",
           "slug": "app-ecommerce-customer",
+          "disabled": true,
           "submenu": [
             {
               "url": "app/ecommerce/customer/all",
@@ -253,16 +267,19 @@
         {
           "url": "app/ecommerce/manage/reviews",
           "name": "Manage Reviews",
-          "slug": "app-ecommerce-manage-reviews"
+          "slug": "app-ecommerce-manage-reviews",
+          "disabled": true
         },
         {
           "url": "app/ecommerce/referrals",
           "name": "Referrals",
-          "slug": "app-ecommerce-referrals"
+          "slug": "app-ecommerce-referrals",
+          "disabled": true
         },
         {
           "name": "Settings",
           "slug": "app-ecommerce-settings",
+          "disabled": true,
           "submenu": [
             {
               "url": "app/ecommerce/settings/details",
@@ -324,6 +341,7 @@
       "name": "Logistics",
       "icon": "menu-icon tf-icons ri-car-line",
       "slug": "app-logistics",
+      "disabled": true,
       "submenu": [
         {
           "url": "app/logistics/dashboard",
@@ -341,6 +359,7 @@
       "name": "Invoice",
       "icon": "menu-icon tf-icons ri-bill-line",
       "slug": "app-invoice",
+      "disabled": true,
       "submenu": [
         {
           "url": "app/invoice/list",
@@ -368,6 +387,7 @@
       "name": "Users",
       "icon": "menu-icon tf-icons ri-user-line",
       "slug": "app-user",
+      "disabled": true,
       "submenu": [
         {
           "url": "app/user/list",
@@ -411,6 +431,7 @@
       "name": "Roles & Permissions",
       "icon": "menu-icon tf-icons ri-lock-2-line",
       "slug": "app-access",
+      "disabled": true,
       "submenu": [
         {
           "url": "app/access-roles",
@@ -428,6 +449,7 @@
       "name": "Pages",
       "icon": "menu-icon tf-icons ri-layout-left-line",
       "slug": "pages",
+      "disabled": true,
       "submenu": [
         {
           "name": "User Profile",
@@ -458,6 +480,7 @@
         {
           "name": "Account Settings",
           "slug": "pages-account-settings",
+          "disabled": true,
           "submenu": [
             {
               "url": "pages/account-settings-account",
@@ -489,16 +512,19 @@
         {
           "url": "pages/faq",
           "name": "FAQ",
-          "slug": "pages-faq"
+          "slug": "pages-faq",
+          "disabled": true
         },
         {
           "url": "pages/pricing",
           "name": "Pricing",
-          "slug": "pages-pricing"
+          "slug": "pages-pricing",
+          "disabled": true
         },
         {
           "name": "Misc",
           "slug": "pages-misc",
+          "disabled": true,
           "submenu": [
             {
               "url": "pages/misc-error",
@@ -538,6 +564,7 @@
       "name": "Authentications",
       "icon": "menu-icon tf-icons ri-shield-keyhole-line",
       "slug": "auth",
+      "disabled": true,
       "submenu": [
         {
           "name": "Login",
@@ -560,6 +587,7 @@
         {
           "name": "Register",
           "slug": "auth-register",
+          "disabled": true,
           "submenu": [
             {
               "url": "auth/register-basic",
@@ -584,6 +612,7 @@
         {
           "name": "Verify Email",
           "slug": "auth-verify-email",
+          "disabled": true,
           "submenu": [
             {
               "url": "auth/verify-email-basic",
@@ -620,6 +649,7 @@
         {
           "name": "Forgot Password",
           "slug": "auth-forgot-password",
+          "disabled": true,
           "submenu": [
             {
               "url": "auth/forgot-password-basic",
@@ -638,6 +668,7 @@
         {
           "name": "Two Steps",
           "slug": "auth-two-steps",
+          "disabled": true,
           "submenu": [
             {
               "url": "auth/two-steps-basic",
@@ -659,6 +690,7 @@
       "name": "Wizard Examples",
       "icon": "menu-icon tf-icons ri-git-commit-line",
       "slug": "wizard-ex",
+      "disabled": true,
       "submenu": [
         {
           "url": "wizard/ex-checkout",
@@ -681,15 +713,18 @@
       "url": "modal-examples",
       "icon": "menu-icon tf-icons ri-tv-2-line",
       "name": "Modal Examples",
-      "slug": "modal-examples"
+      "slug": "modal-examples",
+      "disabled": true
     },
     {
-      "menuHeader": "Components"
+      "menuHeader": "",
+      "disabled": true
     },
     {
       "name": "Cards",
       "icon": "menu-icon tf-icons ri-bank-card-2-line",
       "slug": "cards",
+      "disabled": true,
       "badge": [
         "primary",
         "6"
@@ -731,6 +766,7 @@
       "name": "User interface",
       "icon": "menu-icon tf-icons ri-toggle-line",
       "slug": "ui",
+      "disabled": true,
       "submenu": [
         {
           "url": "ui/accordion",
@@ -833,6 +869,7 @@
       "name": "Extended UI",
       "icon": "menu-icon tf-icons ri-box-3-line",
       "slug": "extended",
+      "disabled": true,
       "submenu": [
         {
           "url": "extended/ui-avatar",
@@ -911,15 +948,18 @@
       "name": "Icons",
       "url": "icons/icons-ri",
       "icon": "menu-icon tf-icons ri-remixicon-line",
-      "slug": "icons-ri"
+      "slug": "icons-ri",
+      "disabled": true
     },
     {
-      "menuHeader": "Forms & Tables"
+      "menuHeader": "",
+      "disabled": true
     },
     {
       "name": "Form Elements",
       "icon": "menu-icon tf-icons ri-radio-button-line",
       "slug": "forms",
+      "disabled": true,
       "submenu": [
         {
           "url": "forms/basic-inputs",
@@ -977,6 +1017,7 @@
       "name": "Form Layouts",
       "icon": "menu-icon tf-icons ri-box-3-line",
       "slug": "form-layouts",
+      "disabled": true,
       "submenu": [
         {
           "url": "form/layouts-vertical",
@@ -999,6 +1040,7 @@
       "name": "Form Wizard",
       "icon": "menu-icon tf-icons ri-git-commit-line",
       "slug": "form-wizard",
+      "disabled": true,
       "submenu": [
         {
           "url": "form/wizard-numbered",
@@ -1016,18 +1058,21 @@
       "url": "form/validation",
       "icon": "menu-icon tf-icons ri-checkbox-multiple-line",
       "name": "Form Validation",
-      "slug": "form-validation"
+      "slug": "form-validation",
+      "disabled": true
     },
     {
       "url": "tables/basic",
       "icon": "menu-icon tf-icons ri-table-alt-line",
       "name": "Tables",
-      "slug": "tables-basic"
+      "slug": "tables-basic",
+      "disabled": true
     },
     {
       "name": "Datatables",
       "icon": "menu-icon tf-icons ri-grid-line",
       "slug": "tables-datatables",
+      "disabled": true,
       "submenu": [
         {
           "url": "tables/datatables-basic",
@@ -1047,12 +1092,14 @@
       ]
     },
     {
-      "menuHeader": "Charts & Maps"
+      "menuHeader": "Charts & Maps",
+      "disabled": true
     },
     {
       "name": "Charts",
       "icon": "menu-icon tf-icons ri-bar-chart-2-line",
       "slug": "charts",
+      "disabled": true,
       "submenu": [
         {
           "url": "charts/apex",
@@ -1070,16 +1117,19 @@
       "url": "maps/leaflet",
       "icon": "menu-icon tf-icons ri-map-2-line",
       "name": "Leaflet Maps",
-      "slug": "maps-leaflet"
+      "slug": "maps-leaflet",
+      "disabled": true
     },
     {
-      "menuHeader": "Misc"
+      "menuHeader": "Misc",
+      "disabled": true
     },
     {
       "url": "https://pixinvent.ticksy.com/",
       "icon": "menu-icon tf-icons ri-lifebuoy-line",
       "name": "Support",
       "slug": "support",
+      "disabled": true,
       "target": "_blank"
     },
     {
@@ -1087,6 +1137,7 @@
       "icon": "menu-icon tf-icons ri-article-line",
       "name": "Documentation",
       "slug": "documentation",
+      "disabled": true,
       "target": "_blank"
     }
   ]
