@@ -44,8 +44,10 @@
         <!-- Logo -->
         <div class="app-brand justify-content-center mt-5">
           <a href="{{url('/')}}" class="app-brand-link gap-2">
-            <span class="app-brand-logo demo">@include('_partials.macros', ["width" => 25, "withbg" => 'var(--bs-primary)'])</span>
-            <span class="app-brand-text demo text-heading fw-semibold">{{config('variables.templateName')}}</span>
+          <span class="app-brand-logo demo">
+        <img src="{{asset('assets/img/logo/favicon.png')}}" alt="SIMAPEKA Logo" width="25" />
+        </span>
+        <span class="app-brand-text demo menu-text fw-semibold ms-2 ps-1">SIMAPEKA</span>
           </a>
         </div>
         <!-- /Logo -->
@@ -92,7 +94,7 @@
             </a>
           </p>
 
-          <div class="divider my-5">
+          <!-- <div class="divider my-5">
             <div class="divider-text">or</div>
           </div>
 
@@ -112,7 +114,7 @@
             <a href="javascript:;" class="btn btn-icon rounded-circle btn-text-google-plus">
               <i class="tf-icons ri-google-fill"></i>
             </a>
-          </div>
+          </div> -->
 
        
        

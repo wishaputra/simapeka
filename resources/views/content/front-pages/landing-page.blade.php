@@ -32,104 +32,153 @@ $configData = Helper::appClasses();
 @vite(['resources/assets/js/front-page-landing.js'])
 @endsection
 
+<style>
+  .features-icon img {
+  width: 80px; /* Adjust this value as needed */
+  height: auto; /* Maintain aspect ratio */
+  max-width: 100%; /* Make sure image doesn't overflow its container */
+}
+.features-box {
+    border: 1px solid #e0e0e0; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background color */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* subtle shadow */
+}
+
+.features-icon {
+    margin: 0 auto; /* Center content */
+}
+
+.btn-primary {
+    margin-top: 1.5rem; /* Space above the button */
+}
+
+.section-py {
+    padding-top: 40px; /* Adjust based on design */
+    padding-bottom: 40px; /* Adjust based on design */
+}
+
+
+</style>
 
 @section('content')
 <div data-bs-spy="scroll" class="scrollspy-example">
-  <!-- Hero: Start -->
-  <section id="landingHero" class="section-py landing-hero position-relative">
-    <img src="{{asset('assets/img/front-pages/backgrounds/hero-bg-'.$configData['style'].'.png') }}" alt="hero background" class="position-absolute top-0 start-0 w-100 h-100 z-n1" />
+<!-- Hero: Start -->
+<section id="landingHero" class="section-py landing-hero position-relative">
+    <img src="{{asset('assets/img/front-pages/backgrounds/hero-bg-'.$configData['style'].'.png') }}" alt="hero background" class="position-absolute top-0 start-0 w-100 h-100 z-n1" data-speed="1" data-app-light-img="front-pages/backgrounds/hero-bg-light.png" data-app-dark-img="front-pages/backgrounds/hero-bg-dark.png" />
     <div class="container">
       <div class="hero-text-box text-center">
-        <h1 class="text-primary hero-title fs-1">Empowering PNS through Comprehensive Training</h1>
-        <h2 class="h6 mb-4">Your gateway to continuous professional development</h2>
-        <a href="#landingFeatures" class="btn btn-lg btn-primary">Explore Features</a>
-        <a href="#landingPricing" class="btn btn-lg btn-outline-primary ms-2">Join Now</a>
+        <h3 class="text-primary hero-title fs-2">Unlock Your Potential with Professional Training</h3>
+        <h2 class="h6 mb-8">
+          Transform your skills and elevate your career.<br />
+          Join us in building a competent, future-ready workforce for the public sector.<br />
+          SIMAPEKA is your gateway to continuous growth and success.<br />
+        </h2>
+        <a href="{{url('front-pages/landing')}}#landingFeatures" class="btn btn-lg btn-primary">Discover More</a>
       </div>
       <div class="position-relative hero-animation-img">
-        <div class="hero-dashboard-img text-center">
-          <img src="{{asset('assets/img/front-pages/landing-page/hero-dashboard-'.$configData['style'].'.png')}}" alt="SIMAPEKA dashboard" class="animation-img" />
-        </div>
+        <a href="{{url('front-pages/landing')}}#landingFeatures" target="_blank">
+          <div class="hero-dashboard-img text-center">
+            <img src="{{asset('assets/img/front-pages/landing-page/hero-dashboard-'.$configData['style'].'.png')}}" alt="hero dashboard" class="animation-img" data-speed="2" data-app-light-img="front-pages/landing-page/hero-dashboard-light.png" data-app-dark-img="front-pages/landing-page/hero-dashboard-dark.png" />
+          </div>
+          <div class="position-absolute hero-elements-img">
+            <img src="{{asset('assets/img/front-pages/landing-page/hero-elements-'.$configData['style'].'.png')}}" alt="hero elements" class="animation-img" data-speed="4" data-app-light-img="front-pages/landing-page/hero-elements-light.png" data-app-dark-img="front-pages/landing-page/hero-elements-dark.png" />
+          </div>
+        </a>
       </div>
     </div>
-  </section>
-  <!-- Hero: End -->
+</section>
+<!-- Hero: End -->
+
+
+
 
   <!-- SIMAPEKA Features: Start -->
 <section id="landingFeatures" class="section-py landing-features">
   <div class="container">
     <h6 class="text-center d-flex justify-content-center align-items-center mb-6">
-      <img src="{{asset('assets/img/front-pages/icons/section-tilte-icon.png')}}" alt="section title icon" class="me-3" />
-      <span class="text-uppercase">SIMAPEKA Features</span>
+      <img src="{{asset('assets/img/front-pages/icons/section-tilte-icon.png')}}" alt="ikon judul bagian" class="me-3" />
+      <span class="text-uppercase">Fitur SIMAPEKA</span>
     </h6>
     <h5 class="text-center mb-2">
-      <span class="display-5 fs-4 fw-bold">Empowering Learning</span> for Public Servants
+      <span class="display-5 fs-4 fw-bold">Pengembangan diri</span> untuk PNS
     </h5>
     <p class="text-center fw-medium mb-4 mb-md-12">
-      SIMAPEKA offers a comprehensive solution to enhance your skills with an easy-to-use, accessible platform.
+      SIMAPEKA membentuk sumber daya manusia aparatur yang kompeten untuk pencapaian Visi Misi Pemerintah Kota Tangerang Selatan.
     </p>
-    <div class="features-icon-wrapper row gx-0 gy-12 gx-sm-6 mt-n4 mt-sm-0">
-      <div class="col-lg-4 col-sm-6 text-center features-icon-box">
-        <div class="features-icon mb-4">
-          <img src="{{asset('assets/img/front-pages/icons/interactive-learning.png')}}" alt="Interactive Learning" />
+    
+    <!-- Features Box Start -->
+    <div class="features-box p-4 border rounded">
+      <div class="features-icon-wrapper row gx-0 gy-12 gx-sm-6">
+        <div class="col-lg-4 col-sm-12 text-center features-icon-box">
+          <div class="features-icon mb-4">
+            <img src="{{asset('assets/img/front-pages/icons/mandiri.png')}}" alt="Pengembangan Mandiri" />
+          </div>
+          <h5 class="mb-2">Pengembangan Mandiri</h5>
+          <p class="features-icon-description">
+            Pengembangan Mandiri untuk meningkatkan keterampilan pribadi sesuai kecepatan Anda sendiri.
+          </p>
         </div>
-        <h5 class="mb-2">Interactive Learning</h5>
-        <p class="features-icon-description">
-          Hands-on training modules designed to simulate real-world scenarios for PNS.
-        </p>
+        <div class="col-lg-4 col-sm-12 text-center features-icon-box">
+          <div class="features-icon mb-4">
+            <img src="{{asset('assets/img/front-pages/icons/programmed.png')}}" alt="Pengembangan Terprogram" />
+          </div>
+          <h5 class="mb-2">Pengembangan Terprogram</h5>
+          <p class="features-icon-description">
+            Pengembangan Terprogram yang menyediakan jalur pembelajaran terstruktur.
+          </p>
+        </div>
+        <div class="col-lg-4 col-sm-12 text-center features-icon-box">
+          <div class="features-icon mb-4">
+            <img src="{{asset('assets/img/front-pages/icons/berbagi.png')}}" alt="Berbagi Pengetahuan" />
+          </div>
+          <h5 class="mb-2">Berbagi Pengetahuan</h5>
+          <p class="features-icon-description">
+            Berbagi Pengetahuan untuk mendorong kolaborasi dan pembelajaran di antara rekan-rekan.
+          </p>
+        </div>
       </div>
-      <div class="col-lg-4 col-sm-6 text-center features-icon-box">
-        <div class="features-icon mb-4">
-          <img src="{{asset('assets/img/front-pages/icons/updates.png')}}" alt="Continuous Updates" />
-        </div>
-        <h5 class="mb-2">Continuous Course Updates</h5>
-        <p class="features-icon-description">
-          Access the latest courses and materials, updated regularly to keep your knowledge current.
-        </p>
-      </div>
-      <div class="col-lg-4 col-sm-6 text-center features-icon-box">
-        <div class="features-icon mb-4">
-          <img src="{{asset('assets/img/front-pages/icons/progress.png')}}" alt="Track Progress" />
-        </div>
-        <h5 class="mb-2">Track Your Progress</h5>
-        <p class="features-icon-description">
-          Monitor your learning journey, track your progress, and celebrate your achievements.
-        </p>
-      </div>
-      <div class="col-lg-4 col-sm-6 text-center features-icon-box">
-        <div class="features-icon mb-4">
-          <img src="{{asset('assets/img/front-pages/icons/certification.png')}}" alt="Certified Training" />
-        </div>
-        <h5 class="mb-2">Certified Training</h5>
-        <p class="features-icon-description">
-          Receive official certifications upon completion, recognized by Diskominfo Tangsel.
-        </p>
-      </div>
-      <div class="col-lg-4 col-sm-6 text-center features-icon-box">
-        <div class="features-icon mb-4">
-          <img src="{{asset('assets/img/front-pages/icons/support.png')}}" alt="Support" />
-        </div>
-        <h5 class="mb-2">Dedicated Support</h5>
-        <p class="features-icon-description">
-          Get support whenever you need it with access to our help desk and resource center.
-        </p>
-      </div>
-      <div class="col-lg-4 col-sm-6 text-center features-icon-box">
-        <div class="features-icon mb-4">
-          <img src="{{asset('assets/img/front-pages/icons/documentation.png')}}" alt="Well Documented" />
-        </div>
-        <h5 class="mb-2">Comprehensive Documentation</h5>
-        <p class="features-icon-description">
-          Clear and detailed documentation for every feature, helping you get the most out of SIMAPEKA.
-        </p>
+      <!-- View More Link -->
+      <div class="text-center mt-4">
+        <a href="#" class="btn btn-primary">Lihat Selengkapnya</a>
       </div>
     </div>
+    <!-- Features Box End -->
   </div>
 </section>
 <!-- SIMAPEKA Features: End -->
 
+<!-- Profil SIMAPEKA: Start -->
+<section id="profilSimapeka" class="section-py profil-simapeka">
+  <div class="container">
+    <!-- Title and icon -->
+    <h6 class="text-center d-flex justify-content-center align-items-center mb-6">
+      <img src="{{asset('assets/img/front-pages/icons/section-tilte-icon.png')}}" alt="ikon judul bagian" class="me-3" />
+      <span class="text-uppercase">Profil SIMAPEKA</span>
+    </h6>
+
+    <div class="d-flex align-items-center justify-content-between flex-column flex-lg-row">
+      <div class="profil-image col-lg-6 text-center mb-4 mb-lg-0"> <!-- Moved image div first -->
+        <img src="{{asset('assets/img/front-pages/landing-page/hero-dashboard-'.$configData['style'].'.png')}}" alt="Profil SIMAPEKA" class="img-fluid rounded" />
+      </div>
+      <div class="profil-text col-lg-6 text-center text-lg-start p-3">
+        <h2 class="mb-4">Profil SIMAPEKA</h2>
+        <p class="mb-4">
+        SIMAPEKA (Sistem Manajemen Pengembangan Kompetensi ASN) merupakan platform yang dirancang untuk mendukung pengembangan kompetensi pegawai negeri sipil (PNS) di lingkungan Pemerintah Kota Tangerang. Melalui SIMAPEKA, pegawai dapat mengakses berbagai program pelatihan dan pengembangan yang sesuai dengan kebutuhan kinerja dan pengembangan diri. Platform ini juga berperan dalam memastikan bahwa pelaksanaan pelatihan dilakukan secara terintegrasi dan berkesinambungan, didukung dengan manajemen pengetahuan (knowledge management) yang bertujuan meningkatkan kompetensi, profesionalisme, dan efektivitas kerja PNS.
+        </p>
+        <a href="#" class="btn btn-lg btn-primary">Selengkapnya</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Profil SIMAPEKA: End -->
+
+
+
+
 
   <!-- Our great team: Start -->
-  <section id="landingTeam" class="section-py landing-team">
+  <!-- <section id="landingTeam" class="section-py landing-team">
     <div class="container bg-icon-right position-relative">
       <img src="{{asset('assets/img/front-pages/icons/bg-right-icon-'.$configData['style'].'.png')}}" alt="section icon" class="position-absolute top-0 end-0" data-speed="1" data-app-light-img="front-pages/icons/bg-right-icon-light.png" data-app-dark-img="front-pages/icons/bg-right-icon-dark.png" />
       <h6 class="text-center d-flex justify-content-center align-items-center mb-6">
@@ -229,7 +278,7 @@ $configData = Helper::appClasses();
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
   <!-- Our great team: End -->
 
   <!-- Pricing plans: Start -->

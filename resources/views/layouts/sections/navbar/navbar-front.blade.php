@@ -37,10 +37,11 @@
       </button>
       <ul class="navbar-nav me-auto p-4 p-lg-0">
         <li class="nav-item">
-          <a class="nav-link fw-medium" aria-current="page" href="{{url('front-pages/landing')}}#landingHero">Home</a>
+          <a class="nav-link fw-medium" aria-current="page"
+            href="{{url('front-pages/landing')}}#landingHero">Beranda</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link fw-medium" href="{{url('front-pages/landing')}}#landingFeatures">Features</a>
+          <a class="nav-link fw-medium" href="{{url('front-pages/landing')}}#landingFeatures">Fitur</a>
         </li>
         <li class="nav-item">
           <a class="nav-link fw-medium" href="{{url('front-pages/landing')}}#landingTeam">Team</a>
@@ -267,17 +268,17 @@
       <ul class="dropdown-menu dropdown-menu-end dropdown-styles">
       <li>
       <a class="dropdown-item" href="javascript:void(0);" data-theme="light">
-        <span class="align-middle"><i class='ri-sun-line ri-22px me-3'></i>Light</span>
+      <span class="align-middle"><i class='ri-sun-line ri-22px me-3'></i>Light</span>
       </a>
       </li>
       <li>
       <a class="dropdown-item" href="javascript:void(0);" data-theme="dark">
-        <span class="align-middle"><i class="ri-moon-clear-line ri-22px me-3"></i>Dark</span>
+      <span class="align-middle"><i class="ri-moon-clear-line ri-22px me-3"></i>Dark</span>
       </a>
       </li>
       <li>
       <a class="dropdown-item" href="javascript:void(0);" data-theme="system">
-        <span class="align-middle"><i class="ri-computer-line ri-22px me-3"></i>System</span>
+      <span class="align-middle"><i class="ri-computer-line ri-22px me-3"></i>System</span>
       </a>
       </li>
       </ul>
