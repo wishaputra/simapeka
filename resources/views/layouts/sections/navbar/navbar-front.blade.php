@@ -43,15 +43,15 @@
         <li class="nav-item">
           <a class="nav-link fw-medium" href="{{url('front-pages/landing')}}#landingFeatures">Fitur</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link fw-medium" href="{{url('front-pages/landing')}}#landingTeam">Team</a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link fw-medium" href="{{url('front-pages/landing')}}#landingFAQ">FAQ</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link fw-medium text-nowrap" href="{{url('front-pages/landing')}}#landingContact">Contact us</a>
-        </li>
+        </li> -->
         <li class="nav-item mega-dropdown {{ $activeClass }}">
           <!-- <a href="javascript:void(0);"
             class="nav-link dropdown-toggle navbar-ex-14-mega-dropdown mega-dropdown fw-medium" aria-expanded="false"
@@ -288,9 +288,9 @@
 
       <!-- navbar button: Start -->
       <li>
-        <a href="{{url('/auth/login-basic')}}" class="btn btn-primary px-2 px-sm-4 px-lg-2 px-xl-4"
+        <a href="{{url('/auth/login-basic')}}" class="btn btn-primary px-2 px-sm-4 px-lg-2 px-xl-4 btn btn-lg btn-tosca"
           target="_blank"><span class="tf-icons ri-user-line me-md-1"></span><span
-            class="d-none d-md-block">Login/Register</span></a>
+            class="d-none d-md-block">Login</span></a>
       </li>
       <!-- navbar button: End -->
     </ul>

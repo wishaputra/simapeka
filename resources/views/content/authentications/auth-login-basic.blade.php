@@ -58,41 +58,42 @@
 
                
           <form id="formAuthentication" class="mb-5" action="{{ route('login') }}" method="POST">
-              @csrf
-              <div class="form-floating form-floating-outline mb-5">
-                  <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email or username" autofocus>
-                  <label for="email">Email or Username</label>
-              </div>
-              <div class="mb-5">
-                  <div class="form-password-toggle">
-                      <div class="input-group input-group-merge">
-                          <div class="form-floating form-floating-outline">
-                              <input type="password" id="password" class="form-control" name="password" placeholder="Password" />
-                              <label for="password">Password</label>
-                          </div>
-                          <span class="input-group-text cursor-pointer"><i class="ri-eye-off-line"></i></span>
-                      </div>
-                  </div>
-              </div>
-              <div class="mb-5 d-flex justify-content-between mt-5">
-                  <div class="form-check mt-2">
-                      <input class="form-check-input" type="checkbox" id="remember-me" name="remember">
-                      <label class="form-check-label" for="remember-me"> Remember Me </label>
-                  </div>
-                  <a href="{{url('auth/forgot-password-basic')}}" class="float-end mb-1 mt-2">Forgot Password?</a>
-              </div>
-              <div class="mb-5">
-                  <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
-              </div>
-          </form>
+    @csrf
+    <div class="form-floating form-floating-outline mb-5">
+        <input type="text" class="form-control" id="nip" name="nip" placeholder="Enter your NIP" autofocus>
+        <label for="nip">NIP</label>
+    </div>
+    <div class="mb-5">
+        <div class="form-password-toggle">
+            <div class="input-group input-group-merge">
+                <div class="form-floating form-floating-outline">
+                    <input type="password" id="password" class="form-control" name="password" placeholder="Password" />
+                    <label for="password">Password</label>
+                </div>
+                <span class="input-group-text cursor-pointer"><i class="ri-eye-off-line"></i></span>
+            </div>
+        </div>
+    </div>
+    <div class="mb-5 d-flex justify-content-between mt-5">
+        <div class="form-check mt-2">
+            <input class="form-check-input" type="checkbox" id="remember-me" name="remember">
+            <label class="form-check-label" for="remember-me"> Remember Me </label>
+        </div>
+        <a href="{{url('auth/forgot-password-basic')}}" class="float-end mb-1 mt-2">Forgot Password?</a>
+    </div>
+    <div class="mb-5">
+        <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+    </div>
+</form>
 
 
-          <p class="text-center">
+
+          <!-- <p class="text-center">
             <span>New on our platform?</span>
             <a href="{{url('auth/register-basic')}}">
               <span>Create an account</span>
             </a>
-          </p>
+          </p> -->
 
           <!-- <div class="divider my-5">
             <div class="divider-text">or</div>

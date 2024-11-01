@@ -17,8 +17,10 @@ class User extends Authenticatable
    * @var array<int, string>
    */
   protected $fillable = [
+    'id_role',
     'name',
     'email',
+    'nip',
     'password',
   ];
 
@@ -44,4 +46,34 @@ class User extends Authenticatable
       'password' => 'hashed',
     ];
   }
+  
+  public function pegawai()
+  {
+    return $this->hasOne(Pegawai::class, 'nip', 'nip');
+  }
+  private function getUserRole()
+    {
+        return $this->user_roles()->getResults();
+    }
+
+    private function checkRole($role)
+    {
+        $userRole = $this->getUserRole();
+        return $userRole && strtolower($role) == strtolower($userRole->role);
+    }
+
+    public function hasRole($roles)
+    {
+        if (is_array($roles)) {
+            foreach ($roles as $need_role) {
+                if ($this->checkRole($need_role)) {
+                    return true;
+                }
+            }
+        } else {
+            return $this->checkRole($roles);
+        }
+
+        return false;
+    }
 }

@@ -18,12 +18,12 @@ class LoginBasic extends Controller
   {
     // Validate the input fields
     $credentials = $request->validate([
-      'email' => ['required', 'string', 'email'],
+      'nip' => ['required', 'string'],
       'password' => ['required', 'string'],
     ]);
 
-    // Attempt to log the user in
-    if (Auth::attempt($credentials, $request->remember)) {
+    // Attempt to log the user in with NIP and password
+    if (Auth::attempt(['nip' => $credentials['nip'], 'password' => $credentials['password']], $request->remember)) {
       // Regenerate session to prevent session fixation attacks
       $request->session()->regenerate();
 
@@ -33,7 +33,8 @@ class LoginBasic extends Controller
 
     // If login fails, return back with an error message
     return back()->withErrors([
-      'email' => 'The provided credentials do not match our records.',
+      'nip' => 'The provided credentials do not match our records.',
     ]);
   }
+
 }

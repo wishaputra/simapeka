@@ -15,7 +15,7 @@
           "slug": "app-ecommerce-dashboard",
           "disabled": true
         },
-        {
+        { 
           "url": "dashboard/crm",
           "name": "CRM",
           "slug": "dashboard-crm",

@@ -53,6 +53,16 @@ nav.layout-navbar {
         }
       }
     }
+    .btn-tosca {
+      background-color: #40e0d0; /* Tosca color */
+      border-color: #40e0d0;
+      color: white;
+    }
+
+    .btn-tosca:hover {
+      background-color: #36c2b3; /* Slightly darker tosca on hover */
+      border-color: #36c2b3;
+    }
     .landing-nav-menu {
       .navbar-nav {
         @include light.media-breakpoint-down(lg) {

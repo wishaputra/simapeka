@@ -17,21 +17,26 @@
   'resources/assets/vendor/libs/moment/moment.js',
   'resources/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js',
   'resources/assets/vendor/libs/apex-charts/apexcharts.js',
-])
+]) 
 @endsection
 
 @section('page-script')
 @vite('resources/assets/js/app-academy-dashboard.js')
 @endsection
+@php
+    use Illuminate\Support\Facades\Auth;
+@endphp
 
 @section('content')
 <!-- Hour chart  -->
 <div class="card bg-transparent shadow-none border-0 mb-6">
-  <d  iv class="card-body row g-6 p-0 pb-5">
-             <div class="col-12 col-md-8 card-separator">
-    <h5 class="mb-2">Welcome back,<span class="h4 fw-semibold"> {{ \Illuminate\Support\Facades\Auth::user()->name }} 👋🏻</span></h5>
+  <div class="card-body row g-6 p-0 pb-5">
+    <div   class="col-12 col-md-8 card-separator">
+        <h5 class="mb-2">Welcome back,<span class="h4 fw-semibold">
+        {{ Auth::user()->pegawai->nama ?? Auth::user()->name }} 👋🏻
+      </span></h5>
       <div class="col-12 col-lg-5">
-        <p>Your progress this week is Awesome. let's keep it up and get a lot of points reward !</p>
+        <p>Your progress this week is Awesome. let's keep it up and get a lot of points reward!</p>
       </div>
       <div class="d-flex justify-content-between flex-wrap gap-4 me-12">
         <div class="d-flex align-items-center gap-4 me-6 me-sm-0">

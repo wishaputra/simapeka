@@ -20,4 +20,20 @@ class Landing extends Controller
       'userCount' => $userCount // Pass the count to the view
     ]);
   }
+
+  public function show()
+  {
+    $pageConfigs = ['myLayout' => 'front'];
+    return view('content.front-pages.features-detail', [
+      'pageConfigs' => $pageConfigs,
+    ]); // Adjust the view path accordingly
+  }
+
+  public function profile()
+  {
+    $pageConfigs = ['myLayout' => 'front'];
+    return view('content.front-pages.profil-simapeka', [
+      'pageConfigs' => $pageConfigs,
+    ]);
+  }
 }

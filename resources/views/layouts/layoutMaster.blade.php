@@ -10,3 +10,4 @@ $configData = Helper::appClasses();
 (( $configData["layout"] === 'blank') ? 'layouts.blankLayout' :
 (($configData["layout"] === 'front') ? 'layouts.layoutFront' : 'layouts.contentNavbarLayout') )))
 @endisset
+ 

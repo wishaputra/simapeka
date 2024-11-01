@@ -4,6 +4,18 @@
 @use '../_bootstrap-extended/include' as light;
 @use '../_bootstrap-extended/include-dark' as dark;
 @import '../_custom-variables/pages';
+$tosca: #40e07d; // Tosca color
+
+.btn-tosca {
+  background-color: #40e07d; /* Tosca color */
+  border-color: #40e07d;
+  color: rgb(130, 229, 148);
+}
+
+.btn-tosca:hover {
+  background-color: #40e07d; /* Slightly darker tosca on hover */
+  border-color: #40e07d;
+}
 
 .section-py {
   padding: 6.25rem 0;
@@ -26,6 +38,16 @@
       max-width: 550px;
       margin: 0 auto;
     }
+  }
+  .btn-tosca {
+    background-color: #40e0d0; /* Tosca color */
+    border-color: #40e0d0;
+    color: white;
+  }
+
+  .btn-tosca:hover {
+    background-color: #36c2b3; /* Slightly darker tosca on hover */
+    border-color: #36c2b3;
   }
   .hero-title {
     font-weight: 800;
@@ -64,6 +86,16 @@
   }
   @include light.media-breakpoint-down(sm) {
     padding-top: 4rem;
+  }
+  .btn-tosca {
+    background-color: #40e0d0; /* Tosca color */
+    border-color: #40e0d0;
+    color: white;
+  }
+
+  .btn-tosca:hover {
+    background-color: #36c2b3; /* Slightly darker tosca on hover */
+    border-color: #36c2b3;
   }
   .features-icon-wrapper {
     .features-icon-box {
@@ -277,6 +309,57 @@
             }
           }
         }
+      }
+    }
+  }
+}
+
+// Landing login
+.landing-login {
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  padding-top: 7.95rem;
+  @include light.media-breakpoint-up(lg) {
+    .hero-text-box {
+      max-width: 550px;
+      margin: 0 auto;
+    }
+  }
+  .btn-tosca {
+    background-color: #40e0d0; /* Tosca color */
+    border-color: #40e0d0;
+    color: white;
+  }
+
+  .btn-tosca:hover {
+    background-color: #36c2b3; /* Slightly darker tosca on hover */
+    border-color: #36c2b3;
+  }
+  .hero-title {
+    font-weight: 800;
+  }
+  .hero-animation-img {
+    margin-bottom: -16rem;
+    @include light.media-breakpoint-down(lg) {
+      margin-bottom: -10rem;
+    }
+    @include light.media-breakpoint-down(sm) {
+      margin-bottom: -4rem;
+    }
+    .hero-dashboard-img {
+      img {
+        width: 85%;
+        margin: 0 auto;
+      }
+    }
+    .hero-elements-img {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      img {
+        width: 100%;
       }
     }
   }

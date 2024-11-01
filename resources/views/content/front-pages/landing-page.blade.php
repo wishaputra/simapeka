@@ -64,17 +64,17 @@ $configData = Helper::appClasses();
 @section('content')
 <div data-bs-spy="scroll" class="scrollspy-example">
 <!-- Hero: Start -->
-<section id="landingHero" class="section-py landing-hero position-relative">
+<section id="landingHero" class="section-py landing-hero position-relative ">
     <img src="{{asset('assets/img/front-pages/backgrounds/hero-bg-'.$configData['style'].'.png') }}" alt="hero background" class="position-absolute top-0 start-0 w-100 h-100 z-n1" data-speed="1" data-app-light-img="front-pages/backgrounds/hero-bg-light.png" data-app-dark-img="front-pages/backgrounds/hero-bg-dark.png" />
     <div class="container">
       <div class="hero-text-box text-center">
-        <h3 class="text-primary hero-title fs-2">Unlock Your Potential with Professional Training</h3>
+        <h3 class="text-primary hero-title fs-2 ">Unlock Your Potential with Professional Training</h3>
         <h2 class="h6 mb-8">
           Transform your skills and elevate your career.<br />
           Join us in building a competent, future-ready workforce for the public sector.<br />
           SIMAPEKA is your gateway to continuous growth and success.<br />
         </h2>
-        <a href="{{url('front-pages/landing')}}#landingFeatures" class="btn btn-lg btn-primary">Discover More</a>
+        <a href="{{url('front-pages/landing')}}#landingFeatures" class="btn btn-lg btn-tosca">Discover More</a>
       </div>
       <div class="position-relative hero-animation-img">
         <a href="{{url('front-pages/landing')}}#landingFeatures" target="_blank">
@@ -91,10 +91,34 @@ $configData = Helper::appClasses();
 <!-- Hero: End -->
 
 
-
-
-  <!-- SIMAPEKA Features: Start -->
+  
 <section id="landingFeatures" class="section-py landing-features">
+  <!-- Profil SIMAPEKA: Start -->
+<section id="profilSimapeka" class="section-py profil-simapeka">
+  <div class="container">
+    <!-- Title and icon -->
+    <h6 class="text-center d-flex justify-content-center align-items-center mb-6">
+      <img src="{{asset('assets/img/front-pages/icons/section-tilte-icon.png')}}" alt="ikon judul bagian" class="me-3" />
+      <span class="text-uppercase">Profil SIMAPEKA</span>
+    </h6>
+
+    <div class="d-flex align-items-center justify-content-between flex-column flex-lg-row">
+      <div class="profil-image col-lg-6 text-center mb-4 mb-lg-0"> <!-- Moved image div first -->
+        <img src="{{asset('assets/img/front-pages/landing-page/hero-dashboard-'.$configData['style'].'.png')}}" alt="Profil SIMAPEKA" class="img-fluid rounded" />
+      </div>
+      <div class="profil-text col-lg-6 text-center text-lg-start p-3">
+        <h2 class="mb-4">Profil SIMAPEKA</h2>
+        <p class="mb-4">
+        SIMAPEKA (Sistem Manajemen Pengembangan Kompetensi ASN) merupakan platform yang dirancang untuk mendukung pengembangan kompetensi pegawai negeri sipil (PNS) di lingkungan Pemerintah Kota Tangerang. Melalui SIMAPEKA, pegawai dapat mengakses berbagai program pelatihan dan pengembangan yang sesuai dengan kebutuhan kinerja dan pengembangan diri. Platform ini juga berperan dalam memastikan bahwa pelaksanaan pelatihan dilakukan secara terintegrasi dan berkesinambungan, didukung dengan manajemen pengetahuan (knowledge management) yang bertujuan meningkatkan kompetensi, profesionalisme, dan efektivitas kerja PNS.
+        </p>
+        <a href="{{ route('profil-simapeka') }}" class="btn btn-lg btn-tosca">Lihat Selengkapnya</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Profil SIMAPEKA: End -->
+
+<!-- SIMAPEKA Features: Start -->
   <div class="container">
     <h6 class="text-center d-flex justify-content-center align-items-center mb-6">
       <img src="{{asset('assets/img/front-pages/icons/section-tilte-icon.png')}}" alt="ikon judul bagian" class="me-3" />
@@ -140,41 +164,13 @@ $configData = Helper::appClasses();
       </div>
       <!-- View More Link -->
       <div class="text-center mt-4">
-        <a href="#" class="btn btn-primary">Lihat Selengkapnya</a>
+      <a href="{{ route('features-detail') }}" class="btn btn-lg btn-tosca">Lihat Selengkapnya</a>
       </div>
     </div>
     <!-- Features Box End -->
   </div>
 </section>
 <!-- SIMAPEKA Features: End -->
-
-<!-- Profil SIMAPEKA: Start -->
-<section id="profilSimapeka" class="section-py profil-simapeka">
-  <div class="container">
-    <!-- Title and icon -->
-    <h6 class="text-center d-flex justify-content-center align-items-center mb-6">
-      <img src="{{asset('assets/img/front-pages/icons/section-tilte-icon.png')}}" alt="ikon judul bagian" class="me-3" />
-      <span class="text-uppercase">Profil SIMAPEKA</span>
-    </h6>
-
-    <div class="d-flex align-items-center justify-content-between flex-column flex-lg-row">
-      <div class="profil-image col-lg-6 text-center mb-4 mb-lg-0"> <!-- Moved image div first -->
-        <img src="{{asset('assets/img/front-pages/landing-page/hero-dashboard-'.$configData['style'].'.png')}}" alt="Profil SIMAPEKA" class="img-fluid rounded" />
-      </div>
-      <div class="profil-text col-lg-6 text-center text-lg-start p-3">
-        <h2 class="mb-4">Profil SIMAPEKA</h2>
-        <p class="mb-4">
-        SIMAPEKA (Sistem Manajemen Pengembangan Kompetensi ASN) merupakan platform yang dirancang untuk mendukung pengembangan kompetensi pegawai negeri sipil (PNS) di lingkungan Pemerintah Kota Tangerang. Melalui SIMAPEKA, pegawai dapat mengakses berbagai program pelatihan dan pengembangan yang sesuai dengan kebutuhan kinerja dan pengembangan diri. Platform ini juga berperan dalam memastikan bahwa pelaksanaan pelatihan dilakukan secara terintegrasi dan berkesinambungan, didukung dengan manajemen pengetahuan (knowledge management) yang bertujuan meningkatkan kompetensi, profesionalisme, dan efektivitas kerja PNS.
-        </p>
-        <a href="#" class="btn btn-lg btn-primary">Selengkapnya</a>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- Profil SIMAPEKA: End -->
-
-
-
 
 
   <!-- Our great team: Start -->
@@ -508,137 +504,135 @@ $configData = Helper::appClasses();
   <!-- Pricing plans: End -->
 
   <!-- Fun facts: Start -->
-  <section id="landingFunFacts" class="section-py landing-fun-facts py-12 my-4">
-    <div class="container">
-      <div class="row gx-0 gy-6 gx-sm-6">
-        <div class="col-md-3 col-sm-6 text-center">
-          <span class="badge rounded-pill bg-label-hover-primary fun-facts-icon mb-6 p-5"><i class="tf-icons ri-layout-line ri-42px"></i></span>
-          <h2 class="fw-bold mb-0 fun-facts-text">137+</h2>
-          <h6 class="mb-0 text-body">Completed Sites</h6>
-        </div>
-        <div class="col-md-3 col-sm-6 text-center">
-          <span class="badge rounded-pill bg-label-hover-success fun-facts-icon mb-6 p-5"><i class="tf-icons ri-time-line ri-42px"></i></span>
-          <h2 class="fw-bold mb-0 fun-facts-text">1,100+</h2>
-          <h6 class="mb-0 text-body">Working Hours</h6>
-        </div>
-        <div class="col-md-3 col-sm-6 text-center">
-          <span class="badge rounded-pill bg-label-hover-warning fun-facts-icon mb-6 p-5"><i class="tf-icons ri-user-smile-line ri-42px"></i></span>
-          <h2 class="fw-bold mb-0 fun-facts-text">137+</h2>
-          <h6 class="mb-0 text-body">Happy Customers</h6>
-        </div>
-        <div class="col-md-3 col-sm-6 text-center">
-          <span class="badge rounded-pill bg-label-hover-info fun-facts-icon mb-6 p-5"><i class="tf-icons ri-award-line ri-42px"></i></span>
-          <h2 class="fw-bold mb-0 fun-facts-text">23+</h2>
-          <h6 class="mb-0 text-body">Awards Winning</h6>
-        </div>
+<section id="landingFunFacts" class="section-py landing-fun-facts py-12 my-4">
+  <div class="container">
+    <div class="row gx-0 gy-6 gx-sm-6">
+      <div class="col-md-3 col-sm-6 text-center">
+        <span class="badge rounded-pill bg-label-hover-primary fun-facts-icon mb-6 p-5"><i class="tf-icons ri-user-smile-line ri-42px"></i></span>
+        <h2 class="fw-bold mb-0 fun-facts-text">{{ $userCount }}</h2>
+        <h6 class="mb-0 text-body">ASN yang sudah menjalani pelatihan</h6>
+        <p class="mt-2 text-muted">Bergabunglah bersama {{ $userCount }} ASN yang telah meningkatkan kompetensinya melalui SIMAPEKA.</p>
+      </div>
+      <div class="col-md-3 col-sm-6 text-center">
+        <span class="badge rounded-pill bg-label-hover-success fun-facts-icon mb-6 p-5"><i class="tf-icons ri-line-chart-line ri-42px"></i></span>
+        <h2 class="fw-bold mb-0 fun-facts-text">250+</h2>
+        <h6 class="mb-0 text-body">Pelatihan Tersedia</h6>
+        <p class="mt-2 text-muted">Lebih dari 250 program pelatihan tersedia untuk meningkatkan kompetensi ASN.</p>
+      </div>
+      <div class="col-md-3 col-sm-6 text-center">
+        <span class="badge rounded-pill bg-label-hover-warning fun-facts-icon mb-6 p-5"><i class="tf-icons ri-medal-line ri-42px"></i></span>
+        <h2 class="fw-bold mb-0 fun-facts-text">98%</h2>
+        <h6 class="mb-0 text-body">Tingkat Kepuasan ASN</h6>
+        <p class="mt-2 text-muted">Sebanyak 98% peserta merasa pelatihan kami sangat bermanfaat.</p>
+      </div>
+      <div class="col-md-3 col-sm-6 text-center">
+        <span class="badge rounded-pill bg-label-hover-info fun-facts-icon mb-6 p-5"><i class="tf-icons ri-group-line ri-42px"></i></span>
+        <h2 class="fw-bold mb-0 fun-facts-text">500+</h2>
+        <h6 class="mb-0 text-body">Instruktur & Mentor</h6>
+        <p class="mt-2 text-muted">Lebih dari 500 instruktur dan mentor siap membimbing ASN dalam berbagai bidang keahlian.</p>
       </div>
     </div>
-  </section>
-  <!-- Fun facts: End -->
+  </div>
+</section>
+<!-- Fun facts: End -->
+
+
 
   <!-- FAQ: Start -->
-  <section id="landingFAQ" class="section-py bg-body landing-faq">
-    <div class="container bg-icon-right">
-      <img src="{{asset('assets/img/front-pages/icons/bg-right-icon-'.$configData['style'].'.png')}}" alt="section icon" class="position-absolute top-0 end-0" data-speed="1" data-app-light-img="front-pages/icons/bg-right-icon-light.png" data-app-dark-img="front-pages/icons/bg-right-icon-dark.png" />
-      <h6 class="text-center d-flex justify-content-center align-items-center mb-6">
-        <img src="{{asset('assets/img/front-pages/icons/section-tilte-icon.png')}}" alt="section title icon" class="me-3" />
-        <span class="text-uppercase">faq</span>
-      </h6>
-      <h5 class="text-center mb-2">Frequently asked<span class="display-5 fs-4 fw-bold"> questions</span></h5>
-      <p class="text-center fw-medium mb-4 mb-md-12 pb-4">
-        Browse through these FAQs to find answers to commonly asked questions.
-      </p>
-      <div class="row gy-5">
-        <div class="col-lg-5">
-          <div class="text-center">
-            <img src="{{asset('assets/img/front-pages/landing-page/sitting-girl-with-laptop.png')}}" alt="sitting girl with laptop" class="faq-image scaleX-n1-rtl" />
-          </div>
+<section id="landingFAQ" class="section-py bg-body landing-faq">
+  <div class="container bg-icon-right">
+    <img src="{{asset('assets/img/front-pages/icons/bg-right-icon-'.$configData['style'].'.png')}}" alt="section icon" class="position-absolute top-0 end-0" data-speed="1" data-app-light-img="front-pages/icons/bg-right-icon-light.png" data-app-dark-img="front-pages/icons/bg-right-icon-dark.png" />
+    <h6 class="text-center d-flex justify-content-center align-items-center mb-6">
+      <img src="{{asset('assets/img/front-pages/icons/section-tilte-icon.png')}}" alt="section title icon" class="me-3" />
+      <span class="text-uppercase">FAQ</span>
+    </h6>
+    <h5 class="text-center mb-2"><span class="display-5 fs-4 fw-bold">Pertanyaan Umum</span></h5>
+    <p class="text-center fw-medium mb-4 mb-md-12 pb-4">
+      Temukan jawaban atas pertanyaan umum seputar SIMAPEKA dan pelatihan PNS di sini.
+    </p>
+    <div class="row gy-5">
+      <div class="col-lg-5">
+        <div class="text-center">
+        <img src="{{asset('assets/img/front-pages/landing-page/sitting-girl-with-laptop.png')}}" alt="sitting girl with laptop" class="faq-image scaleX-n1-rtl" />
         </div>
-        <div class="col-lg-7">
-          <div class="accordion" id="accordionFront">
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="head-One">
-                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionOne" aria-expanded="true" aria-controls="accordionOne">
-                  Do you charge for each upgrade?
-                </button>
-              </h2>
-
-              <div id="accordionOne" class="accordion-collapse collapse" data-bs-parent="#accordionFront" aria-labelledby="accordionOne">
-                <div class="accordion-body">
-                  Lemon drops chocolate cake gummies carrot cake chupa chups muffin topping. Sesame snaps icing
-                  marzipan gummi bears macaroon dragée danish caramels powder. Bear claw dragée pastry topping
-                  soufflé. Wafer gummi bears marshmallow pastry pie.
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item previous-active">
-              <h2 class="accordion-header" id="head-Two">
-                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionTwo" aria-expanded="false" aria-controls="accordionTwo">
-                  Do I need to purchase a license for each website?
-                </button>
-              </h2>
-              <div id="accordionTwo" class="accordion-collapse collapse" aria-labelledby="accordionTwo" data-bs-parent="#accordionFront">
-                <div class="accordion-body">
-                  Dessert ice cream donut oat cake jelly-o pie sugar plum cheesecake. Bear claw dragée oat cake
-                  dragée ice cream halvah tootsie roll. Danish cake oat cake pie macaroon tart donut gummies. Jelly
-                  beans candy canes carrot cake. Fruitcake chocolate chupa chups.
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item active">
-              <h2 class="accordion-header" id="head-Three">
-                <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#accordionThree" aria-expanded="true" aria-controls="accordionThree">
-                  What is regular license?
-                </button>
-              </h2>
-              <div id="accordionThree" class="accordion-collapse collapse show" aria-labelledby="accordionThree" data-bs-parent="#accordionFront">
-                <div class="accordion-body">
-                  Regular license can be used for end products that do not charge users for access or service(access
-                  is free and there will be no monthly subscription fee). Single regular license can be used for
-                  single end product and end product can be used by you or your client. If you want to sell end
-                  product to multiple clients then you will need to purchase separate license for each client. The
-                  same rule applies if you want to use the same end product on multiple domains(unique setup). For
-                  more info on regular license you can check official description.
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="head-Four">
-                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionFour" aria-expanded="false" aria-controls="accordionFour">
-                  What is extended license?
-                </button>
-              </h2>
-              <div id="accordionFour" class="accordion-collapse collapse" aria-labelledby="accordionFour" data-bs-parent="#accordionFront">
-                <div class="accordion-body">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis et aliquid quaerat possimus maxime!
-                  Mollitia reprehenderit neque repellat deleniti delectus architecto dolorum maxime, blanditiis
-                  earum ea, incidunt quam possimus cumque.
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="head-Five">
-                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionFive" aria-expanded="false" aria-controls="accordionFive">
-                  Which license is applicable for SASS application?
-                </button>
-              </h2>
-              <div id="accordionFive" class="accordion-collapse collapse" aria-labelledby="accordionFive" data-bs-parent="#accordionFront">
-                <div class="accordion-body">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi molestias exercitationem ab cum
-                  nemo facere voluptates veritatis quia, eveniet veniam at et repudiandae mollitia ipsam quasi
-                  labore enim architecto non!
-                </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="accordion" id="accordionSIMAPEKA">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="head-One">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionOne" aria-expanded="true" aria-controls="accordionOne">
+                Bagaimana cara mendaftar pelatihan di SIMAPEKA?
+              </button>
+            </h2>
+            <div id="accordionOne" class="accordion-collapse collapse" data-bs-parent="#accordionSIMAPEKA" aria-labelledby="accordionOne">
+              <div class="accordion-body">
+                Untuk mendaftar pelatihan di SIMAPEKA, Anda harus login ke akun Anda terlebih dahulu. Setelah login, pilih pelatihan yang tersedia dan ikuti langkah-langkah pendaftaran yang tertera di halaman pelatihan tersebut.
               </div>
             </div>
           </div>
+
+          <div class="accordion-item previous-active">
+            <h2 class="accordion-header" id="head-Two">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionTwo" aria-expanded="false" aria-controls="accordionTwo">
+                Apakah pelatihan di SIMAPEKA gratis?
+              </button>
+            </h2>
+            <div id="accordionTwo" class="accordion-collapse collapse" aria-labelledby="accordionTwo" data-bs-parent="#accordionSIMAPEKA">
+              <div class="accordion-body">
+                Ya, semua pelatihan yang tersedia di SIMAPEKA untuk PNS di Kedinasan Tangsel disediakan secara gratis. Anda hanya perlu login dan mendaftar untuk pelatihan yang ingin diikuti.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item active">
+            <h2 class="accordion-header" id="head-Three">
+              <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#accordionThree" aria-expanded="true" aria-controls="accordionThree">
+                Bagaimana cara mendapatkan sertifikat setelah pelatihan?
+              </button>
+            </h2>
+            <div id="accordionThree" class="accordion-collapse collapse show" aria-labelledby="accordionThree" data-bs-parent="#accordionSIMAPEKA">
+              <div class="accordion-body">
+                Sertifikat pelatihan akan tersedia setelah Anda menyelesaikan seluruh materi dan tugas pelatihan. Anda dapat mengunduh sertifikat langsung dari akun Anda di SIMAPEKA pada halaman pelatihan yang bersangkutan.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="head-Four">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionFour" aria-expanded="false" aria-controls="accordionFour">
+                Bagaimana jika saya lupa kata sandi akun saya?
+              </button>
+            </h2>
+            <div id="accordionFour" class="accordion-collapse collapse" aria-labelledby="accordionFour" data-bs-parent="#accordionSIMAPEKA">
+              <div class="accordion-body">
+                Jika Anda lupa kata sandi, silakan klik opsi "Lupa Kata Sandi" di halaman login. Anda akan diminta memasukkan email yang terkait dengan akun Anda, dan instruksi untuk mengatur ulang kata sandi akan dikirimkan ke email tersebut.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="head-Five">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionFive" aria-expanded="false" aria-controls="accordionFive">
+                Apakah SIMAPEKA bisa diakses dari perangkat mobile?
+              </button>
+            </h2>
+            <div id="accordionFive" class="accordion-collapse collapse" aria-labelledby="accordionFive" data-bs-parent="#accordionSIMAPEKA">
+              <div class="accordion-body">
+                Ya, SIMAPEKA dirancang responsif dan dapat diakses dari perangkat mobile seperti smartphone dan tablet, sehingga Anda bisa mengikuti pelatihan kapan saja dan di mana saja.
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
-  </section>
-  <!-- FAQ: End -->
+  </div>
+</section>
+<!-- FAQ: End -->
+
 
   <!-- CTA: Start -->
-  <section id="landingCTA" class="section-py landing-cta p-lg-0 pb-0 position-relative">
+  <!-- <section id="landingCTA" class="section-py landing-cta p-lg-0 pb-0 position-relative">
     <img src="{{asset('assets/img/front-pages/backgrounds/cta-bg.png')}}" class="position-absolute bottom-0 end-0 scaleX-n1-rtl h-100 w-100 z-n1" alt="cta image" />
     <div class="container">
       <div class="row align-items-center gy-5 gy-lg-0">
@@ -652,70 +646,33 @@ $configData = Helper::appClasses();
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
   <!-- CTA: End -->
 
-  <!-- Contact Us: Start -->
-  <section id="landingContact" class="section-py bg-body landing-contact">
-    <div class="container bg-icon-left position-relative">
-      <img src="{{asset('assets/img/front-pages/icons/bg-left-icon-'.$configData['style'].'.png')}}" alt="section icon" class="position-absolute top-0 start-0" data-speed="1" data-app-light-img="front-pages/icons/bg-left-icon-light.png" data-app-dark-img="front-pages/icons/bg-left-icon-dark.png" />
-      <h6 class="text-center d-flex justify-content-center align-items-center mb-6">
-        <img src="{{asset('assets/img/front-pages/icons/section-tilte-icon.png')}}" alt="section title icon" class="me-3" />
-        <span class="text-uppercase">contact us</span>
-      </h6>
-      <h5 class="text-center mb-2"><span class="display-5 fs-4 fw-bold">Lets work</span> together</h5>
-      <p class="text-center fw-medium mb-4 mb-md-12 pb-3">Any question or remark? just write us a message</p>
-      <div class="row gy-6">
-        <div class="col-lg-5">
-          <div class="card h-100">
-            <div class="bg-primary rounded-4 text-white card-body p-8">
-              <p class="fw-medium mb-1_5 tagline">Let’s contact with us</p>
-              <h4 class="text-white mb-5 title">Share your ideas or requirement with our experts.</h4>
-              <img src="{{asset('assets/img/front-pages/landing-page/let’s-contact.png')}}
-              " alt="let’s contact" class="w-100 mb-5" />
-              <p class="mb-0 description">
-                Looking for more customisation, more features, and more anything? Don’t worry, We’ve provide you with
-                an entire team of experienced professionals.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-7">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="mb-6">Share your ideas</h5>
-              <form>
-                <div class="row g-5">
-                  <div class="col-md-6">
-                    <div class="form-floating form-floating-outline">
-                      <input type="text" class="form-control" id="basic-default-fullname" placeholder="John Doe" />
-                      <label for="basic-default-fullname">Full name</label>
-                    </div>
-                  </div>
+  <!-- Login CTA: Start -->
+<section id="landingLogin" class="section-py bg-body landing-login">
+  <div class="container bg-icon-left position-relative">
+    <img src="{{asset('assets/img/front-pages/icons/bg-left-icon-'.$configData['style'].'.png')}}" alt="section icon" class="position-absolute top-0 start-0" data-speed="1" data-app-light-img="front-pages/icons/bg-left-icon-light.png" data-app-dark-img="front-pages/icons/bg-left-icon-dark.png" />
+    <h6 class="text-center d-flex justify-content-center align-items-center mb-6">
+      <img src="{{asset('assets/img/front-pages/icons/section-tilte-icon.png')}}" alt="section title icon" class="me-3" />
+      <span class="text-uppercase">Siap untuk Level Up?</span>
+    </h6>
+    <h5 class="text-center mb-2"><span class="display-5 fs-4 fw-bold">Mulai Sekarang, Tingkatkan Skill & Karier Anda!</span></h5>
+    <p class="text-center fw-medium mb-4 mb-md-12 pb-3">Jangan lewatkan kesempatan! Yuk, tingkatkan kompetensi dan bawa karier Anda ke level berikutnya bersama SIMAPEKA.</p>
+    
 
-                  <div class="col-md-6">
-                    <div class="form-floating form-floating-outline">
-                      <input type="email" class="form-control" id="basic-default-email" placeholder="johndoe99@gmail.com" />
-                      <label for="basic-default-email">Email address</label>
-                    </div>
-                  </div>
-
-                  <div class="col-12">
-                    <div class="form-floating form-floating-outline">
-                      <textarea class="form-control h-px-250" placeholder="Message" aria-label="Message" id="basic-default-message"></textarea>
-                      <label for="basic-default-message">Message</label>
-                    </div>
-                  </div>
-
-                </div>
-                <button type="submit" class="btn btn-primary mt-5">Send inquiry</button>
-              </form>
-            </div>
-          </div>
+    <!-- Login button -->
+    <div class="row justify-content-center mt-5">
+      <div class="col-lg-7">
+        <div class="text-center">
+          <a href="{{url('auth/login-basic')}}" class="btn btn-lg btn-tosca">Login Sekarang</a>
         </div>
       </div>
     </div>
-  </section>
-  <!-- Contact Us: End -->
+  </div>
+</section>
+<!-- Login CTA: End -->
+
+
 </div>
 @endsection
