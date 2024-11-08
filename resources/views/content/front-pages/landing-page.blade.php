@@ -68,21 +68,22 @@ $configData = Helper::appClasses();
     <img src="{{asset('assets/img/front-pages/backgrounds/hero-bg-'.$configData['style'].'.png') }}" alt="hero background" class="position-absolute top-0 start-0 w-100 h-100 z-n1" data-speed="1" data-app-light-img="front-pages/backgrounds/hero-bg-light.png" data-app-dark-img="front-pages/backgrounds/hero-bg-dark.png" />
     <div class="container">
       <div class="hero-text-box text-center">
-        <h3 class="text-primary hero-title fs-2 ">Unlock Your Potential with Professional Training</h3>
-        <h2 class="h6 mb-8">
-          Transform your skills and elevate your career.<br />
-          Join us in building a competent, future-ready workforce for the public sector.<br />
-          SIMAPEKA is your gateway to continuous growth and success.<br />
-        </h2>
-        <a href="{{url('front-pages/landing')}}#landingFeatures" class="btn btn-lg btn-tosca">Discover More</a>
+        <h3 class="text-primary hero-title fs-2 ">Asah Potensimu Lewat Pelatihan Profesional</h3>
       </div>
       <div class="position-relative hero-animation-img">
         <a href="{{url('front-pages/landing')}}#landingFeatures" target="_blank">
           <div class="hero-dashboard-img text-center">
-            <img src="{{asset('assets/img/front-pages/landing-page/hero-dashboard-'.$configData['style'].'.png')}}" alt="hero dashboard" class="animation-img" data-speed="2" data-app-light-img="front-pages/landing-page/hero-dashboard-light.png" data-app-dark-img="front-pages/landing-page/hero-dashboard-dark.png" />
+          <h2 class="h6 mb-8">
+          Kembangkan keterampilanmu dan raih karier impian.<br />
+          Yuk, gabung bersama kami untuk membentuk ASN yang siap menghadapi tantangan masa depan.<br />
+          SIMAPEKA hadir sebagai langkah menuju pertumbuhan dan kesuksesan tanpa batas.<br />
+          </h2> 
+          </div>
+          <d
+
           </div>
           <div class="position-absolute hero-elements-img">
-            <img src="{{asset('assets/img/front-pages/landing-page/hero-elements-'.$configData['style'].'.png')}}" alt="hero elements" class="animation-img" data-speed="4" data-app-light-img="front-pages/landing-page/hero-elements-light.png" data-app-dark-img="front-pages/landing-page/hero-elements-dark.png" />
+            
           </div>
         </a>
       </div>
@@ -93,7 +94,7 @@ $configData = Helper::appClasses();
 
   
 <section id="landingFeatures" class="section-py landing-features">
-  <!-- Profil SIMAPEKA: Start -->
+ <!-- Profil SIMAPEKA: Start -->
 <section id="profilSimapeka" class="section-py profil-simapeka">
   <div class="container">
     <!-- Title and icon -->
@@ -104,12 +105,12 @@ $configData = Helper::appClasses();
 
     <div class="d-flex align-items-center justify-content-between flex-column flex-lg-row">
       <div class="profil-image col-lg-6 text-center mb-4 mb-lg-0"> <!-- Moved image div first -->
-        <img src="{{asset('assets/img/front-pages/landing-page/hero-dashboard-'.$configData['style'].'.png')}}" alt="Profil SIMAPEKA" class="img-fluid rounded" />
+        <img src="{{asset('assets/img/illustrations/PNS.png')}}" class="img-fluid rounded" />
       </div>
       <div class="profil-text col-lg-6 text-center text-lg-start p-3">
-        <h2 class="mb-4">Profil SIMAPEKA</h2>
+        <h2 class="mb-4">Apa itu SIMAPEKA?</h2>
         <p class="mb-4">
-        SIMAPEKA (Sistem Manajemen Pengembangan Kompetensi ASN) merupakan platform yang dirancang untuk mendukung pengembangan kompetensi pegawai negeri sipil (PNS) di lingkungan Pemerintah Kota Tangerang. Melalui SIMAPEKA, pegawai dapat mengakses berbagai program pelatihan dan pengembangan yang sesuai dengan kebutuhan kinerja dan pengembangan diri. Platform ini juga berperan dalam memastikan bahwa pelaksanaan pelatihan dilakukan secara terintegrasi dan berkesinambungan, didukung dengan manajemen pengetahuan (knowledge management) yang bertujuan meningkatkan kompetensi, profesionalisme, dan efektivitas kerja PNS.
+        SIMAPEKA (Sistem Manajemen Pengembangan Kompetensi ASN) adalah platform untuk mendukung pengembangan kompetensi ASN di Pemerintah Kota Tangerang. Dengan SIMAPEKA, pegawai dapat mengakses program pelatihan sesuai kebutuhan kinerja dan pengembangan diri. Platform ini memastikan pelatihan dilaksanakan secara terintegrasi dan berkesinambungan, didukung manajemen pengetahuan untuk meningkatkan kompetensi, profesionalisme, dan efektivitas kerja ASN.
         </p>
         <a href="{{ route('profil-simapeka') }}" class="btn btn-lg btn-tosca">Lihat Selengkapnya</a>
       </div>
@@ -118,59 +119,46 @@ $configData = Helper::appClasses();
 </section>
 <!-- Profil SIMAPEKA: End -->
 
+
+
 <!-- SIMAPEKA Features: Start -->
-  <div class="container">
+<section class="container my-5">
+
+  <!-- SIMAPEKA Features: Start -->
+<div class="container">
     <h6 class="text-center d-flex justify-content-center align-items-center mb-6">
-      <img src="{{asset('assets/img/front-pages/icons/section-tilte-icon.png')}}" alt="ikon judul bagian" class="me-3" />
-      <span class="text-uppercase">Fitur SIMAPEKA</span>
+        <img src="{{asset('assets/img/front-pages/icons/section-tilte-icon.png')}}" alt="ikon judul bagian" class="me-3" />
+        <span class="text-uppercase">Fitur SIMAPEKA</span>
     </h6>
     <h5 class="text-center mb-2">
-      <span class="display-5 fs-4 fw-bold">Pengembangan diri</span> untuk PNS
+        <span class="display-5 fs-4 fw-bold">Pengembangan diri</span> untuk ASN
     </h5>
     <p class="text-center fw-medium mb-4 mb-md-12">
-      SIMAPEKA membentuk sumber daya manusia aparatur yang kompeten untuk pencapaian Visi Misi Pemerintah Kota Tangerang Selatan.
+        SIMAPEKA membentuk sumber daya manusia aparatur yang kompeten untuk pencapaian Visi Misi Pemerintah Kota Tangerang Selatan.
     </p>
-    
+
     <!-- Features Box Start -->
-    <div class="features-box p-4 border rounded">
-      <div class="features-icon-wrapper row gx-0 gy-12 gx-sm-6">
-        <div class="col-lg-4 col-sm-12 text-center features-icon-box">
-          <div class="features-icon mb-4">
-            <img src="{{asset('assets/img/front-pages/icons/mandiri.png')}}" alt="Pengembangan Mandiri" />
-          </div>
-          <h5 class="mb-2">Pengembangan Mandiri</h5>
-          <p class="features-icon-description">
-            Pengembangan Mandiri untuk meningkatkan keterampilan pribadi sesuai kecepatan Anda sendiri.
-          </p>
+    <div class="features-box d-flex flex-wrap justify-content-center gap-3">
+        <div class="card text-center flex-fill p-4 border rounded" style="min-width: 300px; max-width: 100%">
+            <div class="features-icon mb-4">
+                <img src="{{asset('assets/img/front-pages/icons/mandiri.png')}}" alt="Pengembangan Mandiri" class="img-fluid" />
+            </div>
+            <h5 class="mb-2">Assesment <br>(Penilaian Kompetensi)</br></h5>
+            <p class="features-icon-description">Penilaian kompetensi adalah penilaian yang dilakukan oleh asesor internal pemerintah atau bekerja sama dengan asesor independen terhadap ASN yang mencakup pengukuran Kompetensi Teknis, Kompetensi Manajerial, dan Kompetensi Sosial Kultural dalam rangka menyediakan informasi mengenai kemampuan ASN dalam melaksanakan tugas Jabatan.</p>
+            <a href="{{ route('features-detail') }}" class="btn btn-lg btn-tosca">Lihat Selengkapnya</a>
         </div>
-        <div class="col-lg-4 col-sm-12 text-center features-icon-box">
-          <div class="features-icon mb-4">
-            <img src="{{asset('assets/img/front-pages/icons/programmed.png')}}" alt="Pengembangan Terprogram" />
-          </div>
-          <h5 class="mb-2">Pengembangan Terprogram</h5>
-          <p class="features-icon-description">
-            Pengembangan Terprogram yang menyediakan jalur pembelajaran terstruktur.
-          </p>
-        </div>
-        <div class="col-lg-4 col-sm-12 text-center features-icon-box">
-          <div class="features-icon mb-4">
-            <img src="{{asset('assets/img/front-pages/icons/berbagi.png')}}" alt="Berbagi Pengetahuan" />
-          </div>
-          <h5 class="mb-2">Berbagi Pengetahuan</h5>
-          <p class="features-icon-description">
-            Berbagi Pengetahuan untuk mendorong kolaborasi dan pembelajaran di antara rekan-rekan.
-          </p>
-        </div>
-      </div>
-      <!-- View More Link -->
-      <div class="text-center mt-4">
-      <a href="{{ route('features-detail') }}" class="btn btn-lg btn-tosca">Lihat Selengkapnya</a>
-      </div>
+        <!-- Additional feature boxes can be added here -->
+    </div>
+    <!-- View More Link -->
+    <div class="text-center mt-4">
     </div>
     <!-- Features Box End -->
-  </div>
-</section>
+</div>
 <!-- SIMAPEKA Features: End -->
+
+
+
+
 
 
   <!-- Our great team: Start -->
@@ -508,25 +496,33 @@ $configData = Helper::appClasses();
   <div class="container">
     <div class="row gx-0 gy-6 gx-sm-6">
       <div class="col-md-3 col-sm-6 text-center">
-        <span class="badge rounded-pill bg-label-hover-primary fun-facts-icon mb-6 p-5"><i class="tf-icons ri-user-smile-line ri-42px"></i></span>
+        <span class="badge rounded-pill bg-label-hover-primary fun-facts-icon mb-6 p-5">
+          <i class="fa fa-smile fa-2x"></i> <!-- Replaced with Font Awesome smile icon -->
+        </span>
         <h2 class="fw-bold mb-0 fun-facts-text">{{ $userCount }}</h2>
         <h6 class="mb-0 text-body">ASN yang sudah menjalani pelatihan</h6>
         <p class="mt-2 text-muted">Bergabunglah bersama {{ $userCount }} ASN yang telah meningkatkan kompetensinya melalui SIMAPEKA.</p>
       </div>
       <div class="col-md-3 col-sm-6 text-center">
-        <span class="badge rounded-pill bg-label-hover-success fun-facts-icon mb-6 p-5"><i class="tf-icons ri-line-chart-line ri-42px"></i></span>
+        <span class="badge rounded-pill bg-label-hover-success fun-facts-icon mb-6 p-5">
+          <i class="fa fa-chart-line fa-2x"></i> <!-- Replaced with Font Awesome chart-line icon -->
+        </span>
         <h2 class="fw-bold mb-0 fun-facts-text">250+</h2>
         <h6 class="mb-0 text-body">Pelatihan Tersedia</h6>
         <p class="mt-2 text-muted">Lebih dari 250 program pelatihan tersedia untuk meningkatkan kompetensi ASN.</p>
       </div>
       <div class="col-md-3 col-sm-6 text-center">
-        <span class="badge rounded-pill bg-label-hover-warning fun-facts-icon mb-6 p-5"><i class="tf-icons ri-medal-line ri-42px"></i></span>
+        <span class="badge rounded-pill bg-label-hover-warning fun-facts-icon mb-6 p-5">
+          <i class="fa fa-medal fa-2x"></i> <!-- Replaced with Font Awesome medal icon -->
+        </span>
         <h2 class="fw-bold mb-0 fun-facts-text">98%</h2>
         <h6 class="mb-0 text-body">Tingkat Kepuasan ASN</h6>
         <p class="mt-2 text-muted">Sebanyak 98% peserta merasa pelatihan kami sangat bermanfaat.</p>
       </div>
       <div class="col-md-3 col-sm-6 text-center">
-        <span class="badge rounded-pill bg-label-hover-info fun-facts-icon mb-6 p-5"><i class="tf-icons ri-group-line ri-42px"></i></span>
+        <span class="badge rounded-pill bg-label-hover-info fun-facts-icon mb-6 p-5">
+          <i class="fa fa-users fa-2x"></i> <!-- Replaced with Font Awesome users icon -->
+        </span>
         <h2 class="fw-bold mb-0 fun-facts-text">500+</h2>
         <h6 class="mb-0 text-body">Instruktur & Mentor</h6>
         <p class="mt-2 text-muted">Lebih dari 500 instruktur dan mentor siap membimbing ASN dalam berbagai bidang keahlian.</p>
@@ -535,6 +531,7 @@ $configData = Helper::appClasses();
   </div>
 </section>
 <!-- Fun facts: End -->
+
 
 
 
@@ -548,12 +545,12 @@ $configData = Helper::appClasses();
     </h6>
     <h5 class="text-center mb-2"><span class="display-5 fs-4 fw-bold">Pertanyaan Umum</span></h5>
     <p class="text-center fw-medium mb-4 mb-md-12 pb-4">
-      Temukan jawaban atas pertanyaan umum seputar SIMAPEKA dan pelatihan PNS di sini.
+      Temukan jawaban atas pertanyaan umum seputar SIMAPEKA dan pelatihan ASN di sini.
     </p>
     <div class="row gy-5">
       <div class="col-lg-5">
         <div class="text-center">
-        <img src="{{asset('assets/img/front-pages/landing-page/sitting-girl-with-laptop.png')}}" alt="sitting girl with laptop" class="faq-image scaleX-n1-rtl" />
+        <img src="{{asset('assets/img/front-pages/landing-page/PNS2.png')}}" alt="sitting girl with laptop" class="faq-image scaleX-n1-rtl" />
         </div>
       </div>
       <div class="col-lg-7">
@@ -564,7 +561,7 @@ $configData = Helper::appClasses();
                 Bagaimana cara mendaftar pelatihan di SIMAPEKA?
               </button>
             </h2>
-            <div id="accordionOne" class="accordion-collapse collapse" data-bs-parent="#accordionSIMAPEKA" aria-labelledby="accordionOne">
+            <div id="accordionOne" class="accordion-collapse collapse show" data-bs-parent="#accordionSIMAPEKA" aria-labelledby="accordionOne">
               <div class="accordion-body">
                 Untuk mendaftar pelatihan di SIMAPEKA, Anda harus login ke akun Anda terlebih dahulu. Setelah login, pilih pelatihan yang tersedia dan ikuti langkah-langkah pendaftaran yang tertera di halaman pelatihan tersebut.
               </div>
@@ -579,18 +576,18 @@ $configData = Helper::appClasses();
             </h2>
             <div id="accordionTwo" class="accordion-collapse collapse" aria-labelledby="accordionTwo" data-bs-parent="#accordionSIMAPEKA">
               <div class="accordion-body">
-                Ya, semua pelatihan yang tersedia di SIMAPEKA untuk PNS di Kedinasan Tangsel disediakan secara gratis. Anda hanya perlu login dan mendaftar untuk pelatihan yang ingin diikuti.
+                Ya, semua pelatihan yang tersedia di SIMAPEKA untuk ASN di Kedinasan Tangsel disediakan secara gratis. Anda hanya perlu login dan mendaftar untuk pelatihan yang ingin diikuti.
               </div>
             </div>
           </div>
 
           <div class="accordion-item active">
             <h2 class="accordion-header" id="head-Three">
-              <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#accordionThree" aria-expanded="true" aria-controls="accordionThree">
+              <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#accordionThree" aria-expanded="false" aria-controls="accordionThree">
                 Bagaimana cara mendapatkan sertifikat setelah pelatihan?
               </button>
             </h2>
-            <div id="accordionThree" class="accordion-collapse collapse show" aria-labelledby="accordionThree" data-bs-parent="#accordionSIMAPEKA">
+            <div id="accordionThree" class="accordion-collapse collapse" aria-labelledby="accordionThree" data-bs-parent="#accordionSIMAPEKA">
               <div class="accordion-body">
                 Sertifikat pelatihan akan tersedia setelah Anda menyelesaikan seluruh materi dan tugas pelatihan. Anda dapat mengunduh sertifikat langsung dari akun Anda di SIMAPEKA pada halaman pelatihan yang bersangkutan.
               </div>
@@ -649,29 +646,7 @@ $configData = Helper::appClasses();
   </section> -->
   <!-- CTA: End -->
 
-  <!-- Login CTA: Start -->
-<section id="landingLogin" class="section-py bg-body landing-login">
-  <div class="container bg-icon-left position-relative">
-    <img src="{{asset('assets/img/front-pages/icons/bg-left-icon-'.$configData['style'].'.png')}}" alt="section icon" class="position-absolute top-0 start-0" data-speed="1" data-app-light-img="front-pages/icons/bg-left-icon-light.png" data-app-dark-img="front-pages/icons/bg-left-icon-dark.png" />
-    <h6 class="text-center d-flex justify-content-center align-items-center mb-6">
-      <img src="{{asset('assets/img/front-pages/icons/section-tilte-icon.png')}}" alt="section title icon" class="me-3" />
-      <span class="text-uppercase">Siap untuk Level Up?</span>
-    </h6>
-    <h5 class="text-center mb-2"><span class="display-5 fs-4 fw-bold">Mulai Sekarang, Tingkatkan Skill & Karier Anda!</span></h5>
-    <p class="text-center fw-medium mb-4 mb-md-12 pb-3">Jangan lewatkan kesempatan! Yuk, tingkatkan kompetensi dan bawa karier Anda ke level berikutnya bersama SIMAPEKA.</p>
-    
-
-    <!-- Login button -->
-    <div class="row justify-content-center mt-5">
-      <div class="col-lg-7">
-        <div class="text-center">
-          <a href="{{url('auth/login-basic')}}" class="btn btn-lg btn-tosca">Login Sekarang</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- Login CTA: End -->
+  
 
 
 </div>

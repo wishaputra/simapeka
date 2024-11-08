@@ -15,7 +15,7 @@
           "slug": "app-ecommerce-dashboard",
           "disabled": true
         },
-        { 
+        {
           "url": "dashboard/crm",
           "name": "CRM",
           "slug": "dashboard-crm",
@@ -317,7 +317,7 @@
     },
     {
       "name": "Academy",
-      "icon": "menu-icon tf-icons ri-graduation-cap-line",
+      "icon": "menu-icon tf-icons ri-book-line",
       "slug": "app-academy",
       "submenu": [
         {
@@ -397,6 +397,7 @@
         {
           "name": "View",
           "slug": "app-user-view",
+          "disabled": true,
           "submenu": [
             {
               "url": "app/user/view/account",
@@ -1139,6 +1140,32 @@
       "slug": "documentation",
       "disabled": true,
       "target": "_blank"
+    },
+    {
+      "menuHeader": "Config"
+    },
+    {
+      "name": "Konfigurasi",
+      "icon": "menu-icon tf-icons ri-settings-line",
+      "slug": "app-user",
+      "disabled": false,
+      "submenu": [
+        {
+          "url": "app/user/list",
+          "name": "Pengguna",
+          "slug": "app-user-list"
+        },
+        {
+          "url": "app/user/list",
+          "name": "Data Bangkom",
+          "slug": "app-user-list"
+        },
+        {
+          "url": "app/user/list",
+          "name": "Profil",
+          "slug": "app-user-list"
+        }
+      ]
     }
   ]
 }
