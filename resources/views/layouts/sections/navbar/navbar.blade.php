@@ -4,6 +4,7 @@
   $containerNav = ($configData['contentLayout'] === 'compact') ? 'container-xxl' : 'container-fluid';
   $navbarDetached = ($navbarDetached ?? '');
 @endphp
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
 <!-- Navbar -->
 @if(isset($navbarDetached) && $navbarDetached == 'navbar-detached')
@@ -284,7 +285,7 @@
                     <div class="d-flex">
                       <div class="flex-shrink-0 me-3">
                         <div class="avatar">
-                          <img src="{{asset('assets/img/avatars/2.png')}}" alt class="rounded-circle">
+                          <img src="{{asset('assets/img/avatars/1.png')}}" alt class="rounded-circle">
                         </div>
                       </div>
                       <div class="flex-grow-1">
@@ -366,7 +367,7 @@
                     <div class="d-flex">
                       <div class="flex-shrink-0 me-3">
                         <div class="avatar">
-                          <img src="{{asset('assets/img/avatars/5.png')}}" alt class="rounded-circle">
+                          <img src="{{asset('assets/img/avatars/1.png')}}" alt class="rounded-circle">
                         </div>
                       </div>
                       <div class="flex-grow-1">
@@ -440,8 +441,7 @@
           <li class="nav-item navbar-dropdown dropdown-user dropdown">
             <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
               <div class="avatar avatar-online">
-                <img src="{{ Auth::user() ? Auth::user()->profile_photo_url : asset('assets/img/avatars/1.png') }}" alt
-                  class="rounded-circle">
+                <img src="{{asset('assets/img/avatars/1.png')}}" alt class="rounded-circle">
               </div>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
@@ -451,9 +451,7 @@
                   <div class="d-flex">
                     <div class="flex-shrink-0 me-2">
                       <div class="avatar avatar-online">
-                        <img
-                          src="{{ Auth::user() ? Auth::user()->profile_photo_url : asset('assets/img/avatars/1.png') }}"
-                          alt class="rounded-circle">
+                        <img src="{{asset('assets/img/avatars/1.png')}}" alt class="rounded-circle">
                       </div>
                     </div>
                     <div class="flex-grow-1">

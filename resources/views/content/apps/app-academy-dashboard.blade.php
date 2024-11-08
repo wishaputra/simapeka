@@ -19,7 +19,7 @@
   'resources/assets/vendor/libs/apex-charts/apexcharts.js',
 ]) 
 @endsection
-
+ 
 @section('page-script')
 @vite('resources/assets/js/app-academy-dashboard.js')
 @endsection
@@ -221,7 +221,7 @@
         <div class="d-flex justify-content-between align-items-center mb-6">
           <div class="d-flex align-items-center">
             <div class="avatar avatar me-4">
-              <img src="{{asset('assets/img/avatars/2.png')}}" alt="Avatar" class="rounded-circle" />
+              <img src="{{asset('assets/img/avatars/2.png')}} xd" alt="Avatar" class="rounded-circle" />
             </div>
             <div>
               <div>

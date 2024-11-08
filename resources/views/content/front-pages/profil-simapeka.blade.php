@@ -57,7 +57,8 @@
         line-height: 1.6;
         color: #555;
         max-width: 750px;
-        margin: 0 auto; /* Center lead text */
+        margin: 0 auto;
+        /* Center lead text */
     }
 
     q {
@@ -85,9 +86,10 @@
     }
 
     .feature-box:hover {
-        box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
         transform: translateY(-8px);
-        background-color: #f4fcfc; /* Light background on hover */
+        background-color: #f4fcfc;
+        /* Light background on hover */
     }
 
     .icon-wrapper {
@@ -118,7 +120,10 @@
     <div class="text-center mb-11">
         <h1 class="display-2">SIMAPEKA</h1>
         <p class="lead mb-4">
-            <q>SIMAPEKA adalah sistem pembelajaran inovatif yang dirancang untuk mendukung pengembangan kompetensi ASN secara berkelanjutan. Melalui pendekatan pembelajaran yang terintegrasi, sistem ini menggabungkan self-learning, pembelajaran kolaboratif, dan pembelajaran berbasis pengalaman untuk mempersiapkan ASN menghadapi tantangan pekerjaan dan menguasai keterampilan yang dibutuhkan.</q>
+            <q>SIMAPEKA adalah sistem pembelajaran inovatif yang dirancang untuk mendukung pengembangan kompetensi ASN
+                secara berkelanjutan. Melalui pendekatan pembelajaran yang terintegrasi, sistem ini menggabungkan
+                self-learning, pembelajaran kolaboratif, dan pembelajaran berbasis pengalaman untuk mempersiapkan ASN
+                menghadapi tantangan pekerjaan dan menguasai keterampilan yang dibutuhkan.</q>
         </p>
     </div>
 
@@ -133,7 +138,9 @@
                         <i class="fas fa-lightbulb fa-2x"></i>
                     </div>
                     <h4 class="fw-bold text-teal">Arah Strategis</h4>
-                    <p class="text-muted">Mendorong strategi transformasi pelatihan ASN agar sejalan dengan perkembangan teknologi dan tuntutan profesionalisme, memastikan setiap ASN memiliki keterampilan yang relevan dan terkini.</p>
+                    <p class="text-muted">Mendorong strategi transformasi pelatihan ASN agar sejalan dengan perkembangan
+                        teknologi dan tuntutan profesionalisme, memastikan setiap ASN memiliki keterampilan yang relevan
+                        dan terkini.</p>
                 </div>
             </div>
 
@@ -144,7 +151,8 @@
                         <i class="fas fa-users fa-2x"></i>
                     </div>
                     <h4 class="fw-bold text-teal">Pengembangan Kapasitas</h4>
-                    <p class="text-muted">Meningkatkan kompetensi ASN dalam bidang spesifik dan soft skills, sehingga mereka dapat memberikan pelayanan publik yang berkualitas tinggi dan efektif.</p>
+                    <p class="text-muted">Meningkatkan kompetensi ASN dalam bidang spesifik dan soft skills, sehingga
+                        mereka dapat memberikan pelayanan publik yang berkualitas tinggi dan efektif.</p>
                 </div>
             </div>
 
@@ -155,7 +163,8 @@
                         <i class="fas fa-comments fa-2x"></i>
                     </div>
                     <h4 class="fw-bold text-teal">Budaya Kolaborasi</h4>
-                    <p class="text-muted">Membangun ekosistem berbagi pengetahuan dan pengalaman di antara ASN, sehingga memperkuat jaringan profesional dan memperkaya wawasan secara kolektif.</p>
+                    <p class="text-muted">Membangun ekosistem berbagi pengetahuan dan pengalaman di antara ASN, sehingga
+                        memperkuat jaringan profesional dan memperkaya wawasan secara kolektif.</p>
                 </div>
             </div>
         </div>
@@ -172,7 +181,8 @@
                         <i class="fas fa-check-circle fa-2x"></i>
                     </div>
                     <h4 class="fw-bold text-teal">Identifikasi Kebutuhan</h4>
-                    <p class="text-muted">Mengidentifikasi kebutuhan kompetensi spesifik untuk berbagai peran ASN, sehingga setiap pelatihan dapat disesuaikan dengan kebutuhan aktual di lapangan.</p>
+                    <p class="text-muted">Mengidentifikasi kebutuhan kompetensi spesifik untuk berbagai peran ASN,
+                        sehingga setiap pelatihan dapat disesuaikan dengan kebutuhan aktual di lapangan.</p>
                 </div>
             </div>
 
@@ -183,7 +193,8 @@
                         <i class="fas fa-cogs fa-2x"></i>
                     </div>
                     <h4 class="fw-bold text-teal">Pengembangan Program</h4>
-                    <p class="text-muted">Menyusun program pelatihan terstruktur yang dirancang berdasarkan hasil identifikasi, sehingga memberikan pelatihan yang relevan dan praktis bagi ASN.</p>
+                    <p class="text-muted">Menyusun program pelatihan terstruktur yang dirancang berdasarkan hasil
+                        identifikasi, sehingga memberikan pelatihan yang relevan dan praktis bagi ASN.</p>
                 </div>
             </div>
 
@@ -194,7 +205,8 @@
                         <i class="fas fa-chart-line fa-2x"></i>
                     </div>
                     <h4 class="fw-bold text-teal">Evaluasi dan Pengembangan</h4>
-                    <p class="text-muted">Melakukan evaluasi terhadap efektivitas program pelatihan dan memberikan perbaikan berkelanjutan untuk meningkatkan kualitas serta hasil dari setiap sesi pelatihan.</p>
+                    <p class="text-muted">Melakukan evaluasi terhadap efektivitas program pelatihan dan memberikan
+                        perbaikan berkelanjutan untuk meningkatkan kualitas serta hasil dari setiap sesi pelatihan.</p>
                 </div>
             </div>
         </div>

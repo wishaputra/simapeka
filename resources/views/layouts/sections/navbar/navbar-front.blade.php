@@ -5,6 +5,8 @@
   $activeClass = in_array($currentRouteName, $activeRoutes) ? 'active' : '';
 @endphp
 <!-- Navbar: Start -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM8SY3Cf8n3+owbF5IOyj/k5Lx9E6FHPqp5Irp/" crossorigin="anonymous">
 <nav class="layout-navbar container shadow-none py-0">
   <div class="navbar navbar-expand-lg landing-navbar border-top-0 px-4 px-md-8">
     <!-- Menu logo wrapper: Start -->
@@ -41,11 +43,11 @@
             href="{{url('front-pages/landing')}}#landingHero">Beranda</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link fw-medium" href="{{url('front-pages/landing')}}#landingFeatures">Fitur</a>
+          <a class="nav-link fw-medium" href="{{url('front-pages/landing')}}#landingFeatures">Profil</a>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link fw-medium" href="{{url('front-pages/landing')}}#landingTeam">Team</a>
-        </li> -->
+        <li class="nav-item">
+          <a class="nav-link fw-medium" href="{{url('front-pages/landing')}}#landingTeam">Statistik</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link fw-medium" href="{{url('front-pages/landing')}}#landingFAQ">FAQ</a>
         </li>
@@ -288,10 +290,11 @@
 
       <!-- navbar button: Start -->
       <li>
-        <a href="{{url('/auth/login-basic')}}" class="btn btn-primary px-2 px-sm-4 px-lg-2 px-xl-4 btn btn-lg btn-tosca"
-          target="_blank"><span class="tf-icons ri-user-line me-md-1"></span><span
-            class="d-none d-md-block">Login</span></a>
+        <a href="{{ route('auth-login-basic') }}"
+          class="btn btn-primary px-2 px-sm-4 px-lg-2 px-xl-4 btn btn-lg btn-tosca" target="_blank"><span
+            class="fa fa-user me-md-1"></span><span class="d-none d-md-block">Login</span></a>
       </li>
+
       <!-- navbar button: End -->
     </ul>
     <!-- Toolbar: End -->
