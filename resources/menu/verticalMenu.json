@@ -1156,16 +1156,18 @@
           "slug": "app-user-list"
         },
         {
-          "url": "app/user/list",
+          "url": "/data_bangkom",
           "name": "Data Bangkom",
-          "slug": "app-user-list"
-        },
-        {
-          "url": "app/user/list",
-          "name": "Profil",
-          "slug": "app-user-list"
+          "slug": "data-bangkom"
         }
       ]
+    },
+    {
+      "name": "Profil",
+      "url": "app/user/list",
+      "icon": "menu-icon tf-icons ri-user-settings-line",
+      "slug": "app-user",
+      "disabled": false
     }
   ]
 }

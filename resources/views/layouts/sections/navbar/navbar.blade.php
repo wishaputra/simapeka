@@ -441,7 +441,10 @@
           <li class="nav-item navbar-dropdown dropdown-user dropdown">
             <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
               <div class="avatar avatar-online">
-                <img src="{{asset('assets/img/avatars/1.png')}}" alt class="rounded-circle">
+                @php
+                  $pegawai = App\Models\Pegawai::where('nip', Auth::user()->nip)->first();
+                @endphp
+                <img src="https://asncerdas.tangerangselatankota.go.id/images/photo/{{ $pegawai->foto }}" alt class="rounded-circle">
               </div>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
@@ -451,7 +454,7 @@
                   <div class="d-flex">
                     <div class="flex-shrink-0 me-2">
                       <div class="avatar avatar-online">
-                        <img src="{{asset('assets/img/avatars/1.png')}}" alt class="rounded-circle">
+                        <img src="https://asncerdas.tangerangselatankota.go.id/images/photo/7048.jpg" alt class="rounded-circle">
                       </div>
                     </div>
                     <div class="flex-grow-1">
@@ -462,13 +465,13 @@
         John Doe
       @endif
                       </span>
-                      <small class="text-muted">Admin</small>
+                      {{ Auth::user()->pegawai->nama ?? Auth::user()->name }}
                     </div>
                   </div>
                 </a>
               </li>
               <li>
-                <div class="dropdown-divider"></div>
+                <div class="dropdown-divider"></div> 
               </li>
               <li>
                 <a class="dropdown-item"

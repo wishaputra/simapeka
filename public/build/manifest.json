@@ -387,6 +387,12 @@
     "src": "resources/assets/js/app-chat.js",
     "isEntry": true
   },
+  "resources/assets/js/app-data-bangkom.js": {
+    "file": "assets/app-data-bangkom-C8oOstU-.js",
+    "name": "app-data-bangkom",
+    "src": "resources/assets/js/app-data-bangkom.js",
+    "isEntry": true
+  },
   "resources/assets/js/app-ecommerce-category-list.js": {
     "file": "assets/app-ecommerce-category-list-yqvZJbLU.js",
     "name": "app-ecommerce-category-list",
@@ -3419,7 +3425,7 @@
     ]
   },
   "resources/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js": {
-    "file": "assets/datatables-bootstrap5-APQrx3vs.js",
+    "file": "assets/datatables-bootstrap5-DU9cH3xi.js",
     "name": "datatables-bootstrap5",
     "src": "resources/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js",
     "isEntry": true,

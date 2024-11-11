@@ -291,7 +291,7 @@
       <!-- navbar button: Start -->
       <li>
         <a href="{{ route('auth-login-basic') }}"
-          class="btn btn-primary px-2 px-sm-4 px-lg-2 px-xl-4 btn btn-lg btn-tosca" target="_blank"><span
+          class="btn btn-primary px-2 px-sm-4 px-lg-2 px-xl-4 btn btn-lg btn-tosca"><span
             class="fa fa-user me-md-1"></span><span class="d-none d-md-block">Login</span></a>
       </li>
 

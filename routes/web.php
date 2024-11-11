@@ -21,6 +21,7 @@ use App\Http\Controllers\front_pages\Checkout;
 use App\Http\Controllers\front_pages\HelpCenter;
 use App\Http\Controllers\front_pages\HelpCenterArticle;
 use App\Http\Controllers\apps\Email;
+use App\Http\Controllers\apps\DataBangkomController;
 use App\Http\Controllers\apps\Chat;
 use App\Http\Controllers\apps\Calendar;
 use App\Http\Controllers\apps\Kanban;
@@ -247,6 +248,9 @@ Route::get('/pages/misc-comingsoon', [MiscComingSoon::class, 'index'])->name('pa
 Route::get('/pages/misc-not-authorized', [MiscNotAuthorized::class, 'index'])->name('pages-misc-not-authorized');
 Route::get('/pages/misc-server-error', [MiscServerError::class, 'index'])->name('pages-misc-server-error');
 
+
+
+
 // authentication
 // login
 Route::get('/auth/login-basic', [LoginBasic::class, 'index'])->name('auth-login-basic');
@@ -362,3 +366,10 @@ Route::get('/maps/leaflet', [Leaflet::class, 'index'])->name('maps-leaflet');
 // laravel example
 Route::get('/laravel/user-management', [UserManagement::class, 'UserManagement'])->name('laravel-example-user-management');
 Route::resource('/user-list', UserManagement::class);
+
+//data_bangkom
+
+Route::get('/data_bangkom', [DataBangkomController::class, 'index'])->name('data_bangkom.index');
+Route::get('/getUptds', [DataBangkomController::class, 'getUptds'])->name('getUptds');
+Route::patch('/data_bangkom/{id}', [DataBangkomController::class, 'update'])->name('data_bangkom.update');
+Route::post('/store', [DataBangkomController::class, 'store'])->name('data_bangkom.store');
