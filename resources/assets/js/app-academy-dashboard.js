@@ -98,7 +98,7 @@
                 label: 'Total',
                 color: labelColor,
                 formatter: function (w) {
-                  return '231h';
+                  return '231 jam';
                 }
               }
             }

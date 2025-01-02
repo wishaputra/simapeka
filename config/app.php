@@ -127,6 +127,7 @@ return [
 
   'aliases' => [
     // Other aliases...
+    'PDF' => Barryvdh\DomPDF\Facade\Pdf::class,
     'Helper' => App\Helpers\Helpers::class,
   ],
 

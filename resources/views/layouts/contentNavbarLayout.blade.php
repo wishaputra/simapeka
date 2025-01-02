@@ -1,34 +1,33 @@
 @isset($pageConfigs)
-{!! Helper::updatePageConfig($pageConfigs) !!}
+  {!! Helper::updatePageConfig($pageConfigs) !!}
 @endisset
 @php
-$configData = Helper::appClasses();
+  $configData = Helper::appClasses();
 @endphp
 @extends('layouts/commonMaster' )
 
 @php
-/* Display elements */
-$contentNavbar = ($contentNavbar ?? true);
-$containerNav = ($containerNav ?? 'container-xxl');
-$isNavbar = ($isNavbar ?? true);
-$isMenu = ($isMenu ?? true);
-$isFlex = ($isFlex ?? false);
-$isFooter = ($isFooter ?? true);
-$customizerHidden = ($customizerHidden ?? '');
+  /* Display elements */
+  $contentNavbar = ($contentNavbar ?? true);
+  $containerNav = ($containerNav ?? 'container-xxl');
+  $isNavbar = ($isNavbar ?? true);
+  $isMenu = ($isMenu ?? true);
+  $isFlex = ($isFlex ?? false);
+  $isFooter = ($isFooter ?? true);
+  $customizerHidden = ($customizerHidden ?? '');
 
-/* HTML Classes */
-$navbarDetached = 'navbar-detached';
-$menuFixed = (isset($configData['menuFixed']) ? $configData['menuFixed'] : '');
-if(isset($navbarType)) {
-  $configData['navbarType'] = $navbarType;
-}
-$navbarType = (isset($configData['navbarType']) ? $configData['navbarType'] : '');
-$footerFixed = (isset($configData['footerFixed']) ? $configData['footerFixed'] : '');
-$menuCollapsed = (isset($configData['menuCollapsed']) ? $configData['menuCollapsed'] : '');
+  /* HTML Classes */
+  $navbarDetached = 'navbar-detached';
+  $menuFixed = (isset($configData['menuFixed']) ? $configData['menuFixed'] : '');
+  if(isset($navbarType)) {
+    $configData['navbarType'] = $navbarType;
+  }
+  $navbarType = (isset($configData['navbarType']) ? $configData['navbarType'] : '');
+  $footerFixed = (isset($configData['footerFixed']) ? $configData['footerFixed'] : '');
+  $menuCollapsed = (isset($configData['menuCollapsed']) ? $configData['menuCollapsed'] : '');
 
-/* Content classes */
-$container = ($configData['contentLayout'] === 'compact') ? 'container-xxl' : 'container-fluid';
-
+  /* Content classes */
+  $container = ($configData['contentLayout'] === 'compact') ? 'container-xxl' : 'container-fluid';
 @endphp
 
 @section('layoutContent')

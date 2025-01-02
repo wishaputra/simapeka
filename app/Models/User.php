@@ -18,8 +18,6 @@ class User extends Authenticatable
    */
   protected $fillable = [
     'id_role',
-    'name',
-    'email',
     'nip',
     'password',
   ];
@@ -47,11 +45,19 @@ class User extends Authenticatable
     ];
   }
   
-  public function pegawai()
-  {
-    return $this->hasOne(Pegawai::class, 'nip', 'nip');
-  }
-  private function getUserRole()
+  protected $primaryKey = 'nip';
+
+    public function user_roles()
+    {
+        return $this->belongsTo('App\Models\User_role', 'id_role');
+    }
+
+    public function pegawai()
+    {
+        return $this->hasOne('App\Models\Pegawai', 'nip', 'nip');
+    }
+
+    private function getUserRole()
     {
         return $this->user_roles()->getResults();
     }
@@ -76,4 +82,9 @@ class User extends Authenticatable
 
         return false;
     }
+
+    public function enrollments(): HasMany
+  {
+      return $this->hasMany(Enrollment::class, 'nip', 'nip');
+  }
 }

@@ -1,0 +1,1 @@
+$(document).ready(function(){$(".custom-file-input").on("change",function(){var e=$(this).val().split("\\").pop();$(this).siblings(".custom-file-label").addClass("selected").html(e),t(this)});function t(e){if(e.files&&e.files[0]){var i=new FileReader;i.onload=function(a){$("#image").attr("src",a.target.result)},i.readAsDataURL(e.files[0])}}});

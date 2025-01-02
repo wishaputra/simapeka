@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Vite;
+use App\Models\Log;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
    */
   public function boot(): void
   {
+    // Log::observe(CrudObserver::class);
     Vite::useStyleTagAttributes(function (?string $src, string $url, ?array $chunk, ?array $manifest) {
       if ($src !== null) {
         return [
@@ -30,4 +32,5 @@ class AppServiceProvider extends ServiceProvider
       return [];
     });
   }
+  
 }

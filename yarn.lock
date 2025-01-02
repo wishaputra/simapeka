@@ -2931,6 +2931,14 @@ datatables.net-bs5@1.13.11, datatables.net-bs5@>=1.13.4, datatables.net-bs5@^1.1
     datatables.net "1.13.11"
     jquery "1.8 - 4"
 
+datatables.net-bs5@^2.1.8:
+  version "2.1.8"
+  resolved "https://registry.yarnpkg.com/datatables.net-bs5/-/datatables.net-bs5-2.1.8.tgz#860717c4ee85ecb84812ba9a73fb1204aa2a68b6"
+  integrity sha512-YlGws8eI3iw/1AmKJH18+YMzm/UgGb6o9s14KAC24QT1/8anolm8GnVAgGcwUcvHm3hn1i8A5QXqgbqeMRINeg==
+  dependencies:
+    datatables.net "2.1.8"
+    jquery ">=1.7"
+
 datatables.net-buttons-bs5@2.4.3:
   version "2.4.3"
   resolved "https://registry.npmjs.org/datatables.net-buttons-bs5/-/datatables.net-buttons-bs5-2.4.3.tgz"

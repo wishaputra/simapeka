@@ -16,7 +16,7 @@
           </a>
           <p class="footer-text footer-logo-description mb-6">
             SIMAPEKA adalah platform manajemen pengembangan kompetensi ASN yang mendukung peningkatan profesionalisme
-            pegawai negeri sipil di Tangerang Selatan.
+            pegawai di Kota Tangerang Selatan.
           </p>
         </div>
 
@@ -24,12 +24,12 @@
         <div class="col-lg-4">
           <h6 class="text-white">Alamat</h6>
           <p class="footer-text mb-4">
-            Jl. Raya Serpong No. 123, Tangerang Selatan, Banten 15310
+            Jl. Raya Maruga Raya No. 1, Serua, Ciputat, Tangerang Selatan, Banten 15414
           </p>
 
           <h6 class="text-white">Email</h6>
           <p class="footer-text mb-4">
-            <a href="mailto:info@tangerangselatan.go.id" class="text-white">info@tangerangselatan.go.id</a>
+            <a href="mailto:info@tangerangselatan.go.id" class="text-white">bkpsdm@tangerangselatan.go.id</a>
           </p>
         </div>
 

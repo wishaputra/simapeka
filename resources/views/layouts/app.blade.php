@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Zhafrani Mohamad">
     <meta name="description" content="Self assesment instrument for South Tangerang City">
-    <meta name="keywords" content="zhafran, tangsel, simapeka, bkpsdm, self assesment">
+    <meta name="keywords" content="zhafran, tangsel, corpu tangsel, corpu, simapeka, bkpsdm, self assesment">
     <title>
         @yield('title')
     </title>
@@ -44,6 +44,14 @@
         }
         });
     </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BL6NMZ1G13"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-BL6NMZ1G13');
+    </script>
     @yield('styles')
 </head>
 
@@ -57,7 +65,7 @@
             </button>
             <!-- Brand -->
             <a class="navbar-brand pt-0">
-                <h1>AKPK</h1>
+                <h1>CORPU</h1>
             </a>
             <!-- User -->
             {{-- <ul class="nav align-items-center d-md-none">
@@ -184,28 +192,28 @@
                     @endif
 
                     @php
-                    use App\Pegawai;
-                    use App\Struktur_jabatan;
-                
-                    $pegawai = Pegawai::where('nip', Auth::user()->nip)->first();
-                    if ($pegawai->jabatan != "Administrator") {
-                        if($pegawai->jabatan_tambahan){
-                        $kode_atasan = Struktur_jabatan::where('nama_jabatan', $pegawai->jabatan_tambahan)->first();
+                        use App\Pegawai;
+                        use App\Struktur_jabatan;
+                    
+                        $pegawai = Pegawai::where('nip', Auth::user()->nip)->first();
+                        if ($pegawai->jabatan != "Administrator") {
+                            if($pegawai->jabatan_tambahan){
+                                $kode_atasan = Struktur_jabatan::where('nama_jabatan', $pegawai->jabatan_tambahan)->first();
+                            } else {
+                                $kode_atasan = Struktur_jabatan::where('nama_jabatan', $pegawai->jabatan)->where('perangkat_daerah', $pegawai->unit_kerja)->first();
+                            }
+                    
+                            // Tambahkan logika untuk memeriksa apakah kode_jabatan bernilai null
+                            if ($kode_atasan === null) {
+                                $cek_bawahan = 0; // Jika null, set jumlah bawahan menjadi 0
+                            } else {
+                                $data_bawahan = Struktur_jabatan::where('kode_atasan', $kode_atasan->kode_jabatan)->get();
+                                $cek_bawahan = $data_bawahan->count();
+                            }
                         } else {
-                        $kode_atasan = Struktur_jabatan::where('nama_jabatan', $pegawai->jabatan)->where('perangkat_daerah', $pegawai->unit_kerja)->first();
+                            $cek_bawahan = 0;
                         }
-                
-                        // Tambahkan logika untuk memeriksa apakah kode_jabatan bernilai null
-                        if ($kode_atasan === null) {
-                            $cek_bawahan = 0; // Jika null, set jumlah bawahan menjadi 0
-                        } else {
-                            $data_bawahan = Struktur_jabatan::where('kode_atasan', $kode_atasan->kode_jabatan)->get();
-                            $cek_bawahan = $data_bawahan->count();
-                        }
-                    } else {
-                        $cek_bawahan = 0;
-                    }
-                @endphp
+                    @endphp
 
                     @if ($pegawai->jabatan != "Administrator" && $pegawai->jabatan != "Admin PD")
                         {{-- Penilaian Mandiri --}}

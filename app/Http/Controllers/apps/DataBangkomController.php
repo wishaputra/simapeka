@@ -11,6 +11,7 @@ use App\Models\Perangkat_daerah;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
+use App\Helpers\LogHelper; // Ensure LogHelper is imported
 
 class DataBangkomController extends Controller
 {
@@ -35,7 +36,7 @@ class DataBangkomController extends Controller
 
         // Initialize query for DataBangkom
         $data = Data_Bangkom::with('perangkatdaerah')
-            ->select(['id', 'nama_diklat', 'unit_kerja', 'uptd']);
+            ->select(['id', 'nama_diklat', 'unit_kerja', 'uptd', 'tahun']);
 
         if (Auth::user()->id_role == 2 && $pegawai) {
             // Define a filter function to reduce repetition
@@ -71,7 +72,8 @@ class DataBangkomController extends Controller
             $data->where(function ($query) use ($search) {
                 $query->where('nama_diklat', 'like', "%{$search}%")
                       ->orWhere('unit_kerja', 'like', "%{$search}%")
-                      ->orWhere('uptd', 'like', "%{$search}%");
+                      ->orWhere('uptd', 'like', "%{$search}%")
+                      ->orWhere('tahun', 'like', "%{$search}%");
             });
         }
 
@@ -108,16 +110,20 @@ class DataBangkomController extends Controller
     $request->validate([
         'nama_diklat' => 'required|string',
         'unit_kerja' => 'required|string', // Validate unit_kerja
-        
     ]);
 
-    Data_Bangkom::create([
+    $diklat = Data_Bangkom::create([
         'nama_diklat' => $request->nama_diklat,
         'unit_kerja' => $request->unit_kerja, // Store unit_kerja
         'uptd' => $request->uptd, // Store uptd
+        'tahun' => $request->tahun, // Store tahun
     ]);
 
-    return redirect()->route('content.apps.app-data-bangkom')->with('success', 'Data successfully added');
+    // Log the creation action
+    $userNIP = auth()->user()->nip; // Ensure the user is authenticated
+    LogHelper::logAction('create', 'Data_Bangkom', $diklat->id, $userNIP, null, $diklat->toArray());
+
+    return back()->with('success', 'Data successfully added');
 }
 
 
@@ -167,44 +173,46 @@ public function getUptds(Request $request)
    
     public function update(Request $request, $id)
 {
-    // Validate the incoming request data
     $request->validate([
         'nama_diklat' => 'required|string|max:255',
-        'unit_kerja' => 'required|string', // Validate unit_kerja field
-        
+        'unit_kerja' => 'required|string',
+        'uptd' => 'nullable|string',
+        'tahun' => 'nullable|string|max:4',
     ]);
 
-    // Find the record to update in DaftarDiklat
     $diklat = Data_Bangkom::findOrFail($id);
+    $oldData = $diklat->toArray(); // Capture the old data
 
-    // Update the DaftarDiklat record
-    $diklat->update([
-        'nama_diklat' => $request->input('nama_diklat'),
-        'unit_kerja' => $request->input('unit_kerja'),
-        'uptd' => $request->input('uptd'),
-    ]);
+    $diklat->update($request->only(['nama_diklat', 'unit_kerja', 'uptd', 'tahun']));
+    $newData = $diklat->toArray(); // Capture the updated data
 
-    // Redirect back to the index route with a success message
-    return redirect()->route('content.apps.app-data-bangkom')->with('success', 'Diklat updated successfully.');
+    // Log the update action
+    $userNIP = auth()->user()->nip;
+    LogHelper::logAction('update', 'Data_Bangkom', $id, $userNIP, $oldData, $newData);
+
+    return back()->with('success', 'Daftar Bangkom updated successfully.');
 }
 
 
 
 
 
-   
-    public function destroy($id)
-    {
-        // Find the record to delete in DaftarDiklat
-        $daftarDiklat = Data_Bangkom::findOrFail($id);
-        
-       
-        // Delete the DaftarDiklat record
-        $daftarDiklat->delete();
 
-        // Redirect back to the index route with a success message
-        return redirect()->route('content.apps.app-data-bangkom')->with('success', 'Diklat deleted successfully.');
-    }
+   
+public function destroy($id)
+{
+    $daftarDiklat = Data_Bangkom::findOrFail($id);
+    $oldData = $daftarDiklat->toArray(); // Capture the data before deletion
+
+    $daftarDiklat->delete();
+
+    // Log the delete action
+    $userNIP = auth()->user()->nip;
+    LogHelper::logAction('delete', 'Data_Bangkom', $id, $userNIP, $oldData);
+
+    return back()->with('success', 'Daftar Bangkom deleted successfully.');
+}
+
 
 
 }

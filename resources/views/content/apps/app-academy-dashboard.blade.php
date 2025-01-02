@@ -32,11 +32,11 @@
 <div class="card bg-transparent shadow-none border-0 mb-6">
   <div class="card-body row g-6 p-0 pb-5">
     <div   class="col-12 col-md-8 card-separator">
-        <h5 class="mb-2">Welcome back,<span class="h4 fw-semibold">
+        <h5 class="mb-2">Halo,<span class="h4 fw-semibold">
         {{ Auth::user()->pegawai->nama ?? Auth::user()->name }} 👋🏻
       </span></h5>
       <div class="col-12 col-lg-5">
-        <p>Your progress this week is Awesome. let's keep it up and get a lot of points reward!</p>
+        <p>Kemajuan Anda minggu ini Luar Biasa. Ayo teruskan dan penuhi jumlah minimal JP!</p>
       </div>
       <div class="d-flex justify-content-between flex-wrap gap-4 me-12">
         <div class="d-flex align-items-center gap-4 me-6 me-sm-0">
@@ -48,8 +48,8 @@
             </div>
           </div>
           <div class="content-right">
-            <p class="mb-1 fw-medium">Hours Spent</p>
-            <span class="text-primary mb-0 h5">34h</span>
+            <p class="mb-1 fw-medium">Jam Daring</p>
+            <span class="text-primary mb-0 h5">34 jam</span>
           </div>
         </div>
         <div class="d-flex align-items-center gap-4">
@@ -61,7 +61,7 @@
             </div>
           </div>
           <div class="content-right">
-            <p class="mb-1 fw-medium">Test Results</p>
+            <p class="mb-1 fw-medium">Hasil Tes</p>
             <span class="text-info mb-0 h5">82%</span>
           </div>
         </div>
@@ -74,7 +74,7 @@
             </div>
           </div>
           <div class="content-right">
-            <p class="mb-1 fw-medium">Course Completed </p>
+            <p class="mb-1 fw-medium">Pelatihan yang Diselesaikan</p>
             <span class="text-warning mb-0 h5">14</span>
           </div>
         </div>
@@ -84,11 +84,11 @@
       <div class="d-flex justify-content-between align-items-center">
         <div>
           <div>
-            <h5 class="mb-1">Time Spendings</h5>
-            <p class="mb-9">Weekly report</p>
+            <h5 class="mb-1">Total Waktu</h5>
+            <p class="mb-9">Laporan Mingguan</p>
           </div>
           <div class="time-spending-chart">
-            <h5 class="mb-2">231<span class="text-body">h</span> 14<span class="text-body">m</span></h5>
+            <h5 class="mb-2">231<span class="text-body"> jam</span> 14<span class="text-body"> menit</span></h5>
             <span class="badge bg-label-success rounded-pill">+18.4%</span>
           </div>
         </div>
@@ -106,7 +106,7 @@
   <div class="col-12 col-xxl-8">
     <div class="card h-100">
       <div class="card-header d-flex align-items-center justify-content-between">
-        <h5 class="card-title m-0 me-2">Topic you are interested in</h5>
+        <h5 class="card-title m-0 me-2">Pelatihan yang diikuti</h5>
         <div class="dropdown">
           <button class="btn btn-text-secondary rounded-pill text-muted border-0 p-1" type="button" id="topic"
             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -181,7 +181,7 @@
     <div class="card h-100">
       <div class="card-header d-flex align-items-center justify-content-between">
         <div class="card-title mb-0">
-          <h5 class="m-0 me-2">Popular Instructors</h5>
+          <h5 class="m-0 me-2">Widyaiswara Populer</h5>
         </div>
         <div class="dropdown">
           <button class="btn btn-text-secondary rounded-pill text-muted border-0 p-1" type="button"
@@ -197,8 +197,8 @@
       </div>
       <div class="px-5 py-4 border border-start-0 border-end-0">
         <div class="d-flex justify-content-between align-items-center">
-          <h6 class="mb-0 fs-xsmall text-uppercase fw-normal">Instructors</h6>
-          <h6 class="mb-0 fs-xsmall text-uppercase fw-normal">courses</h6>
+          <h6 class="mb-0 fs-xsmall text-uppercase fw-normal">Nama Widyaiswara</h6>
+          <h6 class="mb-0 fs-xsmall text-uppercase fw-normal">jumlah pelatihan</h6>
         </div>
       </div>
       <div class="card-body pt-5">
@@ -209,7 +209,7 @@
             </div>
             <div>
               <div>
-                <h6 class="mb-0 text-truncate">Maven Analytics</h6>
+                <h6 class="mb-0 text-truncate">Fulan bin Fulan</h6>
                 <small class="text-truncate">Business Intelligence</small>
               </div>
             </div>
@@ -225,7 +225,7 @@
             </div>
             <div>
               <div>
-                <h6 class="mb-0 text-truncate">Bentlee Emblin</h6>
+                <h6 class="mb-0 text-truncate">Fulanah binti Fulan</h6>
                 <small class="text-truncate">Digital Marketing</small>
               </div>
             </div>
@@ -241,7 +241,7 @@
             </div>
             <div>
               <div>
-                <h6 class="mb-0 text-truncate">Benedetto Rossiter</h6>
+                <h6 class="mb-0 text-truncate">Widyaiswara Madya</h6>
                 <small class="text-truncate">UI/UX Design</small>
               </div>
             </div>
@@ -257,7 +257,7 @@
             </div>
             <div>
               <div>
-                <h6 class="mb-0 text-truncate">Beverlie Krabbe</h6>
+                <h6 class="mb-0 text-truncate">Widyaiswara Muda</h6>
                 <small class="text-truncate">React Native</small>
               </div>
             </div>
@@ -275,7 +275,7 @@
   <div class="col-12 col-xxl-4 col-md-6">
     <div class="card h-100">
       <div class="card-header d-flex align-items-center justify-content-between">
-        <h5 class="card-title m-0 me-2">Top Courses</h5>
+        <h5 class="card-title m-0 me-2">Pelatihan Populer</h5>
         <div class="dropdown">
           <button class="btn btn-text-secondary rounded-pill text-muted border-0 p-1" type="button" id="topCourses"
             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -296,7 +296,7 @@
             </div>
             <div class="d-sm-flex w-100 align-items-center">
               <div class="w-100 mb-2 mb-sm-0 me-sm-4">
-                <h6 class="mb-0">Videography Basic Design Course</h6>
+                <h6 class="mb-0">Dasar Desain Videografi</h6>
               </div>
               <div class="badge bg-label-secondary rounded-pill">1.2k Views</div>
             </div>
@@ -307,7 +307,7 @@
             </div>
             <div class="d-sm-flex w-100 align-items-center">
               <div class="w-100 mb-2 mb-sm-0 me-sm-4">
-                <h6 class="mb-0">Basic Front-end Development Course</h6>
+                <h6 class="mb-0">Dasar Front-end Development</h6>
               </div>
               <div class="badge bg-label-secondary rounded-pill">834 Views</div>
             </div>
@@ -318,7 +318,7 @@
             </div>
             <div class="d-sm-flex w-100 align-items-center">
               <div class="w-100 mb-2 mb-sm-0 me-sm-4">
-                <h6 class="mb-0">Basic Fundamentals of Photography</h6>
+                <h6 class="mb-0">Dasar Fotografi</h6>
               </div>
               <div class="badge bg-label-secondary rounded-pill">3.7k Views</div>
             </div>
@@ -329,7 +329,7 @@
             </div>
             <div class="d-sm-flex w-100 align-items-center">
               <div class="w-100 mb-2 mb-sm-0 me-sm-4">
-                <h6 class="mb-0">Advance Dribble Base Visual Design</h6>
+                <h6 class="mb-0">Dasar Pengelolaan Basis Data</h6>
               </div>
               <div class="badge bg-label-secondary rounded-pill">2.5k Views</div>
             </div>
@@ -340,7 +340,7 @@
             </div>
             <div class="d-sm-flex w-100 align-items-center">
               <div class="w-100 mb-2 mb-sm-0 me-sm-4">
-                <h6 class="mb-0">Your First Singing Lesson</h6>
+                <h6 class="mb-0">Dasar Notasi Musik</h6>
               </div>
               <div class="badge bg-label-secondary rounded-pill">948 Views</div>
             </div>
@@ -359,8 +359,8 @@
           <img class="img-fluid w-px-150" src="{{asset('assets/img/illustrations/faq-illustration.png')}}"
             alt="Boy card image" />
         </div>
-        <h5 class="mb-1">Upcoming Webinar</h5>
-        <p class="mb-6">Next Generation Frontend Architecture Using Layout Engine And React Native Web.</p>
+        <h5 class="mb-1">Webinar yang Akan Datang</h5>
+        <p class="mb-6">Sosialisasi penggunaan aplikasi SIMAPEKA.</p>
         <div class="row mb-6 g-4">
           <div class="col-6">
             <div class="d-flex">
@@ -369,7 +369,7 @@
               </div>
               <div>
                 <h6 class="mb-0 text-nowrap fw-normal">17 Nov 23</h6>
-                <small>Date</small>
+                <small>Tanggal</small>
               </div>
             </div>
           </div>
@@ -379,13 +379,13 @@
                 <span class="avatar-initial rounded-3 bg-label-primary"><i class="ri-time-line ri-24px"></i></span>
               </div>
               <div>
-                <h6 class="mb-0 text-nowrap fw-normal">32 minutes</h6>
-                <small>Duration</small>
+                <h6 class="mb-0 text-nowrap fw-normal">32 menit</h6>
+                <small>Durasi</small>
               </div>
             </div>
           </div>
         </div>
-        <a href="javascript:void(0);" class="btn btn-primary w-100">Join the event</a>
+        <a href="javascript:void(0);" class="btn btn-primary w-100">Ikuti Webinar</a>
       </div>
     </div>
   </div>
@@ -395,7 +395,7 @@
   <div class="col-12 col-xxl-4 col-md-6">
     <div class="card h-100">
       <div class="card-header d-flex align-items-center justify-content-between">
-        <h5 class="card-title m-0 me-2">Assignment Progress</h5>
+        <h5 class="card-title m-0 me-2">Progress Pelatihan</h5>
         <div class="dropdown">
           <button class="btn btn-text-secondary rounded-pill text-muted border-0 p-1" type="button" id="assignProgress"
             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -415,7 +415,7 @@
             <div class="row w-100 align-items-center">
               <div class="col-9">
                 <div class="me-2">
-                  <h6 class="mb-2">User experience Design</h6>
+                  <h6 class="mb-2">Dasar-dasar Pemrograman</h6>
                   <p class="mb-0 small">120 Tasks</p>
                 </div>
               </div>
@@ -431,7 +431,7 @@
             <div class="row w-100 align-items-center">
               <div class="col-9">
                 <div class="me-2">
-                  <h6 class="mb-2">Basic fundamentals</h6>
+                  <h6 class="mb-2">Pengelolaan Barang dan Jasa</h6>
                   <p class="mb-0 small">32 Tasks</p>
                 </div>
               </div>
@@ -447,7 +447,7 @@
             <div class="row w-100 align-items-center">
               <div class="col-9">
                 <div class="me-2">
-                  <h6 class="mb-2">React native components</h6>
+                  <h6 class="mb-2">Manajemen Proyek</h6>
                   <p class="mb-0 small">182 Tasks</p>
                 </div>
               </div>
@@ -463,7 +463,7 @@
             <div class="row w-100 align-items-center">
               <div class="col-9">
                 <div class="me-2">
-                  <h6 class="mb-2">Basic of music theory</h6>
+                  <h6 class="mb-2">Manajemen Strategis</h6>
                   <p class="mb-0 small">56 Tasks</p>
                 </div>
               </div>
@@ -484,7 +484,7 @@
 <!--  Topic and Instructors  End-->
 
 <!-- Course datatable -->
-<div class="card">
+<!-- <div class="card">
   <div class="table-responsive mb-4">
     <table class="table datatables-academy-course">
       <thead>
@@ -499,6 +499,6 @@
       </thead>
     </table>
   </div>
-</div>
+</div> -->
 <!-- Course datatable End -->
 @endsection

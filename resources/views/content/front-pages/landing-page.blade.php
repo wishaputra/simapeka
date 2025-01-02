@@ -1,35 +1,35 @@
 @php
-$configData = Helper::appClasses();
+  $configData = Helper::appClasses();
 @endphp
 
 @extends('layouts/layoutMaster')
 
-@section('title', 'Landing - Front Pages')
+@section('title', 'CORPU - Kota Tangerang Selatan')
 
 <!-- Vendor Styles -->
 @section('vendor-style')
-@vite([
-  'resources/assets/vendor/libs/nouislider/nouislider.scss',
-  'resources/assets/vendor/libs/swiper/swiper.scss'
-])
+  @vite([
+    'resources/assets/vendor/libs/nouislider/nouislider.scss',
+    'resources/assets/vendor/libs/swiper/swiper.scss'
+  ])
 @endsection
 
 <!-- Page Styles -->
 @section('page-style')
-@vite(['resources/assets/vendor/scss/pages/front-page-landing.scss'])
+  @vite(['resources/assets/vendor/scss/pages/front-page-landing.scss'])
 @endsection
 
 <!-- Vendor Scripts -->
 @section('vendor-script')
-@vite([
-  'resources/assets/vendor/libs/nouislider/nouislider.js',
-  'resources/assets/vendor/libs/swiper/swiper.js'
-])
+  @vite([
+    'resources/assets/vendor/libs/nouislider/nouislider.js',
+    'resources/assets/vendor/libs/swiper/swiper.js'
+  ])
 @endsection
 
 <!-- Page Scripts -->
 @section('page-script')
-@vite(['resources/assets/js/front-page-landing.js'])
+  @vite(['resources/assets/js/front-page-landing.js'])
 @endsection
 
 <style>
@@ -65,23 +65,21 @@ $configData = Helper::appClasses();
 <div data-bs-spy="scroll" class="scrollspy-example">
 <!-- Hero: Start -->
 <section id="landingHero" class="section-py landing-hero position-relative ">
+  <div class="spacer" style="height: 10rem;"></div>
     <img src="{{asset('assets/img/front-pages/backgrounds/hero-bg-'.$configData['style'].'.png') }}" alt="hero background" class="position-absolute top-0 start-0 w-100 h-100 z-n1" data-speed="1" data-app-light-img="front-pages/backgrounds/hero-bg-light.png" data-app-dark-img="front-pages/backgrounds/hero-bg-dark.png" />
     <div class="container">
       <div class="hero-text-box text-center">
-        <h3 class="text-primary hero-title fs-2 ">Asah Potensimu Lewat Pelatihan Profesional</h3>
+        <h3 class="text-primary hero-title fs-2 ">Tangsel Corporate University</h3>
       </div>
       <div class="position-relative hero-animation-img">
         <a href="{{url('front-pages/landing')}}#landingFeatures" target="_blank">
           <div class="hero-dashboard-img text-center">
           <h2 class="h6 mb-8">
-          Kembangkan keterampilanmu dan raih karier impian.<br />
-          Yuk, gabung bersama kami untuk membentuk ASN yang siap menghadapi tantangan masa depan.<br />
-          SIMAPEKA hadir sebagai langkah menuju pertumbuhan dan kesuksesan tanpa batas.<br />
+          Mari wujudkan Pemerintah Kota Tangerang Selatan sebagai organisasi pembelajar (Learning Organization). <br>
+          Tangsel Corporate University membentuk sumber daya manusia aparatur yang kompeten untuk pencapaian Visi Misi Pemerintah Kota Tangerang Selatan
           </h2> 
           </div>
-          <d
-
-          </div>
+      
           <div class="position-absolute hero-elements-img">
             
           </div>
@@ -100,7 +98,7 @@ $configData = Helper::appClasses();
     <!-- Title and icon -->
     <h6 class="text-center d-flex justify-content-center align-items-center mb-6">
       <img src="{{asset('assets/img/front-pages/icons/section-tilte-icon.png')}}" alt="ikon judul bagian" class="me-3" />
-      <span class="text-uppercase">Profil SIMAPEKA</span>
+      <span class="text-uppercase">Profil CORPU</span>
     </h6>
 
     <div class="d-flex align-items-center justify-content-between flex-column flex-lg-row">
@@ -108,9 +106,9 @@ $configData = Helper::appClasses();
         <img src="{{asset('assets/img/illustrations/PNS.png')}}" class="img-fluid rounded" />
       </div>
       <div class="profil-text col-lg-6 text-center text-lg-start p-3">
-        <h2 class="mb-4">Apa itu SIMAPEKA?</h2>
+        <h2 class="mb-4">Apa itu CORPU?</h2>
         <p class="mb-4">
-        SIMAPEKA (Sistem Manajemen Pengembangan Kompetensi ASN) adalah platform untuk mendukung pengembangan kompetensi ASN di Pemerintah Kota Tangerang. Dengan SIMAPEKA, pegawai dapat mengakses program pelatihan sesuai kebutuhan kinerja dan pengembangan diri. Platform ini memastikan pelatihan dilaksanakan secara terintegrasi dan berkesinambungan, didukung manajemen pengetahuan untuk meningkatkan kompetensi, profesionalisme, dan efektivitas kerja ASN.
+        CORPU (Corporate University) adalah platform untuk mendukung pengembangan kompetensi ASN di Pemerintah Kota Tangerang Selatan. Dengan SIMAPEKA, pegawai dapat mengakses program pelatihan sesuai kebutuhan kinerja dan pengembangan diri. Platform ini memastikan pelatihan dilaksanakan secara terintegrasi dan berkesinambungan, didukung manajemen pengetahuan untuk meningkatkan kompetensi, profesionalisme, dan efektivitas kerja ASN.
         </p>
         <a href="{{ route('profil-simapeka') }}" class="btn btn-lg btn-tosca">Lihat Selengkapnya</a>
       </div>
@@ -492,7 +490,13 @@ $configData = Helper::appClasses();
   <!-- Pricing plans: End -->
 
   <!-- Fun facts: Start -->
-<section id="landingFunFacts" class="section-py landing-fun-facts py-12 my-4">
+   
+<section id="landingTeam" class="section-py landing-fun-facts py-12 my-4">
+<div class="container bg-icon-right">
+<h6 class="text-center d-flex justify-content-center align-items-center mb-6">
+      <img src="{{asset('assets/img/front-pages/icons/section-tilte-icon.png')}}" alt="section title icon" class="me-3" />
+      <span class="text-uppercase">Statistik</span>
+    </h6>
   <div class="container">
     <div class="row gx-0 gy-6 gx-sm-6">
       <div class="col-md-3 col-sm-6 text-center">
@@ -529,6 +533,7 @@ $configData = Helper::appClasses();
       </div>
     </div>
   </div>
+  </div>
 </section>
 <!-- Fun facts: End -->
 
@@ -550,7 +555,7 @@ $configData = Helper::appClasses();
     <div class="row gy-5">
       <div class="col-lg-5">
         <div class="text-center">
-        <img src="{{asset('assets/img/front-pages/landing-page/PNS2.png')}}" alt="sitting girl with laptop" class="faq-image scaleX-n1-rtl" />
+        <img src="{{asset('assets/img/front-pages/misc/PNS2.png')}}" alt="sitting girl with laptop" class="faq-image scaleX-n1-rtl" />
         </div>
       </div>
       <div class="col-lg-7">

@@ -36,7 +36,8 @@
         {
           "url": "app/academy/dashboard",
           "name": "Academy",
-          "slug": "app-academy-dashboard"
+          "slug": "app-academy-dashboard",
+          "disabled": true
         }
       ]
     },
@@ -147,7 +148,28 @@
       ]
     },
     {
-      "menuHeader": "Apps & Pages"
+      "menuHeader": "AKPK"
+    },
+    {
+      "url": "/rekap_akpk",
+      "name": "Rekap AKPK",
+      "icon": "menu-icon tf-icons ri-bar-chart-line",
+      "slug": "app-email",
+      "disabled": false
+    },
+    {
+      "url": "/bangkom_mandiri",
+      "name": "Bangkom Mandiri",
+      "icon": "menu-icon tf-icons ri-mail-open-line",
+      "slug": "app-email",
+      "disabled": false
+    },
+    {
+      "url": "/bangkom_bawahan",
+      "name": "Data Bangkom Bawahan",
+      "icon": "menu-icon tf-icons ri-file-list-line",
+      "slug": "app-email",
+      "disabled": false
     },
     {
       "url": "app/email",
@@ -316,10 +338,18 @@
       ]
     },
     {
-      "name": "Academy",
+      "menuHeader": "CORPU"
+    },
+    {
+      "name": "Pelatihan",
       "icon": "menu-icon tf-icons ri-book-line",
       "slug": "app-academy",
       "submenu": [
+        {
+          "url": "/enrollment",
+          "name": "Pemilihan Course",
+          "slug": "app-academy-pemilihan"
+        },
         {
           "url": "app/academy/dashboard",
           "name": "Dashboard",
@@ -327,13 +357,38 @@
         },
         {
           "url": "app/academy/course",
-          "name": "My Course",
+          "name": "Pelatihan Saya",
           "slug": "app-academy-course"
         },
         {
           "url": "app/academy/course-details",
-          "name": "Course Details",
-          "slug": "app-academy-course-details"
+          "name": "Detail Pelatihan",
+          "slug": "app-academy-course-details",
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "name": "Manajemen Pelatihan",
+      "icon": "menu-icon tf-icons ri-book-line",
+      "slug": "app-academy",
+      "submenu": [
+        {
+          "url": "app/academy/dashboard",
+          "name": "Dashboard",
+          "slug": "app-academy-dashboard",
+          "disabled": true
+        },
+        {
+          "url": "/course-management",
+          "name": "Course Management",
+          "slug": "Course-Management"
+        },
+        {
+          "url": "app/academy/course",
+          "name": "Pelatihan Saya",
+          "slug": "app-academy-course",
+          "disabled": true
         }
       ]
     },
@@ -1148,6 +1203,7 @@
       "name": "Konfigurasi",
       "icon": "menu-icon tf-icons ri-settings-line",
       "slug": "app-user",
+      "role": [1],
       "disabled": false,
       "submenu": [
         {
@@ -1159,12 +1215,18 @@
           "url": "/data_bangkom",
           "name": "Data Bangkom",
           "slug": "data-bangkom"
+        },
+        {
+          "url": "/kalender",
+          "name": "Calendar",
+          "slug": "app-calendar",
+          "disabled": false
         }
       ]
     },
     {
       "name": "Profil",
-      "url": "app/user/list",
+      "url": "/profil",
       "icon": "menu-icon tf-icons ri-user-settings-line",
       "slug": "app-user",
       "disabled": false

@@ -1,0 +1,12 @@
+const d=document.querySelector('meta[name="csrf-token"]').getAttribute("content");$(document).ready(function(){$("#myTable").DataTable({processing:!0,serverSide:!0,ajax:{url:"/dev/corpu2/simapeka/public/data_bangkom",type:"GET",dataType:"json"},columns:[{data:"id",render:function(t,e,a,n){return n.row+n.settings._iDisplayStart+1},searchable:!1},{data:"nama_diklat",searchable:!0},{data:"unit_kerja",render:function(t,e,a){return t||"-"},searchable:!0},{data:"uptd",render:function(t,e,a){return t||"-"},searchable:!0},{data:"tahun",render:function(t,e,a){return t||"-"},searchable:!0},{data:"id",render:function(t,e,a){return`
+                    <form action="/dev/corpu2/simapeka/public/data_bangkom/${t}" method="POST" class="d-inline delete-form">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="${d}">
+                        <button type="button" class="btn btn-sm btn-danger delete-btn">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </form>
+                    <button type="button" class="btn btn-sm btn-primary edit-btn" data-id="${t}" data-nama_diklat="${a.nama_diklat}" data-unit_kerja="${a.unit_kerja}" data-uptd="${a.uptd}" data-tahun="${a.tahun}">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                `},searchable:!1}]}),$(document).on("click",".edit-btn",function(){const t=$(this).data("id"),e=$(this).data("nama_diklat"),a=$(this).data("unit_kerja"),n=$(this).data("uptd"),i=$(this).data("tahun");$("#edit_id").val(t),$("#edit_nama_diklat").val(e),$("#edit_unit_kerja").val(a),$("#edit_uptd").val(n),$("#edit_tahun").val(i),$("#editForm").attr("action",`/dev/corpu2/simapeka/public/data_bangkom/${t}`),$("#editModal").modal("show")}),$("#myTable").on("click",".delete-btn",function(t){t.preventDefault();var e=$(this).closest("form");$(this).closest("tr"),confirm("Are you sure you want to delete this item?")&&e.submit()}),$("#unit_kerja").on("change",function(){var t=$(this).val();t?$.ajax({url:"/dev/corpu2/simapeka/public/getUptds",type:"GET",data:{unit_kerja:t},success:function(e){$("#id_uptd").empty(),$("#id_uptd").append('<option value="">-- Pilih Nama UPTD --</option>'),$.each(e,function(a,n){$("#id_uptd").append('<option value="'+n.uptd+'">'+n.uptd+"</option>")})},error:function(){console.log("Error fetching UPTD data")}}):($("#id_uptd").empty(),$("#id_uptd").append('<option value="">-- Pilih Nama UPTD --</option>'))})});

@@ -10,3 +10,60 @@
     top: calc(70px + 10px);
   }
 }
+#lesson-content {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.quiz-wrapper {
+  max-width: 800px;
+  margin: auto;
+}
+
+.quiz-wrapper h4 {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.card {
+  overflow: hidden;
+  border: none;
+  border-radius: 8px;
+}
+
+.card-header {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.card-body p {
+  font-size: 1rem;
+}
+
+.form-check-label {
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+textarea.form-control {
+  resize: none;
+  font-size: 0.9rem;
+}
+
+.quiz-wrapper .card + .card {
+  margin-top: 20px;
+}
+
+.question-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+  transition: width 0.3s ease;
+}
+
+
+

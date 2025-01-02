@@ -1,9 +1,9 @@
 <?php
 // Variables
 return [
-  "creatorName" => "Pixinvent",
-  "creatorUrl" => "https://pixinvent.com",
-  "templateName" => "SIMAPEKA",
+  "creatorName" => "Kota Tangerang Selatan",
+  "creatorUrl" => "https://tangerangselatankota.go.id",
+  "templateName" => "CORPU",
   "templateSuffix" => "",
   "templateVersion" => "2.0.1",
   "templateFree" => false,

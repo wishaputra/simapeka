@@ -15,13 +15,14 @@ class Pegawai extends Model
         'unit_kerja',
         'jabatan_tambahan',
         'uptd',
+        'foto',
         'created_at',
         'updated_at',
     ];
 
     public function users()
     {
-        return $this->belongsTo('App\User', 'nip');
+        return $this->belongsTo('App\Models\User', 'nip');
     }
 
     public function strukturJabatan()

@@ -22,6 +22,7 @@ use App\Http\Controllers\front_pages\HelpCenter;
 use App\Http\Controllers\front_pages\HelpCenterArticle;
 use App\Http\Controllers\apps\Email;
 use App\Http\Controllers\apps\DataBangkomController;
+use App\Http\Controllers\apps\BangkomBawahan;
 use App\Http\Controllers\apps\Chat;
 use App\Http\Controllers\apps\Calendar;
 use App\Http\Controllers\apps\Kanban;
@@ -46,7 +47,12 @@ use App\Http\Controllers\apps\EcommerceSettingsLocations;
 use App\Http\Controllers\apps\EcommerceSettingsNotifications;
 use App\Http\Controllers\apps\AcademyDashboard;
 use App\Http\Controllers\apps\AcademyCourse;
+use App\Http\Controllers\apps\EnrollmentController;
+use App\Http\Controllers\apps\CourseManagement;
 use App\Http\Controllers\apps\AcademyCourseDetails;
+use App\Http\Controllers\apps\AttendanceController;
+use App\Http\Controllers\apps\BangkomMandiri;
+use App\Http\Controllers\apps\RekapAkpk;
 use App\Http\Controllers\apps\LogisticsDashboard;
 use App\Http\Controllers\apps\LogisticsFleet;
 use App\Http\Controllers\apps\InvoiceList;
@@ -55,6 +61,7 @@ use App\Http\Controllers\apps\InvoicePrint;
 use App\Http\Controllers\apps\InvoiceEdit;
 use App\Http\Controllers\apps\InvoiceAdd;
 use App\Http\Controllers\apps\UserList;
+use App\Http\Controllers\apps\ProfileController;
 use App\Http\Controllers\apps\UserViewAccount;
 use App\Http\Controllers\apps\UserViewSecurity;
 use App\Http\Controllers\apps\UserViewBilling;
@@ -157,6 +164,32 @@ use App\Http\Controllers\tables\DatatableExtensions;
 use App\Http\Controllers\charts\ApexCharts;
 use App\Http\Controllers\charts\ChartJs;
 use App\Http\Controllers\maps\Leaflet;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
+
+// untuk foto
+Route::get('/proxy-image/{filename}', function ($filename) {
+    $url = "https://lasik.tangerangselatankota.go.id/simpeg/assets/img/small/{$filename}";
+
+    try {
+        $response = Http::withHeaders([
+            'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36',
+            'Referer' => 'https://lasik.tangerangselatankota.go.id/'
+        ])->get($url);
+
+        if ($response->successful()) {
+            return response($response->body(), 200)
+                ->header('Content-Type', $response->header('Content-Type'));
+        }
+
+        Log::error("Image fetch failed with status: " . $response->status());
+        return abort(403, 'Forbidden');
+    } catch (\Exception $e) {
+        Log::error("Exception occurred: " . $e->getMessage());
+        return abort(500, 'Server error.');
+    }
+});
+
 
 // Main Page Route
 Route::get('/', [Landing::class, 'index'])->name('front-pages-landing');
@@ -187,10 +220,12 @@ Route::get('/front-pages/checkout', [Checkout::class, 'index'])->name('front-pag
 Route::get('/front-pages/help-center', [HelpCenter::class, 'index'])->name('front-pages-help-center');
 Route::get('/front-pages/help-center-article', [HelpCenterArticle::class, 'index'])->name('front-pages-help-center-article');
 
+
+
+
 // apps
 Route::get('/app/email', [Email::class, 'index'])->name('app-email');
 Route::get('/app/chat', [Chat::class, 'index'])->name('app-chat');
-Route::get('/app/calendar', [Calendar::class, 'index'])->name('app-calendar');
 Route::get('/app/kanban', [Kanban::class, 'index'])->name('app-kanban');
 Route::get('/app/ecommerce/dashboard', [EcommerceDashboard::class, 'index'])->name('app-ecommerce-dashboard');
 Route::get('/app/ecommerce/product/list', [EcommerceProductList::class, 'index'])->name('app-ecommerce-product-list');
@@ -211,9 +246,7 @@ Route::get('/app/ecommerce/settings/checkout', [EcommerceSettingsCheckout::class
 Route::get('/app/ecommerce/settings/shipping', [EcommerceSettingsShipping::class, 'index'])->name('app-ecommerce-settings-shipping');
 Route::get('/app/ecommerce/settings/locations', [EcommerceSettingsLocations::class, 'index'])->name('app-ecommerce-settings-locations');
 Route::get('/app/ecommerce/settings/notifications', [EcommerceSettingsNotifications::class, 'index'])->name('app-ecommerce-settings-notifications');
-Route::get('/app/academy/dashboard', [AcademyDashboard::class, 'index'])->name('app-academy-dashboard');
-Route::get('/app/academy/course', [AcademyCourse::class, 'index'])->name('app-academy-course');
-Route::get('/app/academy/course-details', [AcademyCourseDetails::class, 'index'])->name('app-academy-course-details');
+
 Route::get('/app/logistics/dashboard', [LogisticsDashboard::class, 'index'])->name('app-logistics-dashboard');
 Route::get('/app/logistics/fleet', [LogisticsFleet::class, 'index'])->name('app-logistics-fleet');
 Route::get('/app/invoice/list', [InvoiceList::class, 'index'])->name('app-invoice-list');
@@ -221,7 +254,26 @@ Route::get('/app/invoice/preview', [InvoicePreview::class, 'index'])->name('app-
 Route::get('/app/invoice/print', [InvoicePrint::class, 'index'])->name('app-invoice-print');
 Route::get('/app/invoice/edit', [InvoiceEdit::class, 'index'])->name('app-invoice-edit');
 Route::get('/app/invoice/add', [InvoiceAdd::class, 'index'])->name('app-invoice-add');
+
+// user list
+Route::get('/roles', [Userlist::class, 'role']);
 Route::get('/app/user/list', [UserList::class, 'index'])->name('app-user-list');
+Route::get('/pegawai/data', [UserList::class, 'getPegawaiData'])->name('pegawai.data');
+Route::get('/getUsers', [UserList::class, 'getusers'])->name('getUsers');
+Route::post('/pegawai', [UserList::class, 'store'])->name('pegawai.store');
+Route::put('/pegawai/{id}', [UserList::class, 'update'])->name('pegawai.update');
+Route::get('/pegawai/{id}/edit', [Userlist::class, 'edit']);
+Route::delete('/pegawai/{id}', [UserList::class, 'destroy'])->name('pegawai.destroy');
+Route::get('/pegawai/{id}', [UserList::class, 'show'])->name('pegawai.show'); // For fetching a single record if needed
+
+// Route::get('/users/cari', 'UsersController@search')->name('users.search');
+//         Route::patch('/users/password/{user}', 'UsersController@password')->name('users.password');
+//         Route::get('/getUsers', 'UsersController@getUsers')->name('getUsers');
+//         Route::get('/users/{user}/edit', [UsersController::class, 'edit'])->name('users.edit');
+//         Route::resource('/users', 'UsersController');
+//         Route::post('/users', [App\Http\Controllers\UsersController::class, 'store'])->name('users.store');
+
+
 Route::get('/app/user/view/account', [UserViewAccount::class, 'index'])->name('app-user-view-account');
 Route::get('/app/user/view/security', [UserViewSecurity::class, 'index'])->name('app-user-view-security');
 Route::get('/app/user/view/billing', [UserViewBilling::class, 'index'])->name('app-user-view-billing');
@@ -255,6 +307,7 @@ Route::get('/pages/misc-server-error', [MiscServerError::class, 'index'])->name(
 // login
 Route::get('/auth/login-basic', [LoginBasic::class, 'index'])->name('auth-login-basic');
 Route::post('/auth/login-basic', [LoginBasic::class, 'login'])->name('login');
+Route::post('/logout', [LoginBasic::class, 'logout'])->name('logout');
 
 Route::get('/app/academy/dashboard', function () {
     return view('content.apps.app-academy-dashboard');
@@ -280,6 +333,7 @@ Route::get('/wizard/ex-create-deal', [CreateDeal::class, 'index'])->name('wizard
 
 // modal
 Route::get('/modal-examples', [ModalExample::class, 'index'])->name('modal-examples');
+
 
 // cards
 Route::get('/cards/basic', [CardBasic::class, 'index'])->name('cards-basic');
@@ -368,8 +422,125 @@ Route::get('/laravel/user-management', [UserManagement::class, 'UserManagement']
 Route::resource('/user-list', UserManagement::class);
 
 //data_bangkom
-
+Route::resource('data_bangkom', DataBangkomController::class);
 Route::get('/data_bangkom', [DataBangkomController::class, 'index'])->name('data_bangkom.index');
 Route::get('/getUptds', [DataBangkomController::class, 'getUptds'])->name('getUptds');
-Route::patch('/data_bangkom/{id}', [DataBangkomController::class, 'update'])->name('data_bangkom.update');
+Route::put('/data_bangkom/update/{id}', [DataBangkomController::class, 'update'])->name('daftar_bangkom.update');
 Route::post('/store', [DataBangkomController::class, 'store'])->name('data_bangkom.store');
+Route::delete('/data_bangkom/{id}', [DataBangkomController::class, 'destroy'])->name('data_bangkom.destroy');
+
+// Route::resource('daftar_diklat', 'DaftarDiklatController');
+//         Route::get('/getUptds', [DaftarDiklatController::class, 'getUptds'])->name('getUptds');
+//         Route::get('/daftar_diklat', [DaftarDiklatController::class, 'index'])->name('daftar_diklat.index');
+//         Route::get('/create', [DaftarDiklatController::class, 'create'])->name('daftar_diklat.create');
+//         Route::post('/store', [DaftarDiklatController::class, 'store'])->name('daftar_diklat.store');
+//         Route::get('/{id}/edit', [DaftarDiklatController::class, 'edit'])->name('daftar_diklat.edit');
+//         Route::patch('/daftar_diklat/{id}', [DaftarDiklatController::class, 'update'])->name('daftar_diklat.update');
+//         Route::delete('/{id}', [DaftarDiklatController::class, 'destroy'])->name('daftar_diklat.destroy');
+
+
+// profile
+Route::get('/profil', [ProfileController::class, 'profil'])->name('profil');
+Route::post('/update-profil/{user}',[ProfileController::class, 'updateprofil'])->name('update-profil');
+Route::post('users/update-password/{user}', [ProfileController::class, 'updatePassword'])->name('update-password');
+
+//bangkom mandiri
+Route::get('/bangkom_mandiri', [BangkomMandiri::class, 'index'])->name('diklat_mandiri.index');
+Route::post('/bangkom_mandiri/save', [BangkomMandiri::class, 'save'])->name('diklat_mandiri.save');
+Route::post('/bangkom_mandiri/store', [BangkomMandiri::class, 'store'])->name('diklat_mandiri.store');
+
+//Bangkom bawahan
+Route::get('/bangkom_bawahan', [BangkomBawahan::class, 'index'])->name('bangkom_bawhan.index');
+Route::get('/get-diklat-data', [BangkomBawahan::class, 'getDiklatData'])->name('get-diklat-data');
+
+
+//rekap akpk
+Route::get('/rekap_akpk', [RekapAkpk::class, 'index'])->name('rekap_akpk');
+Route::get('/rekap_akpk/cari', [RekapAkpk::class, 'search'])->name('rekap_akpk.search');
+Route::get('/rekap_akpk/uptd', [RekapAkpk::class, 'uptd'])->name('rekap_akpk.uptd');
+Route::get('/rekap_akpk/uptdopd', [RekapAkpk::class, 'uptdopd'])->name('rekap_akpk.uptdopd');
+Route::get('/rekap_akpk/level', [RekapAkpk::class, 'exportlevel'])->name('rekap_akpk.level');
+Route::get('/rekap_akpk/levelopd', [RekapAkpk::class, 'exportlevelopd'])->name('rekap_akpk.levelopd');
+Route::get('/rekap_akpk/bygap', [RekapAkpk::class, 'exportbygap'])->name('rekap_akpk.bygap');
+Route::get('/rekap_akpk/bygapopd', [RekapAkpk::class, 'exportbygapopd'])->name('rekap_akpk.bygapopd');
+
+//Course Management
+Route::get('/course-management', [CourseManagement::class, 'index'])->name('course-management.index');
+Route::get('/courses/data', [CourseManagement::class, 'data'])->name('courses.data');
+Route::post('/courses/store', [CourseManagement::class, 'store'])->name('courses.store');
+Route::post('/course-management/update', [CourseManagement::class, 'update'])->name('course-management.update');
+Route::delete('/course-management/delete/{id}', [CourseManagement::class, 'destroy'])->name('course-management.delete');
+
+
+//management detail
+Route::get('/courses/{id}/detail', [CourseManagement::class, 'detail'])->name('courses.detail');
+Route::post('/courses/{course}/sections', [CourseManagement::class, 'storeSection']);
+Route::delete('/courses/sections/{section}', [CourseManagement::class, 'deleteSection']);
+Route::get('/courses/{course_id}/attendance', [AttendanceController::class, 'showAttendance'])->name('courses.attendance');
+
+
+//lesson detail
+
+Route::get('sections/{sectionId}/lessons', [CourseManagement::class, 'Lesson'])->name('lessons.index');
+Route::post('sections/{sectionId}/lessons', [CourseManagement::class, 'storeLesson'])->name('lessons.store');
+Route::get('sections/{sectionId}/lessons/{lessonId}', [CourseManagement::class, 'showLesson'])->name('lessons.show');
+Route::put('sections/{sectionId}/lessons/{lessonId}', [CourseManagement::class, 'updateLesson'])->name('lessons.update');
+Route::delete('sections/{sectionId}/lessons/{lessonId}', [CourseManagement::class, 'destroyLesson'])->name('lessons.destroy');
+
+
+//quiz
+Route::get('/sections/{sectionId}/quizzes', [CourseManagement::class, 'quiz'])->name('quizzes.index');
+Route::post('/quizzes', [CourseManagement::class, 'quizStore']);
+Route::get('/quizzes/{quiz}', [CourseManagement::class, 'quizShow']);
+Route::put('/quizzes/{quiz}', [CourseManagement::class, 'quizUpdate']);
+Route::delete('/quizzes/{quiz}', [CourseManagement::class, 'quizDestroy']);
+
+//question
+Route::get('/sections/{quizId}/question', [CourseManagement::class, 'question'])->name('questions.index');
+Route::post('/quizzes/{quizId}/questions', [CourseManagement::class, 'questionStore'])->name('questions.store');
+Route::put('/questions/{id}', [CourseManagement::class, 'questionUpdate'])->name('questions.update');
+Route::delete('/questions/{id}', [CourseManagement::class, 'questionDestroy'])->name('questions.destroy');
+
+//exam
+Route::get('/courses/{courseId}/exams', [CourseManagement::class, 'exams'])->name('exams.index');
+Route::post('/courses/{courseId}/exams', [CourseManagement::class, 'examStore'])->name('exams.store');
+Route::put('/courses/{courseId}/exams/{examId}', [CourseManagement::class, 'examUpdate'])->name('exams.update');
+Route::delete('/exams/{examId}', [CourseManagement::class, 'examDestroy'])->name('exams.destroy');
+
+//exam question
+Route::get('/exams/{examId}/questions', [CourseManagement::class, 'examQuestion'])->name('exams.questions');
+Route::get('/exams/{examId}/questions/data', [CourseManagement::class, 'getExamQuestions'])->name('exams.questions.data');
+Route::post('/exams/{examId}/questions', [CourseManagement::class, 'examQuestionStore'])->name('questions.store');
+Route::put('/questions/{id}', [CourseManagement::class, 'examQuestionUpdate'])->name('questions.update');
+Route::delete('/questions/{id}', [CourseManagement::class, 'examQuestionDestroy'])->name('questions.destroy');
+
+//kalender
+Route::get('/kalender', [Calendar::class, 'index'])->name('kalender.index');
+Route::get('/kalender/events', [Calendar::class, 'getEvents'])->name('kalender.events');
+Route::post('/kalender/events', [Calendar::class, 'storeEvent'])->name('kalender.store');
+
+
+//untuk course asn
+Route::get('/app/academy/dashboard', [AcademyDashboard::class, 'index'])->name('app-academy-dashboard');
+Route::get('/app/academy/course', [AcademyCourse::class, 'index'])->name('app-academy-course');
+Route::get('/app/academy/course-details/{id}', [AcademyCourseDetails::class, 'index'])->name('app-academy-course-details');
+Route::get('/quiz/{quiz}/questions', [AcademyCourseDetails::class, 'getQuizQuestions']);
+Route::get('/academy/download-certificate/{courseId}', [AcademyCourse::class, 'downloadCertificate'])->name('academy.download.certificate');
+//save progress
+Route::post('/lesson/progress', [AcademyCourseDetails::class, 'updateLessonProgress'])->name('lesson.progress.update');
+Route::get('/course/{courseId}/progress', [AcademyCourseDetails::class, 'getCourseProgress']);
+Route::post('/quiz/progress', [AcademyCourseDetails::class, 'updateQuizProgress']);
+//final exam
+Route::get('/final-exam/{exam}', [AcademyCourseDetails::class, 'exam'])->name('exam.start');
+Route::post('/exam-progress', [AcademyCourseDetails::class, 'updateExamProgress']);
+
+
+// absensi
+Route::get('/attendance/{courseId}', [AttendanceController::class, 'index'])->name('attendance.index');
+Route::post('/attendance/store', [AttendanceController::class, 'store'])->name('attendance.store');
+
+
+
+//enrollment
+Route::get('/enrollment', [EnrollmentController::class, 'index'])->name('enrollment.index');
+Route::post('/enrollment', [EnrollmentController::class, 'store'])->name('enrollment.store');

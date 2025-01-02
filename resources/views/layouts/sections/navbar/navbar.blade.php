@@ -229,9 +229,9 @@
             <ul class="dropdown-menu dropdown-menu-end py-0">
               <li class="dropdown-menu-header border-bottom py-50">
                 <div class="dropdown-header d-flex align-items-center py-2">
-                  <h6 class="mb-0 me-auto">Notification</h6>
+                  <h6 class="mb-0 me-auto">Notifikasi</h6>
                   <div class="d-flex align-items-center">
-                    <span class="badge rounded-pill bg-label-primary fs-xsmall me-2">8 New</span>
+                    <span class="badge rounded-pill bg-label-primary fs-xsmall me-2">2 Baru</span>
                     <a href="javascript:void(0)"
                       class="btn btn-text-secondary rounded-pill btn-icon dropdown-notifications-all"
                       data-bs-toggle="tooltip" data-bs-placement="top" title="Mark all as read"><i
@@ -249,9 +249,9 @@
                         </div>
                       </div>
                       <div class="flex-grow-1">
-                        <h6 class="small mb-1">Congratulation Lettie 🎉</h6>
-                        <small class="mb-1 d-block text-body">Won the monthly best seller gold badge</small>
-                        <small class="text-muted">1h ago</small>
+                        <h6 class="small mb-1">Selamat Fulan 🎉</h6>
+                        <small class="mb-1 d-block text-body">Baru saja menyelesaikan pelatihan manajemen proyek</small>
+                        <small class="text-muted">1 jam yang lalu</small>
                       </div>
                       <div class="flex-shrink-0 dropdown-notifications-actions">
                         <a href="javascript:void(0)" class="dropdown-notifications-read"><span
@@ -269,9 +269,9 @@
                         </div>
                       </div>
                       <div class="flex-grow-1">
-                        <h6 class="mb-1 small">Charles Franklin</h6>
-                        <small class="mb-1 d-block text-body">Accepted your connection</small>
-                        <small class="text-muted">12hr ago</small>
+                        <h6 class="mb-1 small">Dasar UI/UX</h6>
+                        <small class="mb-1 d-block text-body">Tugas anda sudah diberikan nilai oleh widyaiswara</small>
+                        <small class="text-muted">12 jam yang lalu</small>
                       </div>
                       <div class="flex-shrink-0 dropdown-notifications-actions">
                         <a href="javascript:void(0)" class="dropdown-notifications-read"><span
@@ -281,7 +281,7 @@
                       </div>
                     </div>
                   </li>
-                  <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                  <!-- <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
                     <div class="d-flex">
                       <div class="flex-shrink-0 me-3">
                         <div class="avatar">
@@ -423,13 +423,13 @@
                             class="ri-close-line ri-20px"></span></a>
                       </div>
                     </div>
-                  </li>
+                  </li> -->
                 </ul>
               </li>
               <li class="border-top">
                 <div class="d-grid p-4">
                   <a class="btn btn-primary btn-sm d-flex" href="javascript:void(0);">
-                    <small class="align-middle">View all notifications</small>
+                    <small class="align-middle">Lihat semua notifikasi</small>
                   </a>
                 </div>
               </li>
@@ -444,7 +444,7 @@
                 @php
                   $pegawai = App\Models\Pegawai::where('nip', Auth::user()->nip)->first();
                 @endphp
-                <img src="https://asncerdas.tangerangselatankota.go.id/images/photo/{{ $pegawai->foto }}" alt class="rounded-circle">
+                <img src="{{ url('/proxy-image/' . $pegawai->foto) }}" onerror="@if($pegawai->gender == 'p') {{asset('assets/img/avatars/19.png')}} @else {{asset('assets/img/avatars/10.png')}} @endif" alt="Profile Photo" class="rounded-circle">
               </div>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
@@ -454,16 +454,16 @@
                   <div class="d-flex">
                     <div class="flex-shrink-0 me-2">
                       <div class="avatar avatar-online">
-                        <img src="https://asncerdas.tangerangselatankota.go.id/images/photo/7048.jpg" alt class="rounded-circle">
+                      <img src="{{ url('/proxy-image/' . $pegawai->foto) }}" onerror="@if($pegawai->gender == 'p') {{asset('assets/img/avatars/19.png')}} @else {{asset('assets/img/avatars/10.png')}} @endif" alt="Profile Photo" class="rounded-circle">
                       </div>
                     </div>
                     <div class="flex-grow-1">
                       <span class="fw-medium d-block small">
                         @if (Auth::check())
-              {{ Auth::user()->name }}
-            @else
-        John Doe
-      @endif
+                              {{ Auth::user()->name }}
+                            @else
+                        John Doe
+                      @endif
                       </span>
                       {{ Auth::user()->pegawai->nama ?? Auth::user()->name }}
                     </div>
@@ -475,7 +475,7 @@
               </li>
               <li>
                 <a class="dropdown-item"
-                  href="{{ Route::has('profile.show') ? route('profile.show') : url('pages/profile-user') }}">
+                href="{{ route('profil') }}">
                   <i class="ri-user-3-line ri-22px me-3"></i><span class="align-middle">My Profile</span>
                 </a>
               </li>
@@ -487,7 +487,7 @@
           </a>
           </li>
         @endif
-              <li>
+              <!-- <li>
                 <a class="dropdown-item" href="{{url('pages/account-settings-billing')}}">
                   <span class="d-flex align-items-center align-middle">
                     <i class="flex-shrink-0 ri-file-text-line ri-22px me-3"></i>
@@ -495,7 +495,7 @@
                     <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger">4</span>
                   </span>
                 </a>
-              </li>
+              </li> -->
 
               @if (Auth::User() && Laravel\Jetstream\Jetstream::hasTeamFeatures())
           <li>
@@ -548,11 +548,16 @@
               @if (Auth::check())
           <li>
           <div class="d-grid px-4 pt-2 pb-1">
-            <a class="btn btn-sm btn-danger d-flex" href="{{ route('logout') }}"
-            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            <small class="align-middle">Logout</small>
-            <i class="ri-logout-box-r-line ms-2 ri-16px"></i>
-            </a>
+              <a class="btn btn-sm btn-danger d-flex" href="{{ route('logout') }}"
+                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                  <small class="align-middle">Logout</small>
+                  <i class="ri-logout-box-r-line ms-2 ri-16px"></i>
+              </a>
+
+              <!-- Logout form to call the logout route -->
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+              </form>
           </div>
           </li>
           <form method="POST" id="logout-form" action="{{ route('logout') }}">

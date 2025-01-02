@@ -288,12 +288,23 @@
       <!-- / Style Switcher-->
     @endif
 
-      <!-- navbar button: Start -->
-      <li>
-        <a href="{{ route('auth-login-basic') }}"
-          class="btn btn-primary px-2 px-sm-4 px-lg-2 px-xl-4 btn btn-lg btn-tosca"><span
-            class="fa fa-user me-md-1"></span><span class="d-none d-md-block">Login</span></a>
-      </li>
+     <!-- Navbar Button: Start -->
+    <li>
+      @if(auth()->check())
+        <!-- If user is logged in -->
+        <a href="/dev/corpu2/simapeka/public/app/academy/dashboard" class="btn btn-primary px-2 px-sm-4 px-lg-2 px-xl-4 btn btn-lg btn-tosca">
+          <span class="fa fa-dashboard me-md-1"></span>
+          <span class="d-none d-md-block">Dashboard</span>
+        </a>
+      @else
+        <!-- If user is not logged in -->
+        <a href="{{ route('auth-login-basic') }}" class="btn btn-primary px-2 px-sm-4 px-lg-2 px-xl-4 btn btn-lg btn-tosca">
+          <span class="fa fa-user me-md-1"></span>
+          <span class="d-none d-md-block">Login</span>
+        </a>
+      @endif
+    </li>
+
 
       <!-- navbar button: End -->
     </ul>
