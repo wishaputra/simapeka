@@ -23,6 +23,7 @@ class Course extends Model
      * @var array
      */
     protected $fillable = [
+        'nama_diklat',
         'title',
         'description',
         'thumbnail',
@@ -48,4 +49,3 @@ class Course extends Model
         return $this->hasMany(Enrollment::class);
     }
 }
- 

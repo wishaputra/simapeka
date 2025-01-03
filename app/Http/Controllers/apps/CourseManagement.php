@@ -8,6 +8,7 @@ use App\Models\Course;
 use App\Models\Section;
 use App\Models\Lesson;
 use App\Models\Quiz;
+use App\Models\Data_Bangkom;
 use App\Models\Question;
 use App\Models\ExamQuestion;
 use App\Models\Exam;
@@ -20,8 +21,9 @@ class CourseManagement extends Controller
 {
     public function index()
     {
-        $courses = Course::all(); // Fetch all courses from the database
-        return view('content.apps.Course-Management', compact('courses'));
+        $courses = Course::all();
+        $diklat_options = Data_Bangkom::pluck('nama_diklat')->unique()->toArray();
+        return view('content.apps.Course-Management', compact('courses', 'diklat_options'));
     }
 
 
@@ -30,66 +32,83 @@ class CourseManagement extends Controller
         $courses = Course::query();
         return DataTables::of($courses)
             ->addIndexColumn()
-            ->editColumn('thumbnail', fn($course) => asset($course->thumbnail))
-            ->editColumn('title', fn($course) => '<a href="' . route('courses.detail', $course->id) . '">' . $course->title . '</a>')
-            ->addColumn('time_period', fn($course) => $course->start_date . ' to ' . $course->end_date)
-            ->addColumn('check_in_time', fn($course) => $course->check_in_start . ' - ' . $course->check_in_end)
-            ->addColumn('material', fn($course) => asset($course->material)) // Add material
+            ->editColumn('thumbnail', function($course) {
+                // Use the new directory path for thumbnails
+                return $course->thumbnail ? asset('asset/img/thumbnails/' . basename($course->thumbnail)) : null;
+            })
+            ->editColumn('title', function($course) {
+                return '<a href="' . route('courses.detail', $course->id) . '">' . $course->title . '</a>';
+            })
+            ->addColumn('time_period', function($course) {
+                return $course->start_date . ' to ' . $course->end_date;
+            })
+            ->addColumn('check_in_time', function($course) {
+                return $course->check_in_start . ' - ' . $course->check_in_end;
+            })
+            ->addColumn('material', function($course) {
+                // Use the new directory path for materials
+                return $course->material ? asset('asset/materials/' . basename($course->material)) : null;
+            })
+            ->addColumn('nama_diklat', function($course) {
+                return $course->nama_diklat;
+            })
             ->rawColumns(['title'])
             ->make(true);
     }
 
 
-
-
     public function store(Request $request)
     {
         $request->validate([
+            'nama_diklat' => 'required|string|exists:daftar_diklat,nama_diklat',
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'thumbnail' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'material' => 'nullable|file|mimes:ppt,pptx|max:10240', // Validate PPT file
+            'material' => 'nullable|file|mimes:ppt,pptx|max:10240',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after_or_equal:start_date',
             'check_in_start' => 'required|date_format:H:i',
             'check_in_end' => 'required|date_format:H:i|after:check_in_start',
         ]);
 
-        // Store thumbnail
-        $thumbnailDirectory = public_path('asset/img/thumbnails');
-        if (!file_exists($thumbnailDirectory)) {
-            mkdir($thumbnailDirectory, 0755, true);
-        }
-        $thumbnailPath = $request->file('thumbnail')->move($thumbnailDirectory, $request->file('thumbnail')->getClientOriginalName());
+        $thumbnailPath = null;
+        $materialPath = null;
 
-        // Store PPT material
-        $materialDirectory = public_path('asset/materials');
-        if (!file_exists($materialDirectory)) {
-            mkdir($materialDirectory, 0755, true);
+        if ($request->hasFile('thumbnail')) {
+            $thumbnailPath = $request->file('thumbnail')->move('asset/img/thumbnails', $request->file('thumbnail')->getClientOriginalName());
         }
-        $materialPath = $request->file('material')->move($materialDirectory, $request->file('material')->getClientOriginalName());
 
-        // Save course
-        Course::create([
+        if ($request->hasFile('material')) {
+            $materialPath = $request->file('material')->move('asset/materials', $request->file('material')->getClientOriginalName());
+        }
+
+        $course = Course::create([
+            'nama_diklat' => $request->nama_diklat,
             'title' => $request->title,
             'description' => $request->description,
-            'thumbnail' => 'asset/img/thumbnails/' . $request->file('thumbnail')->getClientOriginalName(),
-            'material' => 'asset/materials/' . $request->file('material')->getClientOriginalName(),
+            'thumbnail' => $thumbnailPath,
+            'material' => $materialPath,
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
             'check_in_start' => $request->check_in_start,
             'check_in_end' => $request->check_in_end,
         ]);
 
-        return response()->json(['success' => true]);
+        return response()->json([
+            'success' => true,
+            'course' => $course,
+            'thumbnail_url' => asset($course->thumbnail),
+            'material_url' => $course->material ? asset($course->material) : null,
+        ]);
     }
-
 
 
     public function update(Request $request)
     {
+
         $course = Course::findOrFail($request->id);
 
+        $course->nama_diklat = $request->nama_diklat;
         $course->title = $request->title;
         $course->description = $request->description;
         $course->start_date = $request->start_date;
@@ -98,14 +117,28 @@ class CourseManagement extends Controller
         $course->check_in_end = $request->check_in_end;
 
         if ($request->hasFile('thumbnail')) {
+            // Delete old thumbnail
+            if ($course->thumbnail && file_exists(public_path($course->thumbnail))) {
+                unlink(public_path($course->thumbnail));
+            }
             $thumbnailPath = $request->file('thumbnail')->store('asset/img/thumbnails', 'public');
             $course->thumbnail = $thumbnailPath;
+        }
+
+        if ($request->hasFile('material')) {
+            // Delete old material
+            if ($course->material && file_exists(public_path($course->material))) {
+                unlink(public_path($course->material));
+            }
+            $materialPath = $request->file('material')->store('asset/materials', 'public');
+            $course->material = $materialPath;
         }
 
         $course->save();
 
         return response()->json(['success' => true]);
     }
+
 
 
 

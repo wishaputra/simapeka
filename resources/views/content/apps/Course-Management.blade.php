@@ -48,6 +48,7 @@
                     <tr>
                         <th>#</th>
                         <th>Thumbnail</th>
+                        <th>Nama Diklat</th>
                         <th>Title</th>
                         <th>Description</th>
                         <th>Time Period</th>
@@ -72,6 +73,15 @@
             <form id="addCourseForm">
                 @csrf
                 <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="courseDiklat" class="form-label">Nama Diklat</label>
+                        <input type="text" id="courseDiklat" name="nama_diklat" class="form-control" list="diklatOptions" required>
+                        <datalist id="diklatOptions">
+                            @foreach($diklat_options as $nama_diklat)
+                                <option value="{{ $nama_diklat }}">
+                            @endforeach
+                        </datalist>
+                    </div>
                     <div class="mb-3">
                         <label for="courseTitle" class="form-label">Course Title</label>
                         <input type="text" id="courseTitle" name="title" class="form-control" required>
@@ -127,6 +137,15 @@
                 <input type="hidden" id="editCourseId" name="id">
                 <div class="modal-body">
                     <div class="mb-3">
+                        <label for="editCourseDiklat" class="form-label">Nama Diklat</label>
+                        <input type="text" id="editCourseDiklat" name="nama_diklat" class="form-control" list="editDiklatOptions" required>
+                        <datalist id="editDiklatOptions">
+                            @foreach($diklat_options as $nama_diklat)
+                                <option value="{{ $nama_diklat }}">
+                            @endforeach
+                        </datalist>
+                    </div>
+                    <div class="mb-3">
                         <label for="editCourseTitle" class="form-label">Course Title</label>
                         <input type="text" id="editCourseTitle" name="title" class="form-control" required>
                     </div>
@@ -134,11 +153,11 @@
                         <label for="editCourseDescription" class="form-label">Description</label>
                         <textarea id="editCourseDescription" name="description" class="form-control" rows="4" required></textarea>
                     </div>
-                    <div class="mb-3">
+                    <!-- <div class="mb-3">
                         <label for="editCourseThumbnail" class="form-label">Thumbnail</label>
                         <input type="file" id="editCourseThumbnail" name="thumbnail" class="form-control" accept="image/*">
                         <img id="currentThumbnail" src="" alt="Current Thumbnail" class="img-fluid mt-2" width="150">
-                    </div>
+                    </div> -->
                     <div class="mb-3">
                         <label for="editCourseStartDate" class="form-label">Start Date</label>
                         <input type="date" id="editCourseStartDate" name="start_date" class="form-control" required>

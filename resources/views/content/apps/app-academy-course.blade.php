@@ -1,6 +1,7 @@
 @extends('layouts/layoutMaster')
 @php
 $configData = Helper::appClasses();
+use Illuminate\Support\Str;
 @endphp
 
 @section('title', 'Academy My Courses - App')
@@ -29,56 +30,57 @@ $configData = Helper::appClasses();
 
 @section('content')
 <div class="app-academy">
-  <div class="card p-0 mb-6">
+  <div class="card p-0 mb-4">
     <!-- ... (keep the existing header content) ... -->
   </div>
 
-  <div class="card mb-6">
-    <div class="card-header d-flex flex-wrap justify-content-between gap-4">
-        <div class="card-title mb-0 me-1">
+  <div class="card mb-4">
+    <div class="card-header d-flex flex-wrap justify-content-between gap-2">
+        <div class="card-title mb-0">
             <h5 class="mb-0">Pelatihan Saya</h5>
             <p class="mb-0 text-body">Total {{ $courses->count() }} pelatihan yang anda ikuti</p>
         </div>
     </div>
     <div class="card-body">
-        <div class="row">
+        <div class="row g-3">
             @foreach ($courses as $course)
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="rounded-4 text-center mb-3">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="rounded-top text-center">
                             <a href="{{ url('app/academy/course-details/' . $course->id) }}">
                                 <img class="img-fluid" src="{{ $course->thumbnail ? asset($course->thumbnail) : asset('assets/img/placeholder.png') }}" alt="{{ $course->title }}">
                             </a>
                         </div>
-                        <div class="card-body p-3 pt-0">
-                            <a href="{{ url('app/academy/course-details/' . $course->id) }}" class="h5">{{ $course->title }}</a>
-                            <p class="mt-1">{{ $course->description }}</p>
-                            <p class="d-flex align-items-center mb-1">
-                                <i class="ri-time-line ri-20px me-1"></i>
-                                {{ $course->progress['completed_lessons'] }}/{{ $course->progress['total_lessons'] }} Lessons
-                                | {{ $course->progress['completed_quizzes'] }}/{{ $course->progress['total_quizzes'] }} Quizzes
-                            </p>
-                            <div class="progress rounded-pill mb-2" style="height: 8px">
+                        <div class="card-body p-3">
+                            <h6 class="card-title mb-1">
+                                <a href="{{ url('app/academy/course-details/' . $course->id) }}" class="text-body">{{ $course->title }}</a>
+                            </h6>
+                            <p class="card-text small mb-2">{{ Str::limit($course->description, 100) }}</p>
+                            <div class="d-flex align-items-center mb-1 small">
+                                <i class="ri-time-line ri-lg me-1"></i>
+                                <span>{{ $course->progress['completed_lessons'] }}/{{ $course->progress['total_lessons'] }} Lessons |
+                                {{ $course->progress['completed_quizzes'] }}/{{ $course->progress['total_quizzes'] }} Quizzes</span>
+                            </div>
+                            <div class="progress rounded-pill mb-2" style="height: 6px">
                                 <div class="progress-bar" role="progressbar" style="width: {{ $course->progress['percentage'] }}%;" aria-valuenow="{{ $course->progress['percentage'] }}" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
-                            <p class="text-end mb-4">{{ $course->progress['percentage'] }}% Complete</p>
-                            <div class="d-flex flex-column flex-md-row gap-4 text-nowrap flex-wrap flex-md-nowrap flex-lg-wrap flex-xxl-nowrap">
+                            <p class="text-end small mb-3">{{ $course->progress['percentage'] }}% Complete</p>
+                            <div class="d-flex flex-wrap gap-2">
                                 @if($course->progress['is_final_exam_passed'])
-                                    <a class="w-100 btn btn-success d-flex align-items-center" href="{{ url('app/academy/course-details/' . $course->id) }}">
-                                        <i class="ri-check-line ri-16px align-middle me-2"></i><span>Course Completed</span>
+                                    <a class="btn btn-sm btn-success flex-grow-1" href="{{ url('app/academy/course-details/' . $course->id) }}">
+                                        <i class="ri-check-line ri-lg align-middle me-1"></i>Completed
                                     </a>
-                                    <a class="w-100 btn btn-primary d-flex align-items-center" href="{{ route('academy.download.certificate', $course->id) }}">
-                                        <i class="ri-download-line ri-16px align-middle me-2"></i><span>Download Certificate</span>
+                                    <a class="btn btn-sm btn-primary flex-grow-1" href="{{ route('academy.download.certificate', $course->id) }}">
+                                        <i class="ri-download-line ri-lg align-middle me-1"></i>Certificate
                                     </a>
                                 @else
-                                    <a class="w-100 btn btn-outline-secondary d-flex align-items-center" href="{{ url('app/academy/course-details/' . $course->id) }}">
-                                        <i class="ri-refresh-line ri-16px align-middle me-2"></i><span>Continue Course</span>
+                                    <a class="btn btn-sm btn-outline-secondary flex-grow-1" href="{{ url('app/academy/course-details/' . $course->id) }}">
+                                        <i class="ri-refresh-line ri-lg align-middle me-1"></i>Continue
                                     </a>
                                 @endif
-
                                 @if ($course->material)
-                                    <a class="w-100 btn btn-outline-primary d-flex align-items-center" href="{{ asset($course->material) }}" download>
-                                        <i class="ri-download-line ri-16px align-middle me-2"></i><span>Download Material</span>
+                                    <a class="btn btn-sm btn-outline-primary flex-grow-1" href="{{ asset($course->material) }}" download>
+                                        <i class="ri-download-line ri-lg align-middle me-1"></i>Material
                                     </a>
                                 @endif
                             </div>
