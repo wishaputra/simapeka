@@ -475,6 +475,7 @@ Route::delete('/course-management/delete/{id}', [CourseManagement::class, 'destr
 //management detail
 Route::get('/courses/{id}/detail', [CourseManagement::class, 'detail'])->name('courses.detail');
 Route::post('/courses/{course}/sections', [CourseManagement::class, 'storeSection']);
+Route::put('/courses/sections/{sectionId}', [CourseManagement::class, 'updateSection'])->name('courses.sections.update');
 Route::delete('/courses/sections/{section}', [CourseManagement::class, 'deleteSection']);
 Route::get('/courses/{course_id}/attendance', [AttendanceController::class, 'showAttendance'])->name('courses.attendance');
 
@@ -483,8 +484,8 @@ Route::get('/courses/{course_id}/attendance', [AttendanceController::class, 'sho
 
 Route::get('sections/{sectionId}/lessons', [CourseManagement::class, 'Lesson'])->name('lessons.index');
 Route::post('sections/{sectionId}/lessons', [CourseManagement::class, 'storeLesson'])->name('lessons.store');
-Route::get('sections/{sectionId}/lessons/{lessonId}', [CourseManagement::class, 'showLesson'])->name('lessons.show');
-Route::put('sections/{sectionId}/lessons/{lessonId}', [CourseManagement::class, 'updateLesson'])->name('lessons.update');
+Route::get('/sections/{sectionId}/lessons/{lessonId}', [CourseManagement::class, 'getLesson'])->name('lessons.get');
+Route::match(['put', 'patch'], 'sections/{sectionId}/lessons/{lessonId}', [CourseManagement::class, 'updateLesson'])->name('lessons.update');
 Route::delete('sections/{sectionId}/lessons/{lessonId}', [CourseManagement::class, 'destroyLesson'])->name('lessons.destroy');
 
 
@@ -492,7 +493,7 @@ Route::delete('sections/{sectionId}/lessons/{lessonId}', [CourseManagement::clas
 Route::get('/sections/{sectionId}/quizzes', [CourseManagement::class, 'quiz'])->name('quizzes.index');
 Route::post('/quizzes', [CourseManagement::class, 'quizStore']);
 Route::get('/quizzes/{quiz}', [CourseManagement::class, 'quizShow']);
-Route::put('/quizzes/{quiz}', [CourseManagement::class, 'quizUpdate']);
+Route::match(['PUT', 'PATCH'], '/quizzes/{id}', [CourseManagement::class, 'quizUpdate'])->name('quizzes.update');
 Route::delete('/quizzes/{quiz}', [CourseManagement::class, 'quizDestroy']);
 
 //question

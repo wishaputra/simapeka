@@ -31,13 +31,13 @@
                     <td>{{ $question->type }}</td>
                     <td>{{ $question->points }}</td>
                     <td>
-                        <button 
-                            class="btn btn-warning edit-question" 
-                            data-id="{{ $question->id }}" 
-                            data-question="{{ $question->question_text }}" 
-                            data-type="{{ $question->type }}" 
-                            data-options="{{ json_encode($question->options) }}" 
-                            data-correct="{{ $question->correct_answer }}" 
+                        <button
+                            class="btn btn-warning edit-question"
+                            data-id="{{ $question->id }}"
+                            data-question="{{ $question->question_text }}"
+                            data-type="{{ $question->type }}"
+                            data-options="{{ json_encode($question->options) }}"
+                            data-correct="{{ $question->correct_answer }}"
                             data-points="{{ $question->points }}">
                             Edit
                         </button>
@@ -63,7 +63,7 @@
                     <div class="mb-3">
                         <label for="question_text" class="form-label">Question Text</label>
                         <textarea id="question_text" class="form-control" name="question_text" required></textarea>
-                    </div> 
+                    </div>
                     <div class="mb-3">
                         <label for="type" class="form-label">Type</label>
                         <input type="hidden" name="quiz_id" value="{{ $quizId }}">
@@ -98,5 +98,3 @@
 </div>
 
 @endsection
-
-

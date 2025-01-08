@@ -366,7 +366,7 @@
     "isEntry": true
   },
   "resources/assets/js/app-academy-dashboard.js": {
-    "file": "assets/app-academy-dashboard-CypNLF8K.js",
+    "file": "assets/app-academy-dashboard-DA234Yww.js",
     "name": "app-academy-dashboard",
     "src": "resources/assets/js/app-academy-dashboard.js",
     "isEntry": true
@@ -616,7 +616,7 @@
     "isEntry": true
   },
   "resources/assets/js/course-management.js": {
-    "file": "assets/course-management-07zSKBZw.js",
+    "file": "assets/course-management-ro49-eXO.js",
     "name": "course-management",
     "src": "resources/assets/js/course-management.js",
     "isEntry": true
@@ -844,7 +844,7 @@
     "isEntry": true
   },
   "resources/assets/js/lesson-details.js": {
-    "file": "assets/lesson-details-CzH-Ny8d.js",
+    "file": "assets/lesson-details-DGQ1dtWL.js",
     "name": "lesson-details",
     "src": "resources/assets/js/lesson-details.js",
     "isEntry": true
@@ -856,7 +856,7 @@
     "isEntry": true
   },
   "resources/assets/js/management-details.js": {
-    "file": "assets/management-details-CDV-aWNu.js",
+    "file": "assets/management-details-BDxaHQrA.js",
     "name": "management-details",
     "src": "resources/assets/js/management-details.js",
     "isEntry": true
@@ -1000,13 +1000,13 @@
     "isEntry": true
   },
   "resources/assets/js/question-management.js": {
-    "file": "assets/question-management-CMxxDnxw.js",
+    "file": "assets/question-management-CtwZ2Xgd.js",
     "name": "question-management",
     "src": "resources/assets/js/question-management.js",
     "isEntry": true
   },
   "resources/assets/js/quiz-management.js": {
-    "file": "assets/quiz-management-DURqIQeH.js",
+    "file": "assets/quiz-management-CFAeu5sH.js",
     "name": "quiz-management",
     "src": "resources/assets/js/quiz-management.js",
     "isEntry": true
@@ -3807,7 +3807,7 @@
     "isEntry": true
   },
   "resources/assets/vendor/libs/numeral/numeral.js": {
-    "file": "assets/numeral-CDEz25Q-.js",
+    "file": "assets/numeral-BCnviesb.js",
     "name": "numeral",
     "src": "resources/assets/vendor/libs/numeral/numeral.js",
     "isEntry": true,

@@ -192,7 +192,7 @@ $(document).ready(function () {
 
     $.ajax({
       url: '/dev/corpu2/simapeka/public/course-management/update',
-      type: 'PUT', // Change this to PUT
+      type: 'POST', // Change this to PUT
       data: formData,
       processData: false,
       contentType: false,

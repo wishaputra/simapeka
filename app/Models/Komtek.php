@@ -27,4 +27,9 @@ class Komtek extends Model
     {
         return $this->belongsTo(DaftarDiklat::class, 'id_diklat_atasan');
     }
+
+    public function daftarDiklat()
+    {
+        return $this->belongsTo(Data_Bangkom::class, 'id_diklat_atasan', 'id');
+    }
 }

@@ -1,11 +1,10 @@
 @extends('layouts/layoutMaster')
 
-@section('title', 'Course Detail')
+@section('title', 'Course Section')
 
 @section('page-script')
 @vite('resources/assets/js/management-details.js')
 @endsection
-
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 @section('content')
@@ -41,7 +40,7 @@
                             <a href="{{ route('quizzes.index', ['sectionId' => $section->id]) }}" class="btn btn-success">
                                 Manage Quiz
                             </a>
-                            <button class="btn btn-warning edit-section" data-id="{{ $section->id }}">
+                            <button class="btn btn-warning edit-section" data-id="{{ $section->id }}" data-title="{{ $section->title }}" data-order="{{ $section->order }}">
                                 <i class="fas fa-edit"></i>
                             </button>
                             <button class="btn btn-danger delete-section" data-id="{{ $section->id }}">
@@ -55,30 +54,58 @@
     </div>
     <!-- Add Section Modal -->
     <div class="modal fade" id="addSectionModal" tabindex="-1" aria-labelledby="addSectionLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="addSectionLabel">Add Section</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <form id="addSectionForm">
-            <div class="modal-body">
-            <div class="mb-3">
-                <label for="sectionTitle" class="form-label">Title</label>
-                <input type="text" class="form-control" id="sectionTitle" name="title" required>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addSectionLabel">Add Section</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="addSectionForm">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="sectionTitle" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="sectionTitle" name="title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="sectionOrder" class="form-label">Order</label>
+                            <input type="number" class="form-control" id="sectionOrder" name="order" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button class="btn btn-primary" id="submit-add-section" data-course-id="{{ $course->id }}">Submit</button>
+                    </div>
+                </form>
             </div>
-            <div class="mb-3">
-                <label for="sectionOrder" class="form-label">Order</label>
-                <input type="number" class="form-control" id="sectionOrder" name="order" required>
-            </div>
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button class="btn btn-primary" id="submit-add-section" data-course-id="{{ $course->id }}">Submit</button>
-            </div>
-        </form>
         </div>
     </div>
+    <!-- Edit Section Modal -->
+    <div class="modal fade" id="editSectionModal" tabindex="-1" aria-labelledby="editSectionLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editSectionLabel">Edit Section</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="editSectionForm">
+                    <div class="modal-body">
+                        <input type="hidden" id="editSectionId" name="id">
+                        <div class="mb-3">
+                            <label for="editSectionTitle" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="editSectionTitle" name="title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editSectionOrder" class="form-label">Order</label>
+                            <input type="number" class="form-control" id="editSectionOrder" name="order" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

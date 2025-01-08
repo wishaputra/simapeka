@@ -177,6 +177,19 @@ class CourseManagement extends Controller
         return response()->json(['success' => true]);
     }
 
+    public function updateSection(Request $request, $sectionId)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'order' => 'required|integer',
+        ]);
+
+        $section = Section::findOrFail($sectionId);
+        $section->update($request->only('title', 'order'));
+
+        return response()->json(['success' => true]);
+    }
+
     public function deleteSection($sectionId)
     {
         $section = Section::findOrFail($sectionId);
@@ -185,6 +198,8 @@ class CourseManagement extends Controller
         return response()->json(['success' => true]);
     }
 
+
+
     public function lesson($sectionId)
     {
         $section = Section::with('lessons')->findOrFail($sectionId);
@@ -192,42 +207,29 @@ class CourseManagement extends Controller
     }
 
     public function storeLesson(Request $request, $sectionId)
-{
-    $validated = $request->validate([
-        'order' => 'required|integer',
-        'title' => 'required|string|max:255',
-        'type' => 'required|in:video,pdf',
-        'content_url' => 'nullable|string|url', // For video URL
-        'content_file' => 'nullable|file|mimes:mp4,pdf|max:20480', // For file upload
-        'duration' => 'required|integer|min:1',
-    ]);
+    {
+        $validated = $request->validate([
+            'order' => 'required|integer',
+            'title' => 'required|string|max:255',
+            'type' => 'required|in:video,pdf',
+            'content_url' => 'nullable|string|url',
+            'content_file' => 'nullable|file|mimes:mp4,pdf|max:20480',
+            'duration' => 'required|integer|min:1',
+        ]);
 
-    if ($request->hasFile('content_file')) {
-        // Save file directly to public/lessons directory
-        $file = $request->file('content_file');
-        $fileName = uniqid() . '_' . $file->getClientOriginalName(); // Unique file name
-        $filePath = public_path('lessons'); // Path to public/lessons directory
-
-        // Ensure the directory exists
-        if (!file_exists($filePath)) {
-            mkdir($filePath, 0755, true);
+        if ($request->hasFile('content_file')) {
+            $file = $request->file('content_file');
+            $path = $file->store('lessons', 'public');
+            $validated['content'] = '/storage/' . $path;
+        } elseif ($request->filled('content_url')) {
+            $validated['content'] = $validated['content_url'];
         }
 
-        // Move file to the public directory
-        $file->move($filePath, $fileName);
+        $validated['section_id'] = $sectionId;
+        $lesson = Lesson::create($validated);
 
-        // Set the public URL for the file
-        $validated['content'] = '/dev/corpu2/simapeka/public/lessons/' . $fileName;
-    } else {
-        // Use the URL for content
-        $validated['content'] = $validated['content_url'];
+        return response()->json(['success' => true, 'lesson' => $lesson]);
     }
-
-    $validated['section_id'] = $sectionId;
-    Lesson::create($validated);
-
-    return response()->json(['success' => true]);
-}
 
 
 
@@ -239,28 +241,27 @@ class CourseManagement extends Controller
             'order' => 'required|integer',
             'title' => 'required|string|max:255',
             'type' => 'required|in:video,pdf',
-            'content_url' => 'nullable|string|url', // For video URL
-            'content_file' => 'nullable|file|mimes:mp4,pdf|max:20480', // For file upload
+            'content_url' => 'nullable|string|url',
+            'content_file' => 'nullable|file|mimes:mp4,pdf|max:20480',
             'duration' => 'required|integer|min:1',
         ]);
 
         if ($request->hasFile('content_file')) {
-            // Remove old file if exists
-            if ($lesson->type === 'video' || $lesson->type === 'pdf') {
-                Storage::delete($lesson->content);
+            // Delete old file if exists
+            if ($lesson->content && Storage::disk('public')->exists($lesson->content)) {
+                Storage::disk('public')->delete($lesson->content);
             }
 
-            // Store new file and update 'content' field
-            $filePath = $request->file('content_file')->store('lessons');
-            $validated['content'] = $filePath;
-        } else {
-            // Update the URL for content if provided
-            $validated['content'] = $validated['content_url'] ?? $lesson->content;
+            $file = $request->file('content_file');
+            $path = $file->store('lessons', 'public');
+            $validated['content'] = '/storage/' . $path;
+        } elseif ($request->filled('content_url')) {
+            $validated['content'] = $validated['content_url'];
         }
 
         $lesson->update($validated);
 
-        return response()->json(['success' => true]);
+        return response()->json(['success' => true, 'lesson' => $lesson]);
     }
 
 
@@ -280,7 +281,7 @@ class CourseManagement extends Controller
 
 
 
-    public function showLesson($sectionId, $lessonId)
+    public function getLesson($sectionId, $lessonId)
     {
         $lesson = Lesson::findOrFail($lessonId);
         return response()->json(['success' => true, 'lesson' => $lesson]);
@@ -317,14 +318,14 @@ class CourseManagement extends Controller
     {
         $quiz = Quiz::findOrFail($id);
 
-        $request->validate([
+        $validated = $request->validate([
             'title' => 'required|string|max:255',
             'points' => 'required|integer|min:0',
             'duration' => 'required|integer|min:1',
             'status' => 'required|boolean',
         ]);
 
-        $quiz->update($request->all());
+        $quiz->update($validated);
 
         return response()->json([
             'success' => true,
@@ -332,6 +333,7 @@ class CourseManagement extends Controller
             'quiz' => $quiz,
         ]);
     }
+
 
     public function quizShow($id)
     {
@@ -364,41 +366,39 @@ class CourseManagement extends Controller
 
 
     public function questionStore(Request $request, $quizId)
-{
-    $validated = $request->validate([
-        'question_text' => 'required|string|max:255',
-        'type' => 'required|in:essay,multiple_choice',
-        'options' => 'nullable|array', // Expecting an array for multiple choice
-        'correct_answer' => 'nullable|string',
-        'points' => 'required|numeric|min:1',
-    ]);
+    {
+        $validated = $request->validate([
+            'question_text' => 'required|string|max:255',
+            'type' => 'required|in:essay,multiple_choice',
+            'options' => 'nullable|array', // Expecting an array for multiple choice
+            'correct_answer' => 'nullable|string',
+            'points' => 'required|numeric|min:1',
+        ]);
 
-    // Ensure the quiz exists
-    if (!Quiz::find($quizId)) {
-        return response()->json(['error' => 'Quiz not found.'], 404);
-    }
-
-    $validated['quiz_id'] = $quizId;
-
-    // Handle options for multiple-choice questions
-    if ($validated['type'] === 'multiple_choice') {
-        if (empty($validated['options'])) {
-            return response()->json(['error' => 'Options are required for multiple choice questions.'], 422);
+        // Ensure the quiz exists
+        if (!Quiz::find($quizId)) {
+            return response()->json(['error' => 'Quiz not found.'], 404);
         }
 
-        // Ensure options are stored as a JSON array
-        $validated['options'] = array_values($validated['options']); // Ensures keys are numeric
-    } else {
-        $validated['options'] = null; // No options for essay questions
+        $validated['quiz_id'] = $quizId;
+
+        // Handle options for multiple-choice questions
+        if ($validated['type'] === 'multiple_choice') {
+            if (empty($validated['options'])) {
+                return response()->json(['error' => 'Options are required for multiple choice questions.'], 422);
+            }
+
+            // Ensure options are stored as a JSON array
+            $validated['options'] = array_values($validated['options']); // Ensures keys are numeric
+        } else {
+            $validated['options'] = null; // No options for essay questions
+        }
+
+        // Create the question
+        Question::create($validated);
+
+        return response()->json(['success' => true, 'message' => 'Question saved successfully']);
     }
-
-    // Create the question
-    Question::create($validated);
-
-    return response()->json(['success' => true, 'message' => 'Question saved successfully']);
-}
-
-
 
     public function questionUpdate(Request $request, $id)
     {
@@ -407,21 +407,28 @@ class CourseManagement extends Controller
         $validated = $request->validate([
             'question_text' => 'required|string|max:255',
             'type' => 'required|in:essay,multiple_choice',
-            'options' => 'nullable|array',
-            'correct_answer' => 'nullable|string',
+            'options' => 'required_if:type,multiple_choice|array',
+            'correct_answer' => 'required_if:type,multiple_choice|string',
             'points' => 'required|numeric|min:1',
         ]);
 
-        if ($validated['type'] === 'multiple_choice' && empty($validated['options'])) {
-            return response()->json(['error' => 'Options are required for multiple choice questions.'], 422);
+        if ($validated['type'] === 'multiple_choice') {
+            $validated['options'] = json_encode($validated['options']);
+        } else {
+            $validated['options'] = null;
+            $validated['correct_answer'] = null;
         }
-
-        $validated['options'] = $validated['type'] === 'multiple_choice' ? json_encode($validated['options']) : null;
 
         $question->update($validated);
 
-        return response()->json(['success' => true, 'message' => 'Question updated successfully.']);
+        return response()->json([
+            'success' => true,
+            'message' => 'Question updated successfully.',
+            'question' => $question
+        ]);
     }
+
+
 
     public function questionDestroy($id)
     {

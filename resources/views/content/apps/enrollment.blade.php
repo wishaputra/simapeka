@@ -26,6 +26,20 @@
 @section('content')
 <div class="container">
     <h2 class="mb-4">Course yang tersedia</h2>
+
+    <!-- Filter Dropdown -->
+    <form method="GET" action="{{ route('enrollment.index') }}" class="mb-4">
+        <div class="row">
+            <div class="col-md-4">
+                <select name="filter" class="form-select" onchange="this.form.submit()">
+                    <option value="">-- Select Filter --</option>
+                    <option value="umum" {{ request('filter') == 'umum' ? 'selected' : '' }}>Umum</option>
+                    <option value="berdasarkan_bangkom" {{ request('filter') == 'berdasarkan_bangkom' ? 'selected' : '' }}>Berdasarkan Bangkom</option>
+                </select>
+            </div>
+        </div>
+    </form>
+
     <div class="row">
         @foreach ($courses as $course)
             <div class="col-md-4 mb-4">
@@ -55,6 +69,4 @@
         @endforeach
     </div>
 </div>
-
-
 @endsection

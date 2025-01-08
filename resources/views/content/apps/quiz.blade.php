@@ -7,9 +7,9 @@
 @endsection
 
 @section('content')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <div class="container">
     <h1>Quizzes for Section: {{ $section->title }}</h1>
-    <!-- <p>Manage quizzes for this section. You can add, edit, or delete quizzes and configure questions.</p> -->
 
     <button class="btn btn-primary mb-3" id="open-add-quiz-modal" data-section-id="{{ $section->id }}">Add Quiz</button>
 
@@ -51,7 +51,6 @@
 
 <!-- Add/Edit Quiz Modal -->
 <div class="modal fade" id="quizModal" tabindex="-1" aria-labelledby="quizModalLabel" aria-hidden="true">
-<meta name="csrf-token" content="{{ csrf_token() }}">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -59,6 +58,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form id="quizForm">
+                @csrf
                 <div class="modal-body">
                     <input type="hidden" id="quiz-id" name="id">
                     <input type="hidden" id="section-id" name="section_id" value="{{ $section->id }}">
@@ -91,5 +91,3 @@
     </div>
 </div>
 @endsection
-
-

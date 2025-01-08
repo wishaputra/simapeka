@@ -4,18 +4,32 @@ namespace App\Http\Controllers\apps;
 
 use App\Models\Course;
 use App\Models\Enrollment;
+use App\Models\Komtek;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
 class EnrollmentController extends Controller
 {
-    public function index()
+  public function index(Request $request)
     {
         $user = Auth::user();
 
-        // Retrieve all courses
-        $courses = Course::all();
+        // Get the filter value
+        $filter = $request->input('filter');
+
+        // Retrieve courses based on the filter
+        if ($filter === 'umum') {
+            $courses = Course::where('nama_diklat', 'LIKE', '%umum%')->get();
+        } elseif ($filter === 'berdasarkan_bangkom') {
+            $courses = Course::whereIn('nama_diklat', function ($query) {
+                $query->select('nama_diklat')
+                    ->from('daftar_diklat')
+                    ->whereIn('id', Komtek::pluck('id_diklat_atasan'));
+            })->get();
+        } else {
+            $courses = Course::all();
+        }
 
         // Get a list of course IDs the user is already enrolled in
         $enrolledCourseIds = Enrollment::where('nip', $user->nip)->pluck('course_id')->toArray();
@@ -25,6 +39,8 @@ class EnrollmentController extends Controller
             'enrolledCourseIds' => $enrolledCourseIds,
         ]);
     }
+
+
 
     public function store(Request $request)
     {

@@ -8,21 +8,18 @@
 
 @section('content')
 <script>
-    const sectionId = "{{ $sectionId }}"; // Assuming $sectionId is available in your backend
+    const sectionId = "{{ $sectionId }}";
 </script>
 
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<div class="container"> 
+<div class="container">
     <h1>Manage Lessons for Section: {{ $section->title }}</h1>
-    <!-- <p>{{ $section->description }}</p> -->
 
-    <!-- Add Lesson Button -->
     <div class="mb-3">
         <button class="btn btn-primary" id="add-lesson">Add Lesson</button>
     </div>
 
-    <!-- Lessons Table -->
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -41,24 +38,18 @@
                     <td>{{ $lesson->type }}</td>
                     <td>{{ $lesson->duration }} mins</td>
                     <td>
-                    <button 
-                        class="btn btn-warning edit-lesson" 
-                        data-id="{{ $lesson->id }}" 
-                        data-lesson="{{ json_encode(['id' => $lesson->id, 'title' => $lesson->title, 'type' => $lesson->type, 'duration' => $lesson->duration, 'order' => $lesson->order, 'content' => $lesson->content]) }}">
-                        Edit
-                    </button>
-                    <button class="btn btn-danger delete-lesson" 
-                        data-id="{{ $lesson->id }}" 
-                        data-url="{{ route('lessons.destroy', ['sectionId' => $section->id, 'lessonId' => $lesson->id]) }}">
-                        Delete
-                    </button>
+                        <button class="btn btn-warning edit-lesson" data-id="{{ $lesson->id }}">
+                            Edit
+                        </button>
+                        <button class="btn btn-danger delete-lesson" data-id="{{ $lesson->id }}">
+                            Delete
+                        </button>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
 
-    <!-- Add/Edit Lesson Modal -->
     <div class="modal fade" id="lessonModal" tabindex="-1" aria-labelledby="lessonModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -85,11 +76,11 @@
                                 <option value="pdf">PDF</option>
                             </select>
                         </div>
-                        <div class="mb-3" id="content-url-group" style="display: none;">
+                        <div class="mb-3" id="content-url-group">
                             <label for="lesson-content-url" class="form-label">Video URL</label>
                             <input type="url" class="form-control" id="lesson-content-url" name="content_url">
                         </div>
-                        <div class="mb-3" id="content-file-group" style="display: none;">
+                        <div class="mb-3" id="content-file-group">
                             <label for="lesson-content-file" class="form-label">Upload File</label>
                             <input type="file" class="form-control" id="lesson-content-file" name="content_file" accept=".pdf,.mp4">
                         </div>
