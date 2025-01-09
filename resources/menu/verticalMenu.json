@@ -346,14 +346,14 @@
       "slug": "app-academy",
       "submenu": [
         {
-          "url": "/enrollment",
-          "name": "Pemilihan Course",
-          "slug": "app-academy-pemilihan"
-        },
-        {
           "url": "app/academy/dashboard",
           "name": "Dashboard",
           "slug": "app-academy-dashboard"
+        },
+        {
+          "url": "/enrollment",
+          "name": "Pemilihan Course",
+          "slug": "app-academy-pemilihan"
         },
         {
           "url": "app/academy/course",
@@ -1203,7 +1203,9 @@
       "name": "Konfigurasi",
       "icon": "menu-icon tf-icons ri-settings-line",
       "slug": "app-user",
-      "role": [1],
+      "role": [
+        1
+      ],
       "disabled": false,
       "submenu": [
         {

@@ -59,7 +59,8 @@ use Illuminate\Support\Str;
                             <div class="d-flex align-items-center mb-1 small">
                                 <i class="ri-time-line ri-lg me-1"></i>
                                 <span>{{ $course->progress['completed_lessons'] }}/{{ $course->progress['total_lessons'] }} Lessons |
-                                {{ $course->progress['completed_quizzes'] }}/{{ $course->progress['total_quizzes'] }} Quizzes</span>
+                                {{ $course->progress['completed_quizzes'] }}/{{ $course->progress['total_quizzes'] }} Quizzes |
+                                Exam: {{ $course->progress['is_final_exam_passed'] ? 'Passed' : 'Not Passed' }}</span>
                             </div>
                             <div class="progress rounded-pill mb-2" style="height: 6px">
                                 <div class="progress-bar" role="progressbar" style="width: {{ $course->progress['percentage'] }}%;" aria-valuenow="{{ $course->progress['percentage'] }}" aria-valuemin="0" aria-valuemax="100"></div>

@@ -17,59 +17,61 @@ use Illuminate\Support\Facades\Storage;
 class AcademyCourse extends Controller
 {
   public function index()
-  {
-      // Get the authenticated user
-      $user = Auth::user();
+    {
+        // Get the authenticated user
+        $user = Auth::user();
 
-      // Retrieve courses the user has enrolled in
-      $enrolledCourses = Enrollment::where('nip', $user->nip)
-          ->pluck('course_id');
+        // Retrieve courses the user has enrolled in
+        $enrolledCourses = Enrollment::where('nip', $user->nip)
+            ->pluck('course_id');
 
-      $courses = Course::whereIn('id', $enrolledCourses)->get();
+        $courses = Course::whereIn('id', $enrolledCourses)->get();
 
-      // Fetch progress data for each course
-      $coursesWithProgress = $courses->map(function ($course) use ($user) {
-          $progress = AsnCourseProgress::where('nip', $user->nip)
-              ->where('course_id', $course->id)
-              ->first();
+        // Fetch progress data for each course
+        $coursesWithProgress = $courses->map(function ($course) use ($user) {
+            $progress = AsnCourseProgress::where('nip', $user->nip)
+                ->where('course_id', $course->id)
+                ->first();
 
-          if ($progress) {
-              $totalLessons = $course->sections->flatMap->lessons->count();
-              $totalQuizzes = $course->sections->flatMap->quizzes->count();
-              $completedLessons = count($progress->lesson_progress);
-              $completedQuizzes = count($progress->quiz_progress);
+            if ($progress) {
+                $totalLessons = $course->sections->flatMap->lessons->count();
+                $totalQuizzes = $course->sections->flatMap->quizzes->count();
+                $completedLessons = count($progress->lesson_progress);
+                $completedQuizzes = count($progress->quiz_progress);
 
-              $totalItems = $totalLessons + $totalQuizzes;
-              $completedItems = $completedLessons + $completedQuizzes;
+                $totalItems = $totalLessons + $totalQuizzes + 1; // +1 for the exam
+                $completedItems = $completedLessons + $completedQuizzes + ($progress->is_final_exam_passed ? 1 : 0);
 
-              $percentageComplete = $totalItems > 0 ? ($completedItems / $totalItems) * 100 : 0;
+                $percentageComplete = $totalItems > 0 ? ($completedItems / $totalItems) * 100 : 0;
 
-              $course->progress = [
-                  'percentage' => round($percentageComplete, 2),
-                  'completed_lessons' => $completedLessons,
-                  'total_lessons' => $totalLessons,
-                  'completed_quizzes' => $completedQuizzes,
-                  'total_quizzes' => $totalQuizzes,
-                  'is_final_exam_passed' => $progress->is_final_exam_passed,
-                  'completed_at' => $progress->completed_at,
-              ];
-          } else {
-              $course->progress = [
-                  'percentage' => 0,
-                  'completed_lessons' => 0,
-                  'total_lessons' => $course->sections->flatMap->lessons->count(),
-                  'completed_quizzes' => 0,
-                  'total_quizzes' => $course->sections->flatMap->quizzes->count(),
-                  'is_final_exam_passed' => false,
-                  'completed_at' => null,
-              ];
-          }
+                $course->progress = [
+                    'percentage' => round($percentageComplete, 2),
+                    'completed_lessons' => $completedLessons,
+                    'total_lessons' => $totalLessons,
+                    'completed_quizzes' => $completedQuizzes,
+                    'total_quizzes' => $totalQuizzes,
+                    'is_final_exam_passed' => $progress->is_final_exam_passed,
+                    'completed_at' => $progress->completed_at,
+                ];
+            } else {
+                $course->progress = [
+                    'percentage' => 0,
+                    'completed_lessons' => 0,
+                    'total_lessons' => $course->sections->flatMap->lessons->count(),
+                    'completed_quizzes' => 0,
+                    'total_quizzes' => $course->sections->flatMap->quizzes->count(),
+                    'is_final_exam_passed' => false,
+                    'completed_at' => null,
+                ];
+            }
 
-          return $course;
-      });
+            return $course;
+        });
 
-      return view('content.apps.app-academy-course', ['courses' => $coursesWithProgress]);
-  }
+        return view('content.apps.app-academy-course', ['courses' => $coursesWithProgress]);
+    }
+
+
 
   public function downloadCertificate($courseId)
     {
